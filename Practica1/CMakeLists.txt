@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.8)
+project(Practica1)
+
+set(CMAKE_C_STANDARD 99)
+
+set(SOURCE_FILES main.c InputSystem.c InputSystem.h Definitions.h LexicalAnalyzer.c LexicalAnalyzer.h SintacticAnalyzer.c SintacticAnalyzer.h SymbolsTable.c SymbolsTable.h ErrorManager.c ErrorManager.h)
+add_executable(Practica1 ${SOURCE_FILES})

@@ -35,7 +35,7 @@ void inserta(abb *A, tipoelem E) {
         (*A)->content = E;
         (*A)->izq = NULL;
         (*A)->der = NULL;
-    } else if (strcmp(E.lexema,(*A)->content.lexema)<0)
+    } else if (strcmp(E.clave,(*A)->content.clave)<0)
         inserta(&(*A)->izq, E);
     else
         inserta(&(*A)->der, E);
@@ -58,9 +58,9 @@ tipoelem suprime_min(abb *A) {
 void suprime(abb *A, tipoelem E) {
     abb aux;
     if (*A != NULL) {
-        if (strcmp(E.lexema,(*A)->content.lexema)<0)
+        if (strcmp(E.clave,(*A)->content.clave)<0)
             suprime(&(*A)->izq, E);
-        else if (strcmp(E.lexema,(*A)->content.lexema)>0)
+        else if (strcmp(E.clave,(*A)->content.clave)>0)
             suprime(&(*A)->der, E);
         else if ((*A)->izq == NULL && (*A)->der == NULL) {
             free(*A);
@@ -82,9 +82,9 @@ void suprime(abb *A, tipoelem E) {
 unsigned existe(abb A, tipoelem E) {
     if (esVacio(A))
         return 0;
-    else if (strcmp(E.lexema,(A->content).lexema)==0)
+    else if (strcmp(E.clave,(A->content).clave)==0)
         return 1;
-    else if (strcmp(E.lexema,(A->content).lexema)>0)
+    else if (strcmp(E.clave,(A->content).clave)>0)
         return existe(A->der, E);
     else
         return existe(A->izq, E);
@@ -102,23 +102,28 @@ abb der(abb A) {
     return A->der;
 }
 
-void buscarNodo(abb A, tipoclave cl, tipoelem *nodo) {
-    if (esVacio(A))
+void buscarNodo(abb A, tipoclave cl, tipoelem *res) {
+    if (esVacio(A)) {
+        *res = NULL;
         printf("Clave inexistente\n");
-    else if (strcmp(cl,(A->content).lexema)==0)
-        *nodo = A->content;
-    else if (strcmp(cl,(A->content).lexema)<0)
-        buscarNodo(izq(A), cl, nodo);
-    else
-        buscarNodo(der(A), cl, nodo);
+    }
+    else if (strcmp(cl,(A->content).clave)==0) {
+        *res = A->content;
+    }
+    else if (strcmp(cl,(A->content).clave)<0) {
+        buscarNodo(izq(A), cl, res);
+    }
+    else{
+        buscarNodo(der(A), cl, res);
+    }
 }
 
 void modifica(abb *A, tipoclave cl, tipoelem nodo) {
     if (esVacio(*A)) {
         printf("Clave inexistente\n");
-    } else if (strcmp(cl,((*A)->content).lexema)==0)
+    } else if (strcmp(cl,((*A)->content).clave)==0)
         (*A)->content = nodo;
-    else if (strcmp(cl,((*A)->content).lexema)<0)
+    else if (strcmp(cl,((*A)->content).clave)<0)
         modifica(&(*A)->izq, cl, nodo);
     else
         modifica(&(*A)->der, cl, nodo);

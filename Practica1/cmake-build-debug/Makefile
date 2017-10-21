@@ -231,32 +231,59 @@ SintacticAnalyzer.c.s:
 	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SintacticAnalyzer.c.s
 .PHONY : SintacticAnalyzer.c.s
 
-SymbolsTable.o: SymbolsTable.c.o
+SymbolsTable/BST.o: SymbolsTable/BST.c.o
 
-.PHONY : SymbolsTable.o
+.PHONY : SymbolsTable/BST.o
 
 # target to build an object file
-SymbolsTable.c.o:
-	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SymbolsTable.c.o
-.PHONY : SymbolsTable.c.o
+SymbolsTable/BST.c.o:
+	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o
+.PHONY : SymbolsTable/BST.c.o
 
-SymbolsTable.i: SymbolsTable.c.i
+SymbolsTable/BST.i: SymbolsTable/BST.c.i
 
-.PHONY : SymbolsTable.i
+.PHONY : SymbolsTable/BST.i
 
 # target to preprocess a source file
-SymbolsTable.c.i:
-	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SymbolsTable.c.i
-.PHONY : SymbolsTable.c.i
+SymbolsTable/BST.c.i:
+	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SymbolsTable/BST.c.i
+.PHONY : SymbolsTable/BST.c.i
 
-SymbolsTable.s: SymbolsTable.c.s
+SymbolsTable/BST.s: SymbolsTable/BST.c.s
 
-.PHONY : SymbolsTable.s
+.PHONY : SymbolsTable/BST.s
 
 # target to generate assembly for a file
-SymbolsTable.c.s:
-	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SymbolsTable.c.s
-.PHONY : SymbolsTable.c.s
+SymbolsTable/BST.c.s:
+	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SymbolsTable/BST.c.s
+.PHONY : SymbolsTable/BST.c.s
+
+SymbolsTable/SymbolsTable.o: SymbolsTable/SymbolsTable.c.o
+
+.PHONY : SymbolsTable/SymbolsTable.o
+
+# target to build an object file
+SymbolsTable/SymbolsTable.c.o:
+	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o
+.PHONY : SymbolsTable/SymbolsTable.c.o
+
+SymbolsTable/SymbolsTable.i: SymbolsTable/SymbolsTable.c.i
+
+.PHONY : SymbolsTable/SymbolsTable.i
+
+# target to preprocess a source file
+SymbolsTable/SymbolsTable.c.i:
+	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.i
+.PHONY : SymbolsTable/SymbolsTable.c.i
+
+SymbolsTable/SymbolsTable.s: SymbolsTable/SymbolsTable.c.s
+
+.PHONY : SymbolsTable/SymbolsTable.s
+
+# target to generate assembly for a file
+SymbolsTable/SymbolsTable.c.s:
+	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.s
+.PHONY : SymbolsTable/SymbolsTable.c.s
 
 main.o: main.c.o
 
@@ -306,9 +333,12 @@ help:
 	@echo "... SintacticAnalyzer.o"
 	@echo "... SintacticAnalyzer.i"
 	@echo "... SintacticAnalyzer.s"
-	@echo "... SymbolsTable.o"
-	@echo "... SymbolsTable.i"
-	@echo "... SymbolsTable.s"
+	@echo "... SymbolsTable/BST.o"
+	@echo "... SymbolsTable/BST.i"
+	@echo "... SymbolsTable/BST.s"
+	@echo "... SymbolsTable/SymbolsTable.o"
+	@echo "... SymbolsTable/SymbolsTable.i"
+	@echo "... SymbolsTable/SymbolsTable.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

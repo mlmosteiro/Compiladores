@@ -111,10 +111,16 @@
 		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h">
 			<Option target="Practica1"/>
 		</Unit>
-		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable.c">
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.c">
 			<Option target="Practica1"/>
 		</Unit>
-		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable.h">
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.h">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.c">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h">
 			<Option target="Practica1"/>
 		</Unit>
 		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica1/main.c">

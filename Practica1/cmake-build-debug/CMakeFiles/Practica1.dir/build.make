@@ -153,28 +153,28 @@ CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o.provides: CMakeFiles/Practica1.di
 CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o.provides.build: CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o
 
 
-CMakeFiles/Practica1.dir/SymbolsTable.c.o: CMakeFiles/Practica1.dir/flags.make
-CMakeFiles/Practica1.dir/SymbolsTable.c.o: ../SymbolsTable.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maryluz/CLionProjects/Compiladores/Practica1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Practica1.dir/SymbolsTable.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Practica1.dir/SymbolsTable.c.o   -c /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable.c
+CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o: CMakeFiles/Practica1.dir/flags.make
+CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o: ../SymbolsTable/SymbolsTable.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maryluz/CLionProjects/Compiladores/Practica1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o   -c /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.c
 
-CMakeFiles/Practica1.dir/SymbolsTable.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Practica1.dir/SymbolsTable.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable.c > CMakeFiles/Practica1.dir/SymbolsTable.c.i
+CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.c > CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.i
 
-CMakeFiles/Practica1.dir/SymbolsTable.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Practica1.dir/SymbolsTable.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable.c -o CMakeFiles/Practica1.dir/SymbolsTable.c.s
+CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.c -o CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.s
 
-CMakeFiles/Practica1.dir/SymbolsTable.c.o.requires:
+CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o.requires:
 
-.PHONY : CMakeFiles/Practica1.dir/SymbolsTable.c.o.requires
+.PHONY : CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o.requires
 
-CMakeFiles/Practica1.dir/SymbolsTable.c.o.provides: CMakeFiles/Practica1.dir/SymbolsTable.c.o.requires
-	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SymbolsTable.c.o.provides.build
-.PHONY : CMakeFiles/Practica1.dir/SymbolsTable.c.o.provides
+CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o.provides: CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o.requires
+	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o.provides.build
+.PHONY : CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o.provides
 
-CMakeFiles/Practica1.dir/SymbolsTable.c.o.provides.build: CMakeFiles/Practica1.dir/SymbolsTable.c.o
+CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o.provides.build: CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o
 
 
 CMakeFiles/Practica1.dir/ErrorManager.c.o: CMakeFiles/Practica1.dir/flags.make
@@ -201,14 +201,39 @@ CMakeFiles/Practica1.dir/ErrorManager.c.o.provides: CMakeFiles/Practica1.dir/Err
 CMakeFiles/Practica1.dir/ErrorManager.c.o.provides.build: CMakeFiles/Practica1.dir/ErrorManager.c.o
 
 
+CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o: CMakeFiles/Practica1.dir/flags.make
+CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o: ../SymbolsTable/BST.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maryluz/CLionProjects/Compiladores/Practica1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o   -c /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.c
+
+CMakeFiles/Practica1.dir/SymbolsTable/BST.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Practica1.dir/SymbolsTable/BST.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.c > CMakeFiles/Practica1.dir/SymbolsTable/BST.c.i
+
+CMakeFiles/Practica1.dir/SymbolsTable/BST.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Practica1.dir/SymbolsTable/BST.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.c -o CMakeFiles/Practica1.dir/SymbolsTable/BST.c.s
+
+CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o.requires:
+
+.PHONY : CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o.requires
+
+CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o.provides: CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o.requires
+	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o.provides.build
+.PHONY : CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o.provides
+
+CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o.provides.build: CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o
+
+
 # Object files for target Practica1
 Practica1_OBJECTS = \
 "CMakeFiles/Practica1.dir/main.c.o" \
 "CMakeFiles/Practica1.dir/InputSystem.c.o" \
 "CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o" \
 "CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o" \
-"CMakeFiles/Practica1.dir/SymbolsTable.c.o" \
-"CMakeFiles/Practica1.dir/ErrorManager.c.o"
+"CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o" \
+"CMakeFiles/Practica1.dir/ErrorManager.c.o" \
+"CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o"
 
 # External object files for target Practica1
 Practica1_EXTERNAL_OBJECTS =
@@ -217,11 +242,12 @@ Practica1: CMakeFiles/Practica1.dir/main.c.o
 Practica1: CMakeFiles/Practica1.dir/InputSystem.c.o
 Practica1: CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o
 Practica1: CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o
-Practica1: CMakeFiles/Practica1.dir/SymbolsTable.c.o
+Practica1: CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o
 Practica1: CMakeFiles/Practica1.dir/ErrorManager.c.o
+Practica1: CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o
 Practica1: CMakeFiles/Practica1.dir/build.make
 Practica1: CMakeFiles/Practica1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/maryluz/CLionProjects/Compiladores/Practica1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable Practica1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/maryluz/CLionProjects/Compiladores/Practica1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable Practica1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Practica1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -233,8 +259,9 @@ CMakeFiles/Practica1.dir/requires: CMakeFiles/Practica1.dir/main.c.o.requires
 CMakeFiles/Practica1.dir/requires: CMakeFiles/Practica1.dir/InputSystem.c.o.requires
 CMakeFiles/Practica1.dir/requires: CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o.requires
 CMakeFiles/Practica1.dir/requires: CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o.requires
-CMakeFiles/Practica1.dir/requires: CMakeFiles/Practica1.dir/SymbolsTable.c.o.requires
+CMakeFiles/Practica1.dir/requires: CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o.requires
 CMakeFiles/Practica1.dir/requires: CMakeFiles/Practica1.dir/ErrorManager.c.o.requires
+CMakeFiles/Practica1.dir/requires: CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o.requires
 
 .PHONY : CMakeFiles/Practica1.dir/requires
 

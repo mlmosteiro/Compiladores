@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "InputSystem.h"
 
 /*
@@ -42,11 +41,11 @@ int initInputSystem(char *fileName){
         return -1; //TODO: TRATAMIENTO DE ERRORES!!
     }
 
-    firstBlockEOF = &firstBlock[SIZE_BLOCK + 1];
-    firstBlockEOF = (char *) EOF;
+    firstBlockEOF = &firstBlock[SIZE_BLOCK];
+    *firstBlockEOF = '\000';
 
-    lastBlockEOF = &lastBlock[SIZE_BLOCK + 1];
-    lastBlockEOF = (char *) EOF;
+    lastBlockEOF = &lastBlock[SIZE_BLOCK];
+    *lastBlockEOF = '\000';
 
     start = &firstBlock[0];
     current = &firstBlock[0];
@@ -56,10 +55,9 @@ int initInputSystem(char *fileName){
 }
 
 
-// Liberamos la memoria asociada con los bloques del sistema de entrada y el archivo de código fuente
+// Cerramos el archivo de código fuente
 int endInputSystem(){
-    free(firstBlock);
-    free(lastBlock);
+
     fclose(file);
 }
 
@@ -73,22 +71,26 @@ int endInputSystem(){
 
 char nextCharacter(){
 
-    if(current == (char *) EOF) {
-        if(current == (char) firstBlockEOF) {
-            loadBlock(FIRSTBLOCK);
-        }
-        else if (current  == (char) lastBlockEOF) {
+    if(*current =='\000') {
+        if(current == firstBlockEOF) {
             loadBlock(LASTBLOCK);
+            current = &lastBlock[0];
+        }
+        else if (current  == lastBlockEOF) {
+            loadBlock(FIRSTBLOCK);
+            current = &firstBlock[0];
         }
         else {
-            return EOF;
+            return '\000';
         }
 
     }
-    return (char) current;
+    char character = *current;
+    *current++;
+    return character;
 }
 
 
 void previousChar() {
-        current--;
+    *current--;
 }

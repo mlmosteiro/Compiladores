@@ -1,6 +1,6 @@
 #ifndef PRACTICA1_INPUTSYSTEM_H
 #define PRACTICA1_INPUTSYSTEM_H
-#define SIZE_BLOCK 255
+#define SIZE_BLOCK 15
 
 int initInputSystem(char* fileName);
 

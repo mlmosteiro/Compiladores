@@ -17,6 +17,10 @@ stdio.h
 -
 stdlib.h
 -
+errno.h
+-
+memory.h
+-
 InputSystem.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 

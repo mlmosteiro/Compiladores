@@ -1,6 +1,8 @@
 #ifndef PRACTICA1_SINTACTICLANALYZER_H
 #define PRACTICA1_SINTACTICLANALYZER_H
-void startSintatic();
-int nextSintaticComponent();
-void endSintatic();
+
+void initSintacticAnalyzer();
+char * nextLexicalComponent();
+void destroySintacticAnalyzer();
+
 #endif //PRACTICA1_SINTACTICLANALYZER_H

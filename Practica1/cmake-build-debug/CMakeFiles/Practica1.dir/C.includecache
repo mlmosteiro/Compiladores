@@ -15,38 +15,70 @@ ErrorManager.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.c
 stdio.h
 -
-stdlib.h
--
-errno.h
--
-memory.h
--
 InputSystem.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.c
+stdlib.h
+-
+stdio.h
+-
 LexicalAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
+InputSystem.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
+SymbolsTable/SymbolsTable.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.c
+stdlib.h
+-
+stdio.h
+-
 SintacticAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
 
-/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable.c
-SymbolsTable.h
-/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.c
+BST.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
 
-/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.h
+SymbolsTable.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
+
+/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+SymbolsTable.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
+BST.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.h
+
+/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/main.c
 stdio.h
 -
+LexicalAnalyzer.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
+SymbolsTable/SymbolsTable.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 InputSystem.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 

@@ -1,5 +1,6 @@
 #ifndef PRACTICA1_DEFINITIONS_H
 #define PRACTICA1_DEFINITIONS_H
+//KEYWORDS
 #define BREAK 200
 #define DEFAULT 201
 #define FUNC 202
@@ -25,4 +26,28 @@
 #define IMPORT 222
 #define RETURN 223
 #define VAR 224
+
+//Content of identifiers
+#define NUMBER_INTEGER_LIT 500
+#define NUMBER_DECIMAL_LIT 501
+#define NUMBER_OCTAL_LIT 502
+#define NUMBER_HEX_LIT 503
+#define NUMBER_FLOAT_LIT 503
+#define NUMBER_IMAGINARY_LIT 503
+#define STRING 504
+#define IDENTIFIER 505
+
+//Operadores
+#define ASSIGNATION   600
+#define PLUS_EQUAL   601
+#define RECEIVE   602
+
+//Comments & strings
+#define COMMENT_MULTIPLE 801
+#define COMMENT_HIERARCHIC 803
+#define LINE_COMMENT    805
+
+//Errors
+
+#define END_OF_FILE '\000'
 #endif //PRACTICA1_DEFINITIONS_H

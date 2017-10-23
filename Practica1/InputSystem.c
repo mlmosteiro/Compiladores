@@ -56,7 +56,7 @@ int initInputSystem(char *fileName){
 
 
 // Cerramos el archivo de código fuente
-int endInputSystem(){
+int destroyInputSystem(){
 
     fclose(file);
 }

@@ -6,12 +6,13 @@
 struct symbolStruct{
     char* lexema;
     int componenteLexico;
+    int numLinea;
 };
 
 typedef struct symbolStruct symbolImput;
 
 void initSymbolsTable();
-void insert(char* lexema, int componenteLexico);
+void insert(char* lexema, int componenteLexico, int numLinea);
 int search(char* lexema);
 void modify();
 void destroySymbolsTable();

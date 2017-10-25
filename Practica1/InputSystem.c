@@ -91,6 +91,7 @@ char nextCharacter(){
 }
 
 
-void previousChar() {
+char previousCharacter() {
     *current--;
+    return *current;
 }

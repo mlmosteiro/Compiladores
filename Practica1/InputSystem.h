@@ -8,6 +8,6 @@ int destroyInputSystem();
 
 char nextCharacter();
 
-void previousChar();
+char previousCharacter();
 
 #endif //PRACTICA1_INPUTSYSTEM_H

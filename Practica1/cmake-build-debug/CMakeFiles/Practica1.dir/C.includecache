@@ -35,12 +35,12 @@ SymbolsTable/SymbolsTable.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.c
-stdlib.h
--
-stdio.h
--
 SintacticAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
+SymbolsTable/SymbolsTable.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
+LexicalAnalyzer.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
 

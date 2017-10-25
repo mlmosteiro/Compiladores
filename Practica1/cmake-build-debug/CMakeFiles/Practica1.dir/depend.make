@@ -12,8 +12,10 @@ CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../LexicalAnalyzer.c
 CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../LexicalAnalyzer.h
 CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../SymbolsTable/SymbolsTable.h
 
+CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o: ../LexicalAnalyzer.h
 CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o: ../SintacticAnalyzer.c
 CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o: ../SintacticAnalyzer.h
+CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o: ../SymbolsTable/SymbolsTable.h
 
 CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o: ../SymbolsTable/BST.c
 CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o: ../SymbolsTable/BST.h

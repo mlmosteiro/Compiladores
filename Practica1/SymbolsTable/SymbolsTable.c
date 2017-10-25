@@ -36,12 +36,13 @@ void initSymbolsTable() {
     importLenguageKeyWords();
 }
 
-void insert(char *lexema, int componenteLexico) {
+void insert(char *lexema, int componenteLexico, int numLinea) {
     symbolImput *newSymbol;
     newSymbol = (symbolImput *) malloc(sizeof(symbolImput));
     newSymbol->lexema = (char *) malloc(sizeof(lexema));
     strcpy(newSymbol->lexema, lexema);
     newSymbol->componenteLexico = componenteLexico;
+    newSymbol->numLinea = numLinea;
     inserta(&symbolsTable, *newSymbol);
 }
 

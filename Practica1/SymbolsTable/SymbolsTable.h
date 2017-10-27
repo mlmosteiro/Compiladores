@@ -13,7 +13,7 @@ typedef struct symbolStruct symbolImput;
 
 void initSymbolsTable();
 void insert(char* lexema, int componenteLexico, int numLinea);
-int search(char* lexema);
+symbolImput * search(char* lexema);
 void modify();
 void destroySymbolsTable();
 void printSymbolsTable();

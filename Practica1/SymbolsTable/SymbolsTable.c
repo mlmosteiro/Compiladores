@@ -46,10 +46,10 @@ void insert(char *lexema, int componenteLexico, int numLinea) {
     inserta(&symbolsTable, *newSymbol);
 }
 
-int search(char *lexema) {
+symbolImput * search(char *lexema) {
     symbolImput *result;
     buscaNodo(symbolsTable, lexema, result);
-    return result == NULL ? - 1 : result->componenteLexico;
+    return result == NULL ? NULL : result;
 }
 
 void modify() {

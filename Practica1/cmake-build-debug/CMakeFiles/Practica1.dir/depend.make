@@ -7,6 +7,7 @@ CMakeFiles/Practica1.dir/ErrorManager.c.o: ../ErrorManager.h
 CMakeFiles/Practica1.dir/InputSystem.c.o: ../InputSystem.c
 CMakeFiles/Practica1.dir/InputSystem.c.o: ../InputSystem.h
 
+CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../Definitions.h
 CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../InputSystem.h
 CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../LexicalAnalyzer.c
 CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../LexicalAnalyzer.h

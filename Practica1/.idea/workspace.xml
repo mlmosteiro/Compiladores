@@ -12,22 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a95a859-719d-446f-be55-c173afa7bc1b" name="Default" comment="0">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Practica1" afterPath="$PROJECT_DIR$/cmake-build-debug/Practica1" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/Practica1" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Definitions.h" afterPath="$PROJECT_DIR$/Definitions.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/InputSystem.c" afterPath="$PROJECT_DIR$/InputSystem.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/InputSystem.h" afterPath="$PROJECT_DIR$/InputSystem.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LexicalAnalyzer.c" afterPath="$PROJECT_DIR$/LexicalAnalyzer.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SintacticAnalyzer.c" afterPath="$PROJECT_DIR$/SintacticAnalyzer.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SintacticAnalyzer.h" afterPath="$PROJECT_DIR$/SintacticAnalyzer.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SymbolsTable/SymbolsTable.c" afterPath="$PROJECT_DIR$/SymbolsTable/SymbolsTable.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SymbolsTable/SymbolsTable.h" afterPath="$PROJECT_DIR$/SymbolsTable/SymbolsTable.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Practica1.dir/C.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Practica1.dir/C.includecache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Practica1.dir/depend.internal" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Practica1.dir/depend.internal" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Practica1.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Practica1.dir/depend.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/e.txt" afterPath="$PROJECT_DIR$/e.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,101 +31,53 @@
     <favorites_list name="Practica1" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6354776">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="20" />
-                  <folding>
-                    <element signature="e#0#18#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="InputSystem.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/InputSystem.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="45">
-                  <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="e.txt" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/e.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="32" lean-forward="false" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LexicalAnalyzer.c" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/LexicalAnalyzer.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="130">
-                  <caret line="190" column="16" lean-forward="false" selection-start-line="190" selection-start-column="16" selection-end-line="190" selection-end-column="16" />
-                  <folding>
-                    <element signature="e#0#24#0" expanded="true" />
-                    <element signature="e#594#711#0" expanded="false" />
-                    <element signature="e#713#827#0" expanded="false" />
-                    <element signature="e#829#1501#0" expanded="false" />
-                    <element signature="e#1503#1559#0" expanded="false" />
-                    <element signature="e#1561#1694#0" expanded="false" />
-                    <element signature="e#1696#1760#0" expanded="false" />
-                    <element signature="e#1696#2326#0" expanded="false" />
-                    <element signature="e#2328#2964#0" expanded="false" />
-                    <element signature="e#2966#3481#0" expanded="false" />
-                    <element signature="e#3483#4607#0" expanded="false" />
-                    <element signature="e#8484#11563#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LexicalAnalyzer.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/LexicalAnalyzer.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="InputSystem.c" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/InputSystem.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="424">
-                  <caret line="93" column="10" lean-forward="true" selection-start-line="93" selection-start-column="10" selection-end-line="93" selection-end-column="10" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Definitions.h" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Definitions.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-57">
-                  <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="LexicalAnalyzer.c" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/LexicalAnalyzer.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="542">
+              <caret line="291" column="32" lean-forward="true" selection-start-line="291" selection-start-column="32" selection-end-line="291" selection-end-column="32" />
+              <folding>
+                <element signature="e#539#710#0" expanded="false" />
+                <element signature="e#712#829#0" expanded="false" />
+                <element signature="e#831#945#0" expanded="false" />
+                <element signature="e#947#1629#0" expanded="false" />
+                <element signature="e#1631#1687#0" expanded="false" />
+                <element signature="e#1689#1822#0" expanded="false" />
+                <element signature="e#1824#1888#0" expanded="false" />
+                <element signature="e#1824#2454#0" expanded="false" />
+                <element signature="e#2456#3092#0" expanded="false" />
+                <element signature="e#3094#3609#0" expanded="false" />
+                <element signature="e#3611#4735#0" expanded="false" />
+                <element signature="e#4737#5031#0" expanded="false" />
+                <element signature="e#5033#13973#0" expanded="false" />
+                <element signature="e#15132#18211#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SymbolsTable.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SymbolsTable/SymbolsTable.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="50" column="37" lean-forward="false" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BST.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SymbolsTable/BST.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -153,7 +95,6 @@
         <option value="$PROJECT_DIR$/ErrorManager.h" />
         <option value="$PROJECT_DIR$/ex.txt" />
         <option value="$PROJECT_DIR$/LexicalAnalyzer.h" />
-        <option value="$PROJECT_DIR$/SymbolsTable/BST.c" />
         <option value="$PROJECT_DIR$/SymbolsTable/BST.h" />
         <option value="$PROJECT_DIR$/main.c" />
         <option value="$PROJECT_DIR$/SintacticAnalyzer.h" />
@@ -162,8 +103,9 @@
         <option value="$PROJECT_DIR$/InputSystem.h" />
         <option value="$PROJECT_DIR$/InputSystem.c" />
         <option value="$PROJECT_DIR$/SymbolsTable/SymbolsTable.h" />
-        <option value="$PROJECT_DIR$/SymbolsTable/SymbolsTable.c" />
         <option value="$PROJECT_DIR$/Definitions.h" />
+        <option value="$PROJECT_DIR$/SymbolsTable/BST.c" />
+        <option value="$PROJECT_DIR$/SymbolsTable/SymbolsTable.c" />
         <option value="$PROJECT_DIR$/LexicalAnalyzer.c" />
       </list>
     </option>
@@ -176,9 +118,9 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="683" />
-    <option name="width" value="684" />
-    <option name="height" value="741" />
+    <option name="x" value="684" />
+    <option name="width" value="682" />
+    <option name="height" value="740" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -286,12 +228,14 @@
       <workItem from="1508689018886" duration="2070000" />
       <workItem from="1508773206450" duration="6638000" />
       <workItem from="1508860462634" duration="9711000" />
-      <workItem from="1508925944289" duration="4169000" />
+      <workItem from="1508925944289" duration="6094000" />
+      <workItem from="1509025845477" duration="7184000" />
+      <workItem from="1509057179708" duration="7108000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71351000" />
+    <option name="totallyTimeSpent" value="87568000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -303,27 +247,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="683" y="0" width="1368" height="741" extended-state="6" />
+    <frame x="0" y="-1" width="1366" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22651514" sideWeight="0.4909091" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53733766" sideWeight="0.49706745" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51875" sideWeight="0.50293255" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5090909" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4921875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5090909" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5375" sideWeight="0.49706745" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -345,8 +289,18 @@
           <line>30</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Definitions.h</url>
+          <line>49</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Definitions.h</url>
+          <line>40</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="42" />
+      <option name="time" value="49" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
@@ -379,18 +333,20 @@
         <state relative-caret-position="690">
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#594#711#0" expanded="false" />
-            <element signature="e#713#827#0" expanded="false" />
-            <element signature="e#829#1501#0" expanded="false" />
-            <element signature="e#1503#1559#0" expanded="false" />
-            <element signature="e#1561#1694#0" expanded="false" />
-            <element signature="e#1696#1760#0" expanded="false" />
-            <element signature="e#1696#2326#0" expanded="false" />
-            <element signature="e#2328#2964#0" expanded="false" />
-            <element signature="e#2966#3481#0" expanded="false" />
-            <element signature="e#3483#4607#0" expanded="false" />
-            <element signature="e#8484#11563#0" expanded="false" />
+            <element signature="e#539#710#0" expanded="false" />
+            <element signature="e#712#829#0" expanded="false" />
+            <element signature="e#831#945#0" expanded="false" />
+            <element signature="e#947#1629#0" expanded="false" />
+            <element signature="e#1631#1687#0" expanded="false" />
+            <element signature="e#1689#1822#0" expanded="false" />
+            <element signature="e#1824#1888#0" expanded="false" />
+            <element signature="e#1824#2454#0" expanded="false" />
+            <element signature="e#2456#3092#0" expanded="false" />
+            <element signature="e#3094#3609#0" expanded="false" />
+            <element signature="e#3611#4735#0" expanded="false" />
+            <element signature="e#4737#5031#0" expanded="false" />
+            <element signature="e#5033#13973#0" expanded="false" />
+            <element signature="e#15132#18211#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -406,9 +362,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#16#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -427,18 +380,20 @@
         <state relative-caret-position="690">
           <caret line="46" column="41" lean-forward="false" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#594#711#0" expanded="false" />
-            <element signature="e#713#827#0" expanded="false" />
-            <element signature="e#829#1501#0" expanded="false" />
-            <element signature="e#1503#1559#0" expanded="false" />
-            <element signature="e#1561#1694#0" expanded="false" />
-            <element signature="e#1696#1760#0" expanded="false" />
-            <element signature="e#1696#2326#0" expanded="false" />
-            <element signature="e#2328#2964#0" expanded="false" />
-            <element signature="e#2966#3481#0" expanded="false" />
-            <element signature="e#3483#4607#0" expanded="false" />
-            <element signature="e#8484#11563#0" expanded="false" />
+            <element signature="e#539#710#0" expanded="false" />
+            <element signature="e#712#829#0" expanded="false" />
+            <element signature="e#831#945#0" expanded="false" />
+            <element signature="e#947#1629#0" expanded="false" />
+            <element signature="e#1631#1687#0" expanded="false" />
+            <element signature="e#1689#1822#0" expanded="false" />
+            <element signature="e#1824#1888#0" expanded="false" />
+            <element signature="e#1824#2454#0" expanded="false" />
+            <element signature="e#2456#3092#0" expanded="false" />
+            <element signature="e#3094#3609#0" expanded="false" />
+            <element signature="e#3611#4735#0" expanded="false" />
+            <element signature="e#4737#5031#0" expanded="false" />
+            <element signature="e#5033#13973#0" expanded="false" />
+            <element signature="e#15132#18211#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -454,9 +409,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1410">
           <caret line="94" column="1" lean-forward="false" selection-start-line="94" selection-start-column="1" selection-end-line="94" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#16#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -628,16 +580,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SymbolsTable/BST.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="25" column="21" lean-forward="true" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#16#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SintacticAnalyzer.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -656,17 +598,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SymbolsTable/SymbolsTable.h">
+    <entry file="file://$PROJECT_DIR$/SymbolsTable/BST.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        <state relative-caret-position="75">
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LexicalAnalyzer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InputSystem.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1395">
+          <caret line="93" column="10" lean-forward="false" selection-start-line="93" selection-start-column="10" selection-end-line="93" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InputSystem.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="77">
           <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="20" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -682,71 +648,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LexicalAnalyzer.h">
+    <entry file="file://$PROJECT_DIR$/SymbolsTable/SymbolsTable.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
+        <state relative-caret-position="45">
+          <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Definitions.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57">
-          <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+        <state relative-caret-position="182">
+          <caret line="36" column="28" lean-forward="true" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/InputSystem.h">
+    <entry file="file://$PROJECT_DIR$/SymbolsTable/BST.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/InputSystem.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="93" column="10" lean-forward="true" selection-start-line="93" selection-start-column="10" selection-end-line="93" selection-end-column="10" />
+        <state relative-caret-position="435">
+          <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SymbolsTable/SymbolsTable.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SymbolsTable/BST.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        <state relative-caret-position="225">
+          <caret line="50" column="37" lean-forward="false" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LexicalAnalyzer.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="190" column="16" lean-forward="false" selection-start-line="190" selection-start-column="16" selection-end-line="190" selection-end-column="16" />
+        <state relative-caret-position="542">
+          <caret line="291" column="32" lean-forward="true" selection-start-line="291" selection-start-column="32" selection-end-line="291" selection-end-column="32" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#594#711#0" expanded="false" />
-            <element signature="e#713#827#0" expanded="false" />
-            <element signature="e#829#1501#0" expanded="false" />
-            <element signature="e#1503#1559#0" expanded="false" />
-            <element signature="e#1561#1694#0" expanded="false" />
-            <element signature="e#1696#1760#0" expanded="false" />
-            <element signature="e#1696#2326#0" expanded="false" />
-            <element signature="e#2328#2964#0" expanded="false" />
-            <element signature="e#2966#3481#0" expanded="false" />
-            <element signature="e#3483#4607#0" expanded="false" />
-            <element signature="e#8484#11563#0" expanded="false" />
+            <element signature="e#539#710#0" expanded="false" />
+            <element signature="e#712#829#0" expanded="false" />
+            <element signature="e#831#945#0" expanded="false" />
+            <element signature="e#947#1629#0" expanded="false" />
+            <element signature="e#1631#1687#0" expanded="false" />
+            <element signature="e#1689#1822#0" expanded="false" />
+            <element signature="e#1824#1888#0" expanded="false" />
+            <element signature="e#1824#2454#0" expanded="false" />
+            <element signature="e#2456#3092#0" expanded="false" />
+            <element signature="e#3094#3609#0" expanded="false" />
+            <element signature="e#3611#4735#0" expanded="false" />
+            <element signature="e#4737#5031#0" expanded="false" />
+            <element signature="e#5033#13973#0" expanded="false" />
+            <element signature="e#15132#18211#0" expanded="false" />
           </folding>
         </state>
       </provider>

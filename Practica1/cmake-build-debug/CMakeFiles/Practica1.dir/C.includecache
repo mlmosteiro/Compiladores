@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+/home/maryluz/CLionProjects/Compiladores/Practica1/Definitions.h
+
 /home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.c
 ErrorManager.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
@@ -21,14 +23,18 @@ InputSystem.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.c
+Definitions.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/Definitions.h
+InputSystem.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
+stdio.h
+-
 stdlib.h
 -
-stdio.h
+ctype.h
 -
 LexicalAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
-InputSystem.h
-/home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 SymbolsTable/SymbolsTable.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 

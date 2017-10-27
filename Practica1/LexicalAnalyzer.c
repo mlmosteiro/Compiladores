@@ -6,11 +6,16 @@
 #include "LexicalAnalyzer.h"
 #include "SymbolsTable/SymbolsTable.h"
 
+#define INITIAL_STATE 900
+#define NUMBER_NOT_DECIMAL_LIT 901
+#define NUMBER_EXP_SIG 902
+
 //Todo: gestion de errores
 
 char* lexemaBuffer;
 int mult = 1;
 char character=' ';
+int currentBufferIndex = -1;
 int numLinea=0;
 char operatorsArray[7] = {'+','-','*','/','<','>','\0'}; // Todo: modificar mayor o igual
 char separatorsArray[7] = {',',';',' ','.','\n','\0'};
@@ -30,7 +35,7 @@ void restartLexemaBuffer() {
 }
 
 char * nextLexicalComponent() {
-    int indexOfChar = -1;
+
     character=' ';
     restartLexemaBuffer();
 
@@ -39,19 +44,19 @@ char * nextLexicalComponent() {
         //Simulamos que encontramos un lexema
         for(int i = 0; i<6;i++){
             character = nextCharacter();
-            if(character == '\000' && indexOfChar == 0){
+            if(character == '\000' && currentBufferIndex == 0){
                 return NULL;
             }
 
-            indexOfChar++;
+            currentBufferIndex++;
             printf("SA: %c\n", character);
-            if(indexOfChar == SIZE_SA){
+            if(currentBufferIndex == SIZE_SA){
                 extendLexemaBuffer();
             }
-            lexemaBuffer[indexOfChar]=character;
+            lexemaBuffer[currentBufferIndex]=character;
         }
 
-        insert(lexemaBuffer, indexOfChar, numLinea);
+        insert(lexemaBuffer, currentBufferIndex, numLinea);
         return lexemaBuffer;
     }
 }
@@ -162,12 +167,125 @@ int automatonStrings(){
     }
 }
 
+int lexemaFinded(int componenteLexico){
+    lexemaBuffer[currentBufferIndex] = '\0';
+    previousCharacter();
+    symbolImput* isInSymbolTable = search(lexemaBuffer);
+    if(isInSymbolTable == NULL){
+        insert(lexemaBuffer, componenteLexico, numLinea);
+    }
+    return componenteLexico;
+}
+
 int automatonNumbers() {
-    int stateNumber = 0;
+    int stateNumber = INITIAL_STATE;
     while (1) {
         character = nextCharacter();
 
-        //Encontramos algún símbolo que ya no pertenece al lexema númerico (delimitador)
+        switch (stateNumber) {
+            case INITIAL_STATE:                                                     // En el estado inicial, si el primer caracter leido:
+                if (character != '0' && (isdigit(character))) {                     // - es un digito y no es un cero
+                    stateNumber = NUMBER_INTEGER_LIT;                               // podemos decir que, por ahora, se trata de un número entero (decimal)
+                } else if (character == '0') {                                      // - es un dígito y es el cero
+                    stateNumber = NUMBER_NOT_DECIMAL_LIT;                           // podemos decir que, por ahora, se trata de un número no decimal literal (hexadecimal, punto flotante, etc)
+                } else if(character == '.') {                                       // - es un '.'
+                    stateNumber = NUMBER_FLOAT_LIT;                                 // podemos decir que, por ahora, se trata de un número en punto flotante
+                } else{
+                    // TODO: Gestor de errores : error con formato erroneo
+                    //printError(BAD_FORMATED_NUMBER, line, lexemaBuffer);          // hemos leido algo que NO forma parte de un número
+                }
+                break;
+
+            case NUMBER_INTEGER_LIT:                                                // Habiendo leido por lo menos un digito decimal, y a continuacion leemos:
+                if(isdigit(character)){                                             // - un digito decimal
+                    stateNumber=NUMBER_INTEGER_LIT;                                 // podemos decir que, por ahora, se sigue tratando de un número decimal
+                } else if(character == '.') {                                       // - un '.',
+                    stateNumber = NUMBER_FLOAT_LIT;                                 // podemos decir que, por ahora, se trata de un número en punto flotante
+                } else if (character == 'e' || character == 'E') {                  // - una 'e'
+                    stateNumber = NUMBER_EXPONENTIAL_LIT;                           // podemos decir que, por ahora, se trata de un número con exponente (interesante para verificar formato correcto)
+                } else if (character == 'i'){                                       // - una 'i'
+                     stateNumber = NUMBER_IMAGINARY_LIT;                            // podemos decir que se ha leido un número imaginario
+                } else{
+                    // TODO: Gestor de errores : error con formato erroneo
+                    //printError(BAD_FORMATED_NUMBER, line, lexemaBuffer);          // hemos leido algo que NO forma parte de un número, ya es el siguiente lexema
+                    return lexemaFinded(NUMBER_INTEGER_LIT);
+                }
+                break;
+
+            case NUMBER_NOT_DECIMAL_LIT:                                            // Habiendo leido por lo menos un digito entero no decimal, y acontinuación leemos:
+                if (character == '.'){                                              // - un '.'
+                    stateNumber = NUMBER_FLOAT_LIT;                                 // podemos decir que, por ahora, se trata de un número en punto flotante
+                } else if (isdigit(character) && (character >= '0' || character< '8')) { // - un dígito octal
+                    stateNumber = NUMBER_OCTAL_LIT;                                 // podemos decir que, por ahora, se trata de un número octal
+                } else if (character == 'x' || character == 'X') {                  // - una 'x'
+                    stateNumber = NUMBER_HEX_LIT;                                   // podemos decir que, por ahora, se trata de un número hexadecimal
+                } else if (character == 'i') {                                      // - una 'i'
+                    stateNumber = NUMBER_IMAGINARY_LIT;                             // podemos decir que se ha leido un número imaginario
+                } else {
+                    return lexemaFinded(NUMBER_INTEGER_LIT);                         // Ya estamos leyendo otro lexema, lo que significa que hemos leido el digito '0' decimal
+                }
+                break;
+
+            case NUMBER_OCTAL_LIT:                                                  // Si estamos en este estado, estamos seguros de que seguiremos leyendo un
+                if (isdigit(character) && (character >= '0' || character < '8')){   // numero octal
+                    stateNumber = NUMBER_OCTAL_LIT;
+                } else{                                                             // Si no se lee un caracter octal, hemos empezado a leer otro lexema distinto.
+                    return lexemaFinded(NUMBER_INTEGER_LIT);
+                }
+                break;
+
+            case NUMBER_HEX_LIT:
+                if (isdigit(character)  || character >= 'A' || character >= 'a'     // Si estamos en este estado, estamos seguros de que seguiremos leyendo
+                                        || character <= 'F' || character <= 'f') {  // un numero hexadecimal
+                    stateNumber = NUMBER_HEX_LIT;
+                } else{                                                             // Si no se lee un caracter hexadecimal, hemos empezado a leer otro lexema distinto.
+                    return lexemaFinded(NUMBER_INTEGER_LIT);
+                }
+                break;
+
+            case NUMBER_FLOAT_LIT: // Números en punto flotante
+                if (isdigit(character)) {                                           // Si estamos en este estado, es porque hemos leido ya un '.' en algun momento anterior,
+                    stateNumber = NUMBER_FLOAT_LIT;                                 // entonces estamos seguros de que seguiremos leyendo un número en punto flotante
+                } else if (character == 'e' || character == 'E') {                  // Si leemos una 'e',
+                    stateNumber = NUMBER_EXPONENTIAL_LIT;                           // podemos decir que se ha leido un número con exponente  (interesante para verificar formato correcto)
+                } else if (character == 'i') {                                      // Si leemos una 'i',
+                    stateNumber = NUMBER_IMAGINARY_LIT;                             // podemos decir que se ha leido un número imaginario
+                } else {                                                            // En cualquier otro caso, hemos empezado a leer otro lexema distinto
+                    // TODO: GEstor de errores : error con formato erroneo
+                    //printError(BAD_FORMATED_DOUBLE, line, lexemaBuffer);
+                    return lexemaFinded(NUMBER_FLOAT_LIT);
+                }
+                break;
+
+            case NUMBER_EXPONENTIAL_LIT://TODO: FIJAR QUE EL NUMERO NO PUEDE ACABAR SOLO EN E   // Si estamos en este estado, es porque hemos leido ya una 'e' en algun momento anterior,
+                if ((isdigit(character))) {                                         // entonces estamos seguros de que seguiremos leyendo un número con exponente
+                    stateNumber = NUMBER_EXPONENTIAL_LIT;
+                } else if (character == '+' || character == '-'){                   // Si leemos un signo '+' o '-' entonces hemos leido
+                    stateNumber = NUMBER_EXP_SIG;                                   // un exponente con signo (interesante para verificar formato correcto)
+                } else if (character == 'i') {                                      // Si leemos una 'i',
+                    stateNumber = NUMBER_IMAGINARY_LIT;                             // podemos decir que se ha leido un número imaginario
+                } else {
+                    // TODO: GEstor de errores : error con formato erroneo
+                    // printError(BAD_FORMATED_EXP, line, lexemaBuffer);            // En cualquier otro caso, el formato ES ERRONEO.
+                    return lexemaFinded(NUMBER_FLOAT_LIT);
+                }
+                break;
+            case NUMBER_EXP_SIG:                                                    // Si estamos en este estado, es porque hemos leido ya un exponente con signo '+' o '-'
+                if (isdigit(character)) {                                           // Ahora solo se seperan digitos decimales
+                    stateNumber = NUMBER_EXP_SIG;
+                } else{                                                             // En cualquier otro caso, el formato ES ERRONEO
+
+                }
+                break;
+
+            case NUMBER_IMAGINARY_LIT:                                              // Cualquier cosa que leamos a continuacion ya es otro lexema
+                return lexemaFinded(NUMBER_IMAGINARY_LIT);
+        }
+    }
+}
+
+//TODO: INFO: PARAMOS EL AUTOMATA CUADNO LEEMOS UN CARACTER QUE YA no ppertenece a ese lexema.
+/*  //Encontramos algún símbolo que ya no pertenece al lexema númerico (delimitador)
         //TODO: TENER EN CUENTA LAS LETRAS DEL HEXADECIMAL
         if (! isalpha(character) && ! isdigit(character) && character != '_' && character != '.') {
             // lexemaBuffer[pos - 1] = '\0'; /TODO: Eliminar el último caracter porque con el nos damos cuenta que ya estámos leyendo otra cosa
@@ -175,77 +293,21 @@ int automatonNumbers() {
             switch (stateNumber) {
                 //TODO: AÑADIR TODOS LOS NUMEROS POSIBLES
 
-                case 0:
+                case NUMBER_INTEGER_LIT:
+                case NUMBER_OCTAL_LIT:
+                case NUMBER_HEX_LIT:
                     return printWhenLexFind(lexemaBuffer, NUMBER_INTEGER_LIT);
-                case 1:
-                    return printWhenLexFind(lexemaBuffer, NUMBER_DECIMAL_LIT);
-                case 2:
-                    return printWhenLexFind(lexemaBuffer, NUMBER_OCTAL_LIT);//TODO CAMBIARLO PARA QUE FUNCIONE CON OCTAL
-                case 4:
-                    return printWhenLexFind(lexemaBuffer, NUMBER_HEX_LIT);//TODO CAMBIARLO PARA QUE FUNCIONE CON HEXADECIMA
+                case NUMBER_FLOAT_LIT:
+                case NUMBER_EXPONENTIAL_LIT:
+                case NUMBER_EXP_SIG:
+                    return printWhenLexFind(lexemaBuffer, NUMBER_FLOAT_LIT);
+                case NUMBER_IMAGINARY_LIT:
+                    return printWhenLexFind(lexemaBuffer, NUMBER_IMAGINARY_LIT);
             }
         }
+*/
 
-        switch (stateNumber) {
-            case 0: // Enteros : decimal,
-                if (character != '0' && (isdigit(character) || character == '_')) {
-                    stateNumber = NUMBER;
-                } else if (character == '0') {
-                    stateNumber = NUMBER_NOT_DECIMAL;
-                } else {
-                    // TODO: Gestor de errores : error con formato erroneo
-                    //printError(BAD_FORMATED_NUMBER, line, lexemaBuffer);
-                    return nextLexicalComponent();
-                }
-                break;
-            case NUMBER_NOT_DECIMAL:
-                if (character == '.') {
-                    stateNumber = NUMBER_FLOAT_LIT;
-                } else if (isdigit(character) && character <= '7') {
-                    stateNumber = NUMBER_OCTAL_LIT;
-                } else if (character == 'x') {
-                    stateNumber = NUMBER_HEX_LIT;
-                } else if (character == 'i') {
-                    stateNumber = NUMBER_IMAGINARY_LIT;
-                } else {
-                    // TODO: Gestor de errores : error con formato erroneo
-                }
-                break;
 
-            case NUMBER_FLOAT_LIT: //DOUBLE
-                if (isdigit(character) || character == '_' || character == '.') {
-                    stateNumber = NUMBER_FLOAT_LIT;
-                } else if (character == 'e' || character == 'E') {
-                    stateNumber = NUMBER_EXPONENTIAL_LIT;
-                } else {
-                    // TODO: GEstor de errores : error con formato erroneo
-                    //printError(BAD_FORMATED_DOUBLE, line, lexemaBuffer);
-                    return nextLexicalComponent();
-                }
-                break;
-            case NUMBER_EXPONENTIAL_LIT://TODO: FIJAR QUE EL NUMERO NO PUEDE ACABAR SOLO EN E
-                if (character == '+' || character == '-' || character == '_' || (isdigit(character))) {
-                    stateNumber = NUMBER_EXPONENTIAL_LIT;
-                } else {
-                    // TODO: GEstor de errores : error con formato erroneo
-                    // printError(BAD_FORMATED_EXP, line, lexemaBuffer);
-                    return nextLexicalComponent();
-                }
-                break;
-            case NUMBER_HEX_LIT:
-                if (isdigit(character) || character < 'G' || character < 'g' || character >= 'A' || character >= 'a') {
-                    NUMBER_HEX_LIT;
-                } else {
-                    //TODO : GESTOR DE ERRORES
-                }
-                break;
-            case NUMBER_IMAGINARY_LIT:
-                break;
-        }
-    }
-}
-
-//TODO: INFO: PARAMOS EL AUTOMATA CUADNO LEEMOS UN CARACTER QUE YA no ppertenece a ese lexema.
 /*
 
 int nextLexicalComponent() {

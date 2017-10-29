@@ -1,5 +1,6 @@
 #ifndef PRACTICA1_DEFINITIONS_H
 #define PRACTICA1_DEFINITIONS_H
+
 //KEYWORDS
 #define BREAK 200
 #define DEFAULT 201
@@ -29,29 +30,26 @@
 
 //TODO: INCLUIR LOS TIPOS DE DATOS
 //Content of identifiers
-#define NUMBER_INTEGER_LIT 500
-#define NUMBER_FLOAT_LIT 501
-#define NUMBER_EXPONENTIAL_LIT 502
-
-#define NUMBER_HEX_LIT 503
-#define NUMBER_OCTAL_LIT 504
-#define NUMBER_IMAGINARY_LIT 506
-#define STRING 509
-#define IDENTIFIER 510
+#define NUMBER_INTEGER_LIT      500
+#define NUMBER_FLOAT_LIT        501
+#define NUMBER_IMAGINARY_LIT    506
+#define STRING                  509
+#define IDENTIFIER              510
 
 //Operadores
-#define ASSIGNATION   600
-#define EQUALS  603
-#define PLUS_EQUAL   601
-#define RECEIVE   602
+#define ASSIGNATION             600
+#define DECLARATION_ASSIG       601
+#define EQUALS                  602
+#define PLUS_EQUAL              603
+#define GREATER_EQUAL           604
+#define LESS_EQUAL              605
+#define GREATER_GREATER         606
+#define LESS_LESS               607
+#define PLUS_PLUS               608
+#define RECEIVE                 609
 
-//TODO: MAYOR O IGUAL
 //Comments & strings
-#define COMMENT_MULTIPLE 801
-#define COMMENT_HIERARCHIC 803
-#define LINE_COMMENT    805
+#define LINE_COMMENT            800
+#define GENERAL_COMMENT         801
 
-//Errors
-
-#define END_OF_FILE '\000'
 #endif //PRACTICA1_DEFINITIONS_H

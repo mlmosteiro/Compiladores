@@ -1,9 +1,10 @@
 #ifndef PRACTICA1_BST_H
 #define PRACTICA1_BST_H
 
+#include <stdbool.h>
 #include "SymbolsTable.h"
 
-typedef struct symbolStruct tipoelem;
+typedef symbolImput tipoelem;
 
 typedef char* tipoclave;
 
@@ -13,11 +14,11 @@ typedef struct celda * abb;
 
 void crea(abb *A);
 void destruye(abb *A);
-unsigned esVacio(abb A);
+bool esVacio(abb A);
 void inserta(abb *A, tipoelem E);
 tipoelem suprime_min(abb *A);
 void suprime(abb *A,tipoelem E);
-unsigned esMiembro(abb A, tipoelem E);
+bool esMiembro(abb A, tipoelem E);
 abb izq(abb A);
 abb der(abb A);
 void info(abb A, tipoelem *E);

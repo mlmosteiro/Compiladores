@@ -8,6 +8,7 @@ CMakeFiles/Practica1.dir/InputSystem.c.o: ../InputSystem.c
 CMakeFiles/Practica1.dir/InputSystem.c.o: ../InputSystem.h
 
 CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../Definitions.h
+CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../ErrorManager.h
 CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../InputSystem.h
 CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../LexicalAnalyzer.c
 CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../LexicalAnalyzer.h
@@ -28,6 +29,7 @@ CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o: ../SymbolsTable/SymbolsT
 
 CMakeFiles/Practica1.dir/main.c.o: ../InputSystem.h
 CMakeFiles/Practica1.dir/main.c.o: ../LexicalAnalyzer.h
+CMakeFiles/Practica1.dir/main.c.o: ../SintacticAnalyzer.h
 CMakeFiles/Practica1.dir/main.c.o: ../SymbolsTable/SymbolsTable.h
 CMakeFiles/Practica1.dir/main.c.o: ../main.c
 

@@ -4,7 +4,7 @@
 
 int initInputSystem(char* fileName);
 
-int destroyInputSystem();
+void destroyInputSystem();
 
 char nextCharacter();
 

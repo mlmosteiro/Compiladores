@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "InputSystem.h"
 
 /*
@@ -20,12 +21,19 @@ int numberOfBytesRead;
 
 //  Leemos un bloque nuevo
 int loadBlock(int idBlock) {
+    int succes;
     switch (idBlock) {
         case FIRSTBLOCK:
-            fread(firstBlock, 1, SIZE_BLOCK, file);
+            succes = (int) fread(firstBlock, 1, sizeof(char) * SIZE_BLOCK, file);
+            if (succes < SIZE_BLOCK){
+                firstBlock[succes] = EOF;
+            }
             return 1;
         case LASTBLOCK:
-            fread(lastBlock, 1, SIZE_BLOCK, file);
+            succes = (int) fread(lastBlock, 1, sizeof(char) * SIZE_BLOCK, file);
+            if (succes < SIZE_BLOCK){
+                lastBlock[succes] = EOF;
+            }
             return 1;
         default:
             return 0;
@@ -42,10 +50,10 @@ int initInputSystem(char *fileName){
     }
 
     firstBlockEOF = &firstBlock[SIZE_BLOCK];
-    *firstBlockEOF = '\000';
+    *firstBlockEOF =  EOF;
 
     lastBlockEOF = &lastBlock[SIZE_BLOCK];
-    *lastBlockEOF = '\000';
+    *lastBlockEOF =  EOF;
 
     start = &firstBlock[0];
     current = &firstBlock[0];
@@ -56,8 +64,7 @@ int initInputSystem(char *fileName){
 
 
 // Cerramos el archivo de código fuente
-int destroyInputSystem(){
-
+void destroyInputSystem(){
     fclose(file);
 }
 
@@ -71,7 +78,7 @@ int destroyInputSystem(){
 
 char nextCharacter(){
 
-    if(*current =='\000') {
+    if(*current == EOF) {
         if(current == firstBlockEOF) {
             loadBlock(LASTBLOCK);
             current = &lastBlock[0];
@@ -80,10 +87,9 @@ char nextCharacter(){
             loadBlock(FIRSTBLOCK);
             current = &firstBlock[0];
         }
-        else {
-            return '\000';
+        else{
+            return EOF;
         }
-
     }
     char character = *current;
     *current++;

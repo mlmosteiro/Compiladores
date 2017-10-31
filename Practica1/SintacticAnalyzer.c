@@ -1,20 +1,22 @@
 #include "SintacticAnalyzer.h"
-#include "SymbolsTable/SymbolsTable.h"
 #include "LexicalAnalyzer.h"
+#include "SymbolsTable/SymbolsTable.h"
+#include <stdio.h>
 
 
 void initSintacticAnalyzer(){
-    symbolImput* lexicalComponent;
     initLexicalAnalyzer();
 
 }
 
 void startSintacticAnalisis(){
-    char *componenteLexico;
-    componenteLexico = nextLexicalComponent();
+    lexemaOutput lexemaOut;
+    while (lexemaOut.compLex != EOF) {
+        lexemaOut = nextLexicalComponent();
+        printf(" [%d - %s]\n", lexemaOut.compLex, lexemaOut.lexema);
+    }
 }
 
 void destroySintacticAnalyzer(){
-
     destroyLexicalAnalyzer();
 }

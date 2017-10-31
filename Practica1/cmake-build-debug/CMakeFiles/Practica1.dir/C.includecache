@@ -17,36 +17,46 @@ ErrorManager.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.c
 stdio.h
 -
+stdlib.h
+-
 InputSystem.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.c
-Definitions.h
-/home/maryluz/CLionProjects/Compiladores/Practica1/Definitions.h
-InputSystem.h
-/home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
+stdlib.h
+-
 stdio.h
 -
-stdlib.h
+stdbool.h
 -
 ctype.h
 -
+string.h
+-
 LexicalAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
+InputSystem.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 SymbolsTable/SymbolsTable.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
+Definitions.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/Definitions.h
+ErrorManager.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.c
 SintacticAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
-SymbolsTable/SymbolsTable.h
-/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 LexicalAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
+SymbolsTable/SymbolsTable.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
+stdio.h
+-
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
 
@@ -59,8 +69,12 @@ stdlib.h
 -
 string.h
 -
+stdbool.h
+-
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.h
+stdbool.h
+-
 SymbolsTable.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 
@@ -70,6 +84,8 @@ stdio.h
 stdlib.h
 -
 string.h
+-
+ctype.h
 -
 SymbolsTable.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
@@ -87,4 +103,6 @@ SymbolsTable/SymbolsTable.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 InputSystem.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
+SintacticAnalyzer.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
 

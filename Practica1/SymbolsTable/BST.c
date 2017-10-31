@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 struct celda {
     tipoelem info;
@@ -22,7 +23,7 @@ void destruye(abb *A) {
     }
 }
 
-unsigned esVacio(abb A) {
+bool esVacio(abb A) {
     return A == NULL;
 }
 
@@ -76,7 +77,7 @@ void suprime(abb *A, tipoelem E) {
     }
 }
 
-unsigned esMiembro(abb A, tipoelem E) {
+bool esMiembro(abb A, tipoelem E) {
     if (esVacio(A))
         return 0;
     else if (strcmp(E.lexema,(A->info).lexema)==0)
@@ -101,7 +102,7 @@ abb der(abb A) {
 
 void buscaNodo(abb A, tipoclave cl, tipoelem *nodo) {
     if (esVacio(A))
-        printf("Clave inexistente\n");
+        nodo= NULL;
     else if (strcmp(cl,(A->info).lexema)==0)
         *nodo = A->info;
     else if (strcmp(cl,(A->info).lexema)<0)

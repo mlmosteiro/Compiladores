@@ -2,34 +2,38 @@
 #include "LexicalAnalyzer.h"
 #include "SymbolsTable/SymbolsTable.h"
 #include "InputSystem.h"
+#include "SintacticAnalyzer.h"
 
 int main() {
     initSymbolsTable();
 
-    printf("---PRUEBAS DEL MÓDULO Sistema de Entrada---\n");
+    /*printf("---PRUEBAS DEL MÓDULO Sistema de Entrada---\n");
 
-    initInputSystem("/home/maryluz/CLionProjects/Compiladores/Practica1/e.txt");
+    initInputSystem("/home/maryluz/CLionProjects/Compiladores/Practica1/concurrentSum.go");
     char currentChar = nextCharacter();
-    while (currentChar != '\000'){
+    while (currentChar != EOF){
         printf(" %c ", currentChar);
         currentChar = nextCharacter();
     }
     destroyInputSystem();
+*/
 
-
-
-    printf("\n---PRUEBAS DEL MÓDULO Analizador lexico---\n");
-
+ /*   printf("\n---PRUEBAS DEL MÓDULO Analizador lexico---\n");
     initLexicalAnalyzer();
-    char *componenteLexico;
+    lexemaOutput componenteLexico;
     do {
         componenteLexico = nextLexicalComponent();
-        printf("Componente léxico: %s\n", componenteLexico);
-    }while (componenteLexico!=NULL);
+        printf("Componente léxico: %d\n", componenteLexico.compLex);
+    }while (componenteLexico.compLex!=EOF);
     destroyLexicalAnalyzer();
+*/
+    printf("\n---PRUEBAS DEL MÓDULO Analizador sintactico---\n");
+    initSintacticAnalyzer();
+    startSintacticAnalisis();
+    destroySintacticAnalyzer();
 
     printSymbolsTable();
     destroySymbolsTable();
-    printf("Hello, World!\n");
+
     return 0;
 }

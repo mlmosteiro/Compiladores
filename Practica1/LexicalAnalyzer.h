@@ -1,6 +1,6 @@
 #ifndef PRACTICA1_LEXICALANALYZER_H
 #define PRACTICA1_LEXICALANALYZER_H
-#define SIZE_SA 4
+#define SIZE_LA 4
 
 struct lexemaStruct{
     char* lexema;

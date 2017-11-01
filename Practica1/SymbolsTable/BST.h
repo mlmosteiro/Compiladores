@@ -10,8 +10,6 @@ typedef char* tipoclave;
 
 typedef struct celda * abb;
 
-//TODO: Preguntar porque tipo opaco
-
 void crea(abb *A);
 void destruye(abb *A);
 bool esVacio(abb A);

@@ -4,6 +4,8 @@
 #include <ctype.h>
 #include "SymbolsTable.h"
 #include "BST.h"
+#include "../ErrorManager.h"
+
 #define KEYWORDS_PATH "../Definitions.h"
 #define MAX_KEYWORD_SIZE 1024
 #define DELIMITER_KEYWORDS "//KEYWORDS\n"
@@ -16,8 +18,8 @@ void importLenguageKeyWords() {
     char *line = (char *) malloc(sizeof(char) * MAX_KEYWORD_SIZE);
     int i = 0;
     if (file == NULL) {
+        showError(NOT_KEYWORDS_FILE_FOUNDED,0);
         return;
-        //Todo: gestor de errores
     }
     int beginKeyWords = 0; // Flag que nos indica si se trata del bloque de palabras reservadas
 

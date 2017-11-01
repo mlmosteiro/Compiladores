@@ -1,7 +1,7 @@
 #ifndef PRACTICA1_SINTACTICLANALYZER_H
 #define PRACTICA1_SINTACTICLANALYZER_H
 
-void initSintacticAnalyzer();
+void initSintacticAnalyzer(char * filepath);
 void startSintacticAnalisis();
 void destroySintacticAnalyzer();
 

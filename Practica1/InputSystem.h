@@ -2,7 +2,7 @@
 #define PRACTICA1_INPUTSYSTEM_H
 #define SIZE_BLOCK 15
 
-int initInputSystem(char* fileName);
+void initInputSystem(char* fileName);
 
 void destroyInputSystem();
 

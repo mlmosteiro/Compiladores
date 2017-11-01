@@ -5,6 +5,7 @@ CMakeFiles/Practica1.dir/ErrorManager.c.o
  /home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.c
  /home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
 CMakeFiles/Practica1.dir/InputSystem.c.o
+ /home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.c
  /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o
@@ -24,10 +25,12 @@ CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o
  /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o
+ /home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.c
  /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 CMakeFiles/Practica1.dir/main.c.o
+ /home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h

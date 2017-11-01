@@ -3,9 +3,13 @@
 #include "SymbolsTable/SymbolsTable.h"
 #include "InputSystem.h"
 #include "SintacticAnalyzer.h"
+#include "ErrorManager.h"
 
-int main() {
-    initSymbolsTable();
+int main(int argc, char *argv[]) {
+    if(argc<2){
+        showError(MISSING_ARGUMENTS,0);//TODO: MIRAR SI HACE FALTA PASAR EL .H DE DEFINICIONES
+    }
+    initSymbolsTable();// todo: SI SE PASA OTRO ARCHIVO, CUIDAR AQUI
 
     /*printf("---PRUEBAS DEL MÓDULO Sistema de Entrada---\n");
 
@@ -27,8 +31,10 @@ int main() {
     }while (componenteLexico.compLex!=EOF);
     destroyLexicalAnalyzer();
 */
+    char* filepath = argv[1];
+
     printf("\n---PRUEBAS DEL MÓDULO Analizador sintactico---\n");
-    initSintacticAnalyzer();
+    initSintacticAnalyzer(filepath);
     startSintacticAnalisis();
     destroySintacticAnalyzer();
 

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "InputSystem.h"
+#include "ErrorManager.h"
 
 /*
  * Sistema de entrada. Implementación del método centinela.
@@ -16,8 +17,6 @@ char *firstBlockEOF;
 char *lastBlockEOF;
 char *start;
 char *current;
-
-int numberOfBytesRead;
 
 //  Leemos un bloque nuevo
 int loadBlock(int idBlock) {
@@ -43,10 +42,11 @@ int loadBlock(int idBlock) {
 /*
  * Al inicio tanto el puntero de inicio como el delantero apuntan al primer caracter de un lexema.
  */
-int initInputSystem(char *fileName){
+void initInputSystem(char *fileName){
     file = fopen(fileName, "r");
     if(file == NULL){
-        return -1; //TODO: TRATAMIENTO DE ERRORES!!
+        showError(NOT_FILE_FOUNDED,0);
+        return ;
     }
 
     firstBlockEOF = &firstBlock[SIZE_BLOCK];
@@ -59,7 +59,6 @@ int initInputSystem(char *fileName){
     current = &firstBlock[0];
 
     loadBlock(FIRSTBLOCK);
-    return 0;
 }
 
 
@@ -99,5 +98,5 @@ char nextCharacter(){
 
 char previousCharacter() {
     *current--;
-    return *current;
+    return *current;//TODO: ENER EN CUENTA QUE SE PUEDE CAMBIAR DE BLOQUE AQUI
 }

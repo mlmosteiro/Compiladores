@@ -23,9 +23,6 @@
 #define LETTER                      913
 #define GENERAL_COMMENT             914
 
-//Todo: gestion de erroreS
-
-
 int currentBufferIndex = - 1;
 char *lexemaBuffer;
 int mult = 1;
@@ -33,10 +30,11 @@ char character;
 int numLinea = 0;
 char operatorsArray[8] = {'-', '*', '^', '!', '%', '|', '\0'};
 char separatorsArray[7] = {',', ';', '\n', '\0'}; // Tambien podriamos usar strpbrk(), pero no lo haremos.
+char escapedChar[11]={'n', 'a' , 'b' , 'f' , 'r' , 't' , 'v' , '\\' , '\"' , '\'', '\0' };
 lexemaOutput lexemaOut;
 
-void initLexicalAnalyzer() {
-    initInputSystem("/home/maryluz/CLionProjects/Compiladores/Practica1/e.txt");
+void initLexicalAnalyzer(char* filePath) {
+    initInputSystem(filePath);
     lexemaBuffer = (char *) malloc(sizeof(char) * SIZE_LA);
 }
 
@@ -88,11 +86,7 @@ lexemaOutput lexemaFinded(int componenteLexico, bool toBeInserted) {
 
 int automatonNumbers() {
     int stateNumber = INITIAL_STATE;
-    undoNextCharacter();                                    //TODO: ARREGLAR ESTO.
-
     while (1) {
-        getNextCharacter();
-
         switch (stateNumber) {
             case INITIAL_STATE:                                                     // En el estado inicial, si el primer caracter leido:
                 if (character != '0' && (isdigit(character))) {                     // - es un digito y no es un cero
@@ -104,12 +98,11 @@ int automatonNumbers() {
                 } else {
                     undoNextCharacter();
                     return NUMBER_INTEGER_LIT;
-                    // TODO: Gestor de errores : error con formato erroneo
-                    //printError(BAD_FORMATED_NUMBER, line, lexemaBuffer);          // hemos leido algo que NO forma parte de un número
                 }
                 break;
 
             case NUMBER_INTEGER_LIT:                                                // Habiendo leido por lo menos un digito decimal, y a continuacion leemos:
+                getNextCharacter();
                 if (isdigit(character)) {                                           // - un digito decimal
                     stateNumber = NUMBER_INTEGER_LIT;                               // podemos decir que, por ahora, se sigue tratando de un número decimal
                 } else if (character == '.') {                                      // - un '.',
@@ -119,14 +112,13 @@ int automatonNumbers() {
                 } else if (character == 'i') {                                      // - una 'i'
                     stateNumber = NUMBER_IMAGINARY_LIT;                             // podemos decir que se ha leido un número imaginario
                 } else {
-                    // TODO: Gestor de errores : error con formato erroneo
-                    //printError(BAD_FORMATED_NUMBER, line, lexemaBuffer);          // hemos leido algo que NO forma parte de un número, ya es el siguiente lexema
-                    undoNextCharacter();
+                    undoNextCharacter();                                            // hemos leido algo que NO forma parte de un número, ya es el siguiente lexema
                     return NUMBER_INTEGER_LIT;
                 }
                 break;
 
             case NUMBER_NOT_DECIMAL_LIT:                                            // Habiendo leido por lo menos un digito entero no decimal, y acontinuación leemos:
+                getNextCharacter();
                 if (character == '.') {                                             // - un '.'
                     stateNumber = NUMBER_FLOAT_LIT;                                 // podemos decir que, por ahora, se trata de un número en punto flotante
                 } else if (isdigit(character) && (character >= '0' || character < '8')) { // - un dígito octal
@@ -142,6 +134,7 @@ int automatonNumbers() {
                 break;
 
             case NUMBER_OCTAL_LIT:                                                  // Si estamos en este estado, estamos seguros de que seguiremos leyendo un
+                getNextCharacter();
                 if (isdigit(character) && (character >= '0' || character < '8')) {  // numero octal
                     stateNumber = NUMBER_OCTAL_LIT;
                 } else {                                                            // Si no se lee un caracter octal, hemos empezado a leer otro lexema distinto.
@@ -151,9 +144,10 @@ int automatonNumbers() {
                 break;
 
             case NUMBER_HEX_LIT:
+                getNextCharacter();
                 if (isdigit(character) || (character >= 'A' && character <= 'F')
                     || (character >= 'a' && character <=
-                                            'f')) {                    // Si estamos en este estado, estamos seguros de que seguiremos leyendo
+                                            'f')) {                                 // Si estamos en este estado, estamos seguros de que seguiremos leyendo
                     stateNumber = NUMBER_HEX_LIT;                                   // un numero hexadecimal
                 } else {                                                            // Si no se lee un caracter hexadecimal, hemos empezado a leer otro lexema distinto.
                     undoNextCharacter();
@@ -162,43 +156,45 @@ int automatonNumbers() {
                 break;
 
             case NUMBER_FLOAT_LIT: // Números en punto flotante
-                if (isdigit(
-                        character)) {                                               // Si estamos en este estado, es porque hemos leido ya un '.' en algun momento anterior,
+                getNextCharacter();
+                if (isdigit(character)) {                                               // Si estamos en este estado, es porque hemos leido ya un '.' en algun momento anterior,
                     stateNumber = NUMBER_FLOAT_LIT;                                 // entonces estamos seguros de que seguiremos leyendo un número en punto flotante
                 } else if (character == 'e' || character == 'E') {                  // Si leemos una 'e',
                     stateNumber = NUMBER_EXPONENTIAL_LIT;                           // podemos decir que se ha leido un número con exponente  (interesante para verificar formato correcto)
                 } else if (character == 'i') {                                      // Si leemos una 'i',
                     stateNumber = NUMBER_IMAGINARY_LIT;                             // podemos decir que se ha leido un número imaginario
                 } else {                                                            // En cualquier otro caso, hemos empezado a leer otro lexema distinto
-                    // TODO: GEstor de errores : error con formato erroneo
-                    //printError(BAD_FORMATED_DOUBLE, line, lexemaBuffer);
                     undoNextCharacter();
                     return NUMBER_FLOAT_LIT;
                 }
                 break;
 
-            case NUMBER_EXPONENTIAL_LIT://TODO: FIJAR QUE EL NUMERO NO PUEDE ACABAR SOLO EN E   // Si estamos en este estado, es porque hemos leido ya una 'e' en algun momento anterior,
-                if ((isdigit(
-                        character))) {                                         // entonces estamos seguros de que seguiremos leyendo un número con exponente
+            case NUMBER_EXPONENTIAL_LIT:                                            // Si estamos en este estado, es porque hemos leido ya una 'e' en algun momento anterior,
+                getNextCharacter();
+                if ((isdigit(character))) {                                         // entonces estamos seguros de que seguiremos leyendo un número con exponente
                     stateNumber = NUMBER_EXP_NO_SIG;
-                } else if (character == '+' || character ==
-                                               '-') {                  // Si leemos un signo '+' o '-' entonces hemos leido un exponente con signo (interesante para verificar formato correcto)
-                    if (! isdigit(
-                            character)) {                                 // Si el siguiente simbolo NO es un digito,  entonces el formato es incorrecto
-                        //TODO: GESTOR DE ERRORES, SE ESPERABA UN DIGITO
+                } else if (character == '+' || character =='-') {
+                    // Si leemos un signo '+' o '-' entonces hemos leido un exponente con signo (interesante para verificar formato correcto)
+                    character = nextCharacter();
+                    if (! isdigit(character)) {                                     // Si el siguiente simbolo NO es un digito,  entonces el formato es incorrecto
+                        character = previousCharacter();
+                        undoNextCharacter();                                        // Si a continuacion del simbolo + no hay un digito,
+                        undoNextCharacter();
+                        return NUMBER_FLOAT_LIT;                                    // entonces se trata solo de un numero en punto flotante
                     } else {
+                        character = previousCharacter();
                         stateNumber = NUMBER_EXP_SIG;                               // Si se lee un digito, entonces el formato YA es correcto, en este caso, exponente con Signo
                     }
                 } else {
-                    // TODO: GEstor de errores : error con formato erroneo
-                    // printError(BAD_FORMATED_EXP, line, lexemaBuffer);            // En cualquier otro caso, el formato ES ERRONEO.
+                    undoNextCharacter();                                            // En cualquier otro caso, el formato ES ERRONEO para numero con explonente.
                     undoNextCharacter();
-                    return NUMBER_FLOAT_LIT;
+                    return NUMBER_FLOAT_LIT;                                        // devolvemos el numero flotante.
                 }
                 break;
 
             case NUMBER_EXP_SIG:
-            case NUMBER_EXP_NO_SIG://TODO: CUIDADO CON EL CASO E+0i -> no se puede
+            case NUMBER_EXP_NO_SIG:
+                getNextCharacter();
                 if (isdigit(character)) {
                     stateNumber = NUMBER_EXP_SIG;
                 } else if (character == 'i') {                                      // Si leemos una 'i',
@@ -210,7 +206,6 @@ int automatonNumbers() {
                 break;
 
             case NUMBER_IMAGINARY_LIT:                                              // Cualquier cosa que leamos a continuacion ya es otro lexema
-                undoNextCharacter();
                 return NUMBER_IMAGINARY_LIT;
         }
     }
@@ -321,16 +316,12 @@ int automatonOperators() {  // Se encarga de identificar cualquier tipo de opera
 
 int automatonComments() {
     int stateComment = INITIAL_STATE;
+    int flagLineFeed = 0;
     while (1) {
         if (character == EOF) {
             undoNextCharacter();
-            //TODO: ERROR: El comentario no está cerrado.
-            //printError(COMMENT_DOES_NOT_END,line,buffer);
+            showError(NOT_CLOSED_COMMENT,numLinea);
             return EOF;
-        }
-
-        if (character == '\n') {//TODO: TENER CUIDADO CONESTO
-            numLinea ++;
         }
 
         switch (stateComment) {
@@ -339,12 +330,10 @@ int automatonComments() {
                     stateComment = IS_COMMENT;
                 } else {
                     return NOT_FINAL_STATE;
-                    //TODO GESTOR DE ERRORES
-                }
+                 }
                 break;
 
             case IS_COMMENT:
-                getNextCharacter();
                 if (character == '*') { //General comment /*
                     stateComment = GENERAL_COMMENT;
                 } else if (character == '/') {// Line Comment
@@ -362,19 +351,32 @@ int automatonComments() {
 
             case GENERAL_COMMENT:
                 while (character != '*') {//Multiple comment /*
+
+                    if(character == '\n'){
+                        numLinea++;
+                        flagLineFeed =1;
+                    }
                     character = nextCharacter();
                 }
                 stateComment = GENERAL_COMMENT_END;
                 break;
             case GENERAL_COMMENT_END:
-                getNextCharacter();
                 if (character == '/') {  // Multiple comment */
-                    return COMMENT;
+                    if(flagLineFeed){
+                        numLinea ++;
+                        restartLexemaBuffer();
+                        strcpy(lexemaBuffer, "\\n");
+                        return LINE_FEED;
+                    } else{
+                        return COMMENT;
+                    }
                 } else {
                     stateComment = GENERAL_COMMENT;
                 }
                 break;
+
         }
+        getNextCharacter();
     }
 }
 
@@ -397,6 +399,7 @@ int automatonBrackets() { // Se encarga de identificar cualquier tipo de parént
 
 int automatonStrings() {
     int state = INITIAL_STATE;
+    int i=0;
     while (1) {
         switch (state) {
             case INITIAL_STATE:
@@ -412,18 +415,21 @@ int automatonStrings() {
                 getNextCharacter();
                 while (character != '"') {
                     character = nextCharacter();
-                    if (character == '\n') { //TODO: CHECAR SI ESTO FALLA
-                        numLinea ++;
-                    } else if (character == '\\') {
-                        if (nextCharacter() == '"') {
-                            continue;
-                        } else {
-                            undoNextCharacter();
-                        }
-                    } else if (character == EOF) {
-                        //printf("Error: [ %s ] LC [ %d ] \n", "String no cerrada \n", STRING);
-                        //TODO: GESTOR DE ERRORES, LA CADENA NO ACABA
+                    if (character == EOF) {
+                         showError(NOT_CLOSED_STRING,numLinea);
                         return EOF;
+                    }else if (character == '\\') {
+                        getNextCharacter();
+                        while (escapedChar[i] != '\0') {
+                            if (character == escapedChar[i]) {
+                                character = nextCharacter();
+                                break;
+                            }
+                            i ++;
+                        }
+                        showError(ILLEGAL_ESCAPED_CHARACTER,numLinea);
+                    }else if (character == '\n'){
+                        showError(NOT_CLOSED_STRING,numLinea);
                     }
                 }
                 return STRING_LIT;
@@ -432,13 +438,21 @@ int automatonStrings() {
                 getNextCharacter();
                 while (character != '`') {
                     character = nextCharacter();
-
-                    if (character == '\n') { //TODO: CHECAR SI ESTO FALLA
-                        numLinea ++;
-                    } else if (character == EOF) {
-                        //printf("Error: [ %s ] LC [ %d ] \n", "String no cerrada \n", STRING);
-                        //TODO: GESTOR DE ERRORES, LA CADENA NO ACABA
+                    if (character == EOF) {
+                        showError(NOT_CLOSED_STRING,numLinea);
                         return EOF;
+                    }else if (character == '\\') {
+                        getNextCharacter();
+                        while (escapedChar[i] != '\0') {
+                            if (character == escapedChar[i]) {
+                                character = nextCharacter();
+                                break;
+                            }
+                            i ++;
+                        }
+                        showError(ILLEGAL_ESCAPED_CHARACTER,numLinea);
+                    }else if (character == '\n'){
+                        numLinea++;
                     }
                 }
                 return STRING_LIT;
@@ -446,6 +460,7 @@ int automatonStrings() {
     }
 }
 
+//TODO: TENER EN CUENTA QUE EOF no se pone solo
 lexemaOutput nextLexicalComponent() {
     character = ' ';
     restartLexemaBuffer();
@@ -460,7 +475,7 @@ lexemaOutput nextLexicalComponent() {
                     return lexemaFinded(EOF, false);
                 }
                     //This else analyze separators, comments, operators, brackets and strings
-                else if (! isalpha(character) && ! isdigit(character)) {
+                else if (! isalpha(character) && ! isdigit(character) && character!='_') {
                     int finded;
                     finded = automatonSeparators();
                     if (finded == NOT_FINAL_STATE) {
@@ -475,10 +490,14 @@ lexemaOutput nextLexicalComponent() {
                     if (finded == NOT_FINAL_STATE) {
                         finded = automatonStrings();
                     }
-                    if (finded == NOT_FINAL_STATE || finded == COMMENT) {
+                    if (character ==' ' || finded == COMMENT) {
                         restartLexemaBuffer();
                         break;
-                        //Todo gestor DE ERRORES CARACTER NO ESPERADO
+                    }
+                    if(finded == NOT_FINAL_STATE ){
+                        showError(ILLEGAL_CHARACTER,numLinea);
+                        restartLexemaBuffer();
+                        break;
                     }
                     return lexemaFinded(finded, false);
                 } else if (isdigit(character)) { //START BY DIGIT

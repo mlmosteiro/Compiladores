@@ -11,6 +11,8 @@
 /home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.c
 ErrorManager.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
+stdio.h
+-
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
 
@@ -21,6 +23,8 @@ stdlib.h
 -
 InputSystem.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
+ErrorManager.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 
@@ -69,8 +73,6 @@ stdlib.h
 -
 string.h
 -
-stdbool.h
--
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.h
 stdbool.h
@@ -91,6 +93,8 @@ SymbolsTable.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 BST.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.h
+../ErrorManager.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 
@@ -105,4 +109,6 @@ InputSystem.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 SintacticAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
+ErrorManager.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
 

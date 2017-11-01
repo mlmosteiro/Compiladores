@@ -9,7 +9,7 @@ struct lexemaStruct{
 typedef struct lexemaStruct lexemaOutput;
 
 
-void initLexicalAnalyzer() ;
+void initLexicalAnalyzer(char * filePath) ;
 lexemaOutput nextLexicalComponent() ;
 void destroyLexicalAnalyzer();
 #endif //PRACTICA1_LEXICALANALYZER_H

@@ -502,13 +502,17 @@ lexemaOutput nextLexicalComponent() {
                     if (finded == NOT_FINAL_STATE) {
                         finded = automatonStrings();
                     }
-                    if ((character == ' ' && finded == NOT_FINAL_STATE) || finded == COMMENT) {
+                    if (finded == COMMENT) {
                         restartLexemaBuffer();
                         break;
                     }
-                    if (finded == NOT_FINAL_STATE) {
-                        showError(ILLEGAL_CHARACTER, numLinea);
-                        restartLexemaBuffer();
+                    if (finded == NOT_FINAL_STATE) {//TODO: ARREGLAR ESTO
+                        if((character == ' ' || character =='\t'))
+                            restartLexemaBuffer();
+                        else{
+                            showError(ILLEGAL_CHARACTER, numLinea);
+                            restartLexemaBuffer();
+                        }
                         break;
                     }
                     return lexemaFinded(finded, false);

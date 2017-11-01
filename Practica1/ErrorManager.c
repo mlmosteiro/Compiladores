@@ -4,7 +4,7 @@
 void showError(int errorCode, int numLinea) {
     switch (errorCode) {
         case MISSING_ARGUMENTS:
-            printf("Debe indicar el archivo de códgo fuente.");
+            printf("Número de argumentos insuficiente.\nSintaxis: ./practica1 <archivoCodigoFuente> <archivoDefiniciones>");
             break;
         case NOT_KEYWORDS_FILE_FOUNDED:
             printf("No se ha encontrado el archivo de palabras clave especificado\n");

@@ -6,17 +6,17 @@
 #include "BST.h"
 #include "../ErrorManager.h"
 
-#define KEYWORDS_PATH "../Definitions.h"
 #define MAX_KEYWORD_SIZE 1024
 #define DELIMITER_KEYWORDS "//KEYWORDS\n"
 
 abb symbolsTable;
 
-void importLenguageKeyWords() {
+void importLenguageKeyWords(char* keywords) {
     FILE *file;
-    file = fopen(KEYWORDS_PATH, "r");
     char *line = (char *) malloc(sizeof(char) * MAX_KEYWORD_SIZE);
     int i = 0;
+
+    file = fopen(keywords, "r");
     if (file == NULL) {
         showError(NOT_KEYWORDS_FILE_FOUNDED, 0);
         return;
@@ -56,9 +56,9 @@ void importLenguageKeyWords() {
     fclose(file);
 }
 
-void initSymbolsTable() {
+void initSymbolsTable(char* keywords) {
     crea(&symbolsTable);
-    importLenguageKeyWords();
+    importLenguageKeyWords(keywords);
 }
 
 int sizeLexema(char *lexema) {

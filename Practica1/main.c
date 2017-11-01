@@ -4,12 +4,13 @@
 #include "ErrorManager.h"
 
 int main(int argc, char *argv[]) {
-    if (argc < 2) {
-        showError(MISSING_ARGUMENTS, 0);//TODO: MIRAR SI HACE FALTA PASAR EL .H DE DEFINICIONES
+    if (argc < 3) {
+        showError(MISSING_ARGUMENTS, 0);
+        return MISSING_ARGUMENTS;
     }
     char *filepath = argv[1];
-
-    initSymbolsTable();// todo: SI SE PASA OTRO ARCHIVO, CUIDAR AQUI
+    char *keywords = argv[2];
+    initSymbolsTable(keywords);
     initSintacticAnalyzer(filepath);
 
     printf("\n---START : Análisis sintáctico---\n");

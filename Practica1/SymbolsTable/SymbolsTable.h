@@ -8,7 +8,7 @@ struct symbolStruct {
 
 typedef struct symbolStruct symbolImput;
 
-void initSymbolsTable();
+void initSymbolsTable(char* keywords);
 
 void insert(char *lexema, int componenteLexico, int numLinea);
 

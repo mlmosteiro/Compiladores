@@ -12,7 +12,6 @@ void showError(int errorCode, int numLinea) {
         case NOT_FILE_FOUNDED:
             printf("No se ha encontrado el archivo de código fuente especificado\n");
             break;
-
         case NOT_CLOSED_COMMENT:
             printf("[ERROR LEXICO - linea %d] \tComentario no cerrado correctamente.\n", numLinea);
             break;
@@ -28,6 +27,7 @@ void showError(int errorCode, int numLinea) {
         case ILLEGAL_LEXEMA_SIZE:
             printf("[ERROR - linea %d] \tLexema supera el tamaño permitido.\n", numLinea);
             break;
-
+        default:
+            printf("[ERROR]");
     }
 }

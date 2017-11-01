@@ -6,28 +6,28 @@
 #include "BST.h"
 #include "../ErrorManager.h"
 
-#define MAX_KEYWORD_SIZE 1024
+// Tamaño máximo de una linea. En este caso coincide con el tamaño máximo del un bloque del sistema de entrada
+#define MAX_LINE_SIZE 512
 #define DELIMITER_KEYWORDS "//KEYWORDS\n"
 
 abb symbolsTable;
 
 void importLenguageKeyWords(char* keywords) {
-    FILE *file;
-    char *line = (char *) malloc(sizeof(char) * MAX_KEYWORD_SIZE);
     int i = 0;
+    int beginKeyWords = 0; // Flag que nos indica si se trata del bloque de palabras reservadas
+    FILE *file;
+    char *line = (char *) malloc(sizeof(char) * MAX_LINE_SIZE);
 
     file = fopen(keywords, "r");
     if (file == NULL) {
         showError(NOT_KEYWORDS_FILE_FOUNDED, 0);
         return;
     }
-    int beginKeyWords = 0; // Flag que nos indica si se trata del bloque de palabras reservadas
 
-    //Read the file
     while (1) {
-        if (fgets(line, MAX_KEYWORD_SIZE, file) == NULL) break;
-        i ++;
-        //Check if we are in the part of the keywords
+        if (fgets(line, MAX_LINE_SIZE, file) == NULL) break; //Leemos el archivo linea a linea
+
+        //Si hemos llegado ya al inicio del bloque de palabras reservadas, activamos el flag
         if (strcmp(DELIMITER_KEYWORDS, line) == 0) {
             if (beginKeyWords == 1) {
                 break;
@@ -37,18 +37,24 @@ void importLenguageKeyWords(char* keywords) {
             }
         }
 
-        //Parsing the keywords
+        // Parseamos las palabras reservadas
         if (beginKeyWords) {
             char *lexema;
             char *numberChar;
             int lexicalComponent;
+
+            //Separamos la linea en componentes teniendo en cuenta ' ' como separador.
             strtok(line, " ");
             lexema = strtok(NULL, " ");
             numberChar = strtok(NULL, " ");
+
+            // cambiamos al formato adecuado: Minusculas y numero entero
             for (i = 0; lexema[i]; i ++) {
                 lexema[i] = (char) tolower(lexema[i]);
             }
             lexicalComponent = atoi(numberChar);
+
+            // Insertamos la palabra reservada en la tabla de simbolos.
             insert(lexema, lexicalComponent, - 1);
         }
     }
@@ -61,6 +67,8 @@ void initSymbolsTable(char* keywords) {
     importLenguageKeyWords(keywords);
 }
 
+/* Función que devuelve el número de caracteres que conforman un lexema
+*/
 int sizeLexema(char *lexema) {
     int i = 0;
     while (lexema[i] != '\0') {
@@ -70,6 +78,7 @@ int sizeLexema(char *lexema) {
 }
 
 void insert(char *lexema, int componenteLexico, int numLinea) {
+    // Reservamos los recursos necesarios para una nueva entrada y la insertamos en la tabla.
     symbolImput newSymbol;
     newSymbol.lexema = (char *) malloc(sizeof(char) * sizeLexema(lexema));
     strcpy(newSymbol.lexema, lexema);
@@ -77,7 +86,6 @@ void insert(char *lexema, int componenteLexico, int numLinea) {
     newSymbol.numLinea = numLinea;
     inserta(&symbolsTable, newSymbol);
 }
-
 
 symbolImput search(char *lexema) {
     symbolImput result;
@@ -94,6 +102,9 @@ void destroySymbolsTable() {
     destruye(&symbolsTable);
 }
 
+/* Funcion auxiliar que nos permite recorrer el árbol de forma recursiva
+ * para imprimir la tabla de simbolos
+ * */
 void printSymbolTableRec(abb symbolsTable) {
     symbolImput E;
     if (! esVacio(symbolsTable)) {

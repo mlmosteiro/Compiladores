@@ -29,15 +29,15 @@ ErrorManager.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.c
-stdlib.h
+string.h
 -
 stdio.h
 -
-stdbool.h
--
 ctype.h
 -
-string.h
+stdbool.h
+-
+stdlib.h
 -
 LexicalAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h

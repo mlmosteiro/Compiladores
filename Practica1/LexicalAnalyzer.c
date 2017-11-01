@@ -1,37 +1,39 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include <ctype.h>
 #include <string.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <stdbool.h>
+#include <stdlib.h>
 #include "LexicalAnalyzer.h"
 #include "InputSystem.h"
 #include "SymbolsTable/SymbolsTable.h"
 #include "Definitions.h"
 #include "ErrorManager.h"
 
-#define INITIAL_STATE               900
-#define NUMBER_NOT_DECIMAL_LIT      901
-#define NUMBER_OCTAL_LIT            903
-#define NUMBER_HEX_LIT              904
-#define NUMBER_EXPONENTIAL_LIT      902
-#define NUMBER_EXP_SIG              905
-#define NUMBER_EXP_NO_SIG           906
-#define IS_COMMENT                  908
-#define GENERAL_COMMENT_END         909
-#define START_OF_INTERPRETED_STRING 911
-#define START_OF_RAW_STRING         912
-#define LETTER                      913
-#define GENERAL_COMMENT             914
+#define INITIAL_STATE 				900
+#define NUMBER_NOT_DECIMAL_LIT 		901
+#define NUMBER_OCTAL_LIT 			902
+#define NUMBER_HEX_LIT 				903
+#define NUMBER_EXPONENTIAL_LIT 		904
+#define NUMBER_EXP_SIG 				905
+#define NUMBER_EXP_NO_SIG 			906
+#define IS_COMMENT 					907
+#define GENERAL_COMMENT_END 		908
+#define START_OF_INTERPRETED_STRING 909
+#define START_OF_RAW_STRING 		910
+#define LETTER 						911
+#define GENERAL_COMMENT 			912
 
-int currentBufferIndex = - 1;
-char *lexemaBuffer;
-int mult = 1;
-char character;
-int numLinea = 1;
-char operatorsArray[8] = {'-', '*', '^', '!', '%', '|', '\0'};
-char separatorsArray[7] = {',', ';', '\n', '\0'}; // Tambien podriamos usar strpbrk(), pero no lo haremos.
+char *lexemaBuffer;             // Buffer en el que construiremos el lexema
+int currentBufferIndex = - 1;   // Variable que permitirá hacer una copia de la memoria al buffer en el construimos el lexema
+int mult = 1;                   // Variable que nos permite redimencionar el buffer en el que se construye el lexema
+char character;                 // Variable en la que almacenamos el caracter que nos devuelve el sistema de entrada
+int numLinea = 1;               // Contador que nos indica la linea actual en el código fuente que se está leyendo
+
+/* Arrays en los que establecemos los parenresis, operadores, separadores o caracteres que se pueden escapar*/
+char bracketsArray[7]={'(',')','[',']','{','}','\0'};
+char operatorsArray[7] = {'-', '*', '^', '!', '%', '|', '\0'};
+char separatorsArray[4] = {',', ';', '\n', '\0'}; // Tambien podriamos usar strpbrk(), pero no lo haremos.
 char escapedChar[11] = {'n', 'a', 'b', 'f', 'r', 't', 'v', '\\', '\"', '\'', '\0'};
-lexemaOutput lexemaOut;
 
 void initLexicalAnalyzer(char *filePath) {
     initInputSystem(filePath);
@@ -43,22 +45,36 @@ void destroyLexicalAnalyzer() {
     destroyInputSystem();
 }
 
+/* Función que redimensiona el buffer en el que se construye el sistema en caso de que se haya superado su capacidad */
 void extendLexemaBuffer() {
     lexemaBuffer = (char *) realloc(lexemaBuffer, ((mult ++) * sizeof(char) * SIZE_LA));
 }
 
+/* Funcion que reincia el buffer, liberando la memoria en caso de que se hubiese redimensionado el buffer */
 void restartLexemaBuffer() {
     currentBufferIndex = - 1;
-    free(lexemaBuffer);
-    lexemaBuffer = (char *) malloc(sizeof(char) * SIZE_LA);
+    if(mult>1) {
+        free(lexemaBuffer);
+        lexemaBuffer = (char *) malloc(sizeof(char) * SIZE_LA);
+        mult=1;
+    } else{
+        memset(lexemaBuffer, '\0', sizeof (char)*SIZE_LA);
+    }
 }
 
+/* Función interna con la que, además de pedir el siguiente caracter al sistema de entrada, realizamos las otras
+ * operaciones necesarias para poder ir construyendo el lexema
+ */
 void getNextCharacter() {
     character = nextCharacter();
     currentBufferIndex ++;
-    if (currentBufferIndex == SIZE_LA)
+    if (currentBufferIndex == SIZE_LA){ // Desbordamiento del buffer
         extendLexemaBuffer();
+    }
     lexemaBuffer[currentBufferIndex] = character;
+
+    // En caso de que el lexema actual sea tan grande como un bloque del sistema de entrada,
+    // entonces se ha superado el tamaño de lexema permitido
     if (currentBufferIndex == SIZE_BLOCK) {
         showError(ILLEGAL_LEXEMA_SIZE, numLinea);
         restartLexemaBuffer();
@@ -66,13 +82,24 @@ void getNextCharacter() {
     }
 }
 
+/* Función interna que, además de retroceder el caracter actual a leer en el sistema de entrada, realiza
+ * las operaciones pertienentes en el buffer del lexema para construirlo correctamente
+ */
 void undoNextCharacter() {
     lexemaBuffer[currentBufferIndex] = '\0';
     currentBufferIndex --;
     character = previousCharacter();
 }
 
+/* Función que devuelve el lexema actual (que se encuentra en el buffer, asociandolo al componente lexico
+ * indicado como parametro.
+ *
+ * En caso de que el flag toBeInserted este activado, se verifica si ya está en la tabla de símbolos, en cuyo
+ * caso se obtiene la información correspondiente al componente lexico de la tabla. Si no se encuentra en la tabla
+ * entonces se trata de un identificador nuevo, por lo que se inserta.
+ */
 lexemaOutput lexemaFinded(int componenteLexico, bool toBeInserted) {
+    lexemaOutput lexemaOut;
 
     if (toBeInserted) {
         undoNextCharacter();
@@ -91,6 +118,7 @@ lexemaOutput lexemaFinded(int componenteLexico, bool toBeInserted) {
     return lexemaOut;
 }
 
+// Autómata encargado de identificar numeros enteros, en punto flotante o imagianrios.
 int automatonNumbers() {
     int stateNumber = INITIAL_STATE;
     while (1) {
@@ -161,7 +189,7 @@ int automatonNumbers() {
                 }
                 break;
 
-            case NUMBER_FLOAT_LIT: // Números en punto flotante
+            case NUMBER_FLOAT_LIT:
                 getNextCharacter();
                 if (isdigit(
                         character)) {                                               // Si estamos en este estado, es porque hemos leido ya un '.' en algun momento anterior,
@@ -220,7 +248,11 @@ int automatonNumbers() {
     }
 }
 
+// Autómata encargado de identificar los separadores
 int automatonSeparators() {
+    /* En esta función hay que tener especial cuidado con los separadores que pueden ser un lexema por
+     * si solos oformar parte de uno más grande
+     */
     int i;
     switch (character) {
         case ':':
@@ -232,14 +264,16 @@ int automatonSeparators() {
                 return ':';
             }
         case '.':
-            getNextCharacter();     //CASO EN EL QUE SE TRATE DE UN NUMERO EN PUNTO FLOTANTE
-            if (isdigit(character)) {
+            getNextCharacter();
+            if (isdigit(character)) {  //Si el siguiente caracter a leer es un digito, se trata de un numero
                 undoNextCharacter();
-                return automatonNumbers();
+                return automatonNumbers(); // redirigimos al autómata que reconoce números
             } else {
                 undoNextCharacter();
                 return '.';
             }
+
+        // Si no se trata de ninguno de los casos especiales de arriba, recorremos el array de separadores.
         default:
             i = 0;
             while (separatorsArray[i] != '\0') {
@@ -261,7 +295,11 @@ int automatonSeparators() {
     return NOT_FINAL_STATE;
 }
 
-int automatonOperators() {  // Se encarga de identificar cualquier tipo de operador
+// Autómata encargado de identificar los operadores
+int automatonOperators() {
+    /* En esta función hay que tener especial cuidado con los operadores que pueden ser un lexema por
+     * si solos oformar parte de uno más grande
+     */
     int i;
     switch (character) {
         case '=':
@@ -311,6 +349,8 @@ int automatonOperators() {  // Se encarga de identificar cualquier tipo de opera
         case '/': //En este caso podriamos modificar esto para identificar operadores como /=
             getNextCharacter();
             return '/';
+
+        // Si no se trata de ninguno de los casos especiales de arriba, recorremos el array de operadores.
         default:
             i = 0;
             while (operatorsArray[i] != '\0') {
@@ -323,10 +363,14 @@ int automatonOperators() {  // Se encarga de identificar cualquier tipo de opera
     return NOT_FINAL_STATE;
 }
 
+// Autómata encargado de identificar los comentarios
 int automatonComments() {
     int stateComment = INITIAL_STATE;
     int flagLineFeed = 0;
     while (1) {
+
+        // En caso de que lleguemos aun EOF quiere decir que hemos leido
+        // tod0 el archivo y NO se ha cerrado el comentario correctamente
         if (character == EOF) {
             undoNextCharacter();
             showError(NOT_CLOSED_COMMENT, numLinea);
@@ -335,7 +379,8 @@ int automatonComments() {
 
         switch (stateComment) {
             case INITIAL_STATE:
-                if (character == '/') { //First char of a comment
+                // Si el caracter que leemos es un '/' entonces puede ser el incio de un comentario
+                if (character == '/') {
                     stateComment = IS_COMMENT;
                 } else {
                     return NOT_FINAL_STATE;
@@ -343,25 +388,29 @@ int automatonComments() {
                 break;
 
             case IS_COMMENT:
+                // Si el caracter que leemos es un '*' entonces puede ser el incio de un comentario multilinea (general)
                 if (character == '*') { //General comment /*
                     stateComment = GENERAL_COMMENT;
-                } else if (character == '/') {// Line Comment
+                } else if (character == '/') {
+                // Si el caracter que leemos es un '/' entonces puede ser el incio de un comentario en linea
                     getNextCharacter();
                     while (character != '\n') {
                         character = nextCharacter();
                     }
                     numLinea ++;
-                    return COMMENT;
-                } else { //Se trata del operador '/'
+                    return COMMENT; // Paramos cuando encontramos un salto de linea
+                } else {
+                    //Si no se trata de un'/'o  '*' , entonces se trata del operador '/'
                     undoNextCharacter();
                     undoNextCharacter();
-                    return automatonOperators();
+                    return automatonOperators(); // Redireccionamos al autómata de operadores
                 }
                 break;
 
             case GENERAL_COMMENT:
+                // En caso de identificar el incio de un comentario multilinea, continuamos leyendo hasta
+                // encontrar el caracter '*', que marcará el incio del cierre de comentario
                 while (character != '*') {
-
                     if (character == '\n') {
                         numLinea ++;
                         flagLineFeed = 1;
@@ -370,9 +419,14 @@ int automatonComments() {
                 }
                 stateComment = GENERAL_COMMENT_END;
                 break;
+
             case GENERAL_COMMENT_END:
+                // Cuando identificamos el incio del cierre de comentario, solo confirmamos dicho cierre si
+                // este va seguido del caracter '/'. En otro caso, aun no se ha inciado el cierre.
                 if (character == '/') {
                     if (flagLineFeed) {
+                        // Cuando un comentario multilinea incluye un salto de linea, se considera tod0
+                        // el comentario como un salto de linea en si mismo.
                         numLinea ++;
                         restartLexemaBuffer();
                         strcpy(lexemaBuffer, "\\n");
@@ -390,29 +444,29 @@ int automatonComments() {
     }
 }
 
-int automatonBrackets() { // Se encarga de identificar cualquier tipo de paréntesis
-    if (character == '(') {
-        return '(';
-    } else if (character == ')') {
-        return ')';
-    } else if (character == '[') {
-        return '[';
-    } else if (character == ']') {
-        return ']';
-    } else if (character == '{') {
-        return '{';
-    } else if (character == '}') {
-        return '}';
+// Autómata encargado de identificar los paréntesis
+int automatonBrackets() {
+    // Recorremos el array de paréntesis
+    int i = 0;
+    while (bracketsArray[i] != '\0') {
+        if (character == bracketsArray[i]) {
+            return bracketsArray[i];
+        }
+        i ++;
     }
     return NOT_FINAL_STATE;
 }
 
+// Autómata encargado de identificar las cádenas de caractéres
 int automatonStrings() {
     int state = INITIAL_STATE;
     int i = 0;
+
     while (1) {
         switch (state) {
             case INITIAL_STATE:
+                // Debemos distinguir entre las cadenas que comienzan por '"' o '`', para
+                // verificar que se cierran correctamente
                 if (character == '"') {
                     state = START_OF_INTERPRETED_STRING;
                 } else if (character == '`') {
@@ -421,14 +475,20 @@ int automatonStrings() {
                     return NOT_FINAL_STATE;
                 }
                 break;
+
             case START_OF_INTERPRETED_STRING:
                 getNextCharacter();
+                // Continuamos leyendo caracteres hasta que encontremos el '"' de cierre de cadena
                 while (character != '"') {
                     character = nextCharacter();
-                    if (character == EOF) {
+                    if (character == EOF || character == '\n') {
+                        // Si encontarmos un salto de linea o llegamos al final del código fuente,
+                        // se trata de una cadena sin cerrar
                         showError(NOT_CLOSED_STRING, numLinea);
                         return EOF;
                     } else if (character == '\\') {
+                        // En caso de encontrar un '\', tenemos que verificar que se esté escapando un
+                        // caracter válido.
                         getNextCharacter();
                         while (escapedChar[i] != '\0') {
                             if (character == escapedChar[i]) {
@@ -440,21 +500,23 @@ int automatonStrings() {
                         if (escapedChar[i] == '\0') {
                             showError(ILLEGAL_ESCAPED_CHARACTER, numLinea);
                         }
-
-                    } else if (character == '\n') {
-                        showError(NOT_CLOSED_STRING, numLinea);
                     }
                 }
                 return STRING_LIT;
 
             case START_OF_RAW_STRING:
                 getNextCharacter();
+                // Continuamos leyendo caracteres hasta que encontremos el '`' de cierre de cadena
                 while (character != '`') {
                     character = nextCharacter();
                     if (character == EOF) {
+                        // Si llegamos al final del código fuente,
+                        // se trata de una cadena sin cerrar
                         showError(NOT_CLOSED_STRING, numLinea);
                         return EOF;
                     } else if (character == '\\') {
+                        // En caso de encontrar un '\', tenemos que verificar que se esté escapando un
+                        // caracter válido.
                         getNextCharacter();
                         while (escapedChar[i] != '\0') {
                             if (character == escapedChar[i]) {
@@ -465,6 +527,7 @@ int automatonStrings() {
                         }
                         showError(ILLEGAL_ESCAPED_CHARACTER, numLinea);
                     } else if (character == '\n') {
+                        // Los saltos de linea están permitidos, aumentamos el numero de lineas leidas del c.fuente
                         numLinea ++;
                     }
                 }
@@ -473,65 +536,81 @@ int automatonStrings() {
     }
 }
 
-lexemaOutput nextLexicalComponent() {
-    character = ' ';
-    restartLexemaBuffer();
-    int state = INITIAL_STATE;
-
+// Autómata encargado de reconocer identificadores, es decir, cadenas alfanumericas
+int automatonIds(){
     while (1) {
         getNextCharacter();
-        switch (state) {
-            case INITIAL_STATE:
-                //END OF FILE
-                if (character == EOF) {
-                    return lexemaFinded(EOF, false);
-                }
-                    //This else analyze separators, comments, operators, brackets and strings
-                else if (! isalpha(character) && ! isdigit(character) && character != '_') {
-                    int finded;
-                    finded = automatonSeparators();
-                    if (finded == NOT_FINAL_STATE) {
-                        finded = automatonComments();
-                    }
-                    if (finded == NOT_FINAL_STATE) {
-                        finded = automatonOperators();
-                    }
-                    if (finded == NOT_FINAL_STATE) {
-                        finded = automatonBrackets();
-                    }
-                    if (finded == NOT_FINAL_STATE) {
-                        finded = automatonStrings();
-                    }
-                    if (finded == COMMENT) {
-                        restartLexemaBuffer();
-                        break;
-                    }
-                    if (finded == NOT_FINAL_STATE) {//TODO: ARREGLAR ESTO
-                        if((character == ' ' || character =='\t'))
-                            restartLexemaBuffer();
-                        else{
-                            showError(ILLEGAL_CHARACTER, numLinea);
-                            restartLexemaBuffer();
-                        }
-                        break;
-                    }
-                    return lexemaFinded(finded, false);
-                } else if (isdigit(character)) { //START BY DIGIT
-                    return lexemaFinded(automatonNumbers(), false);
-                } else if (isalpha(character) || character == '_') { //START BY LETTER
-                    state = LETTER;
-                }
-                break;
-
-            case LETTER: //LETTER (we arrive here only with a previous LETTER read)
-                if (! isalpha(character) && ! isdigit(character) && character != '_') {
-                    return lexemaFinded(IDENTIFIER, true);
-                } else if (isalpha(character) || character == '_') {
-                    state = LETTER;
-                }
-                break;
+        if (! isalpha(character) && ! isdigit(character) && character != '_') {
+            return IDENTIFIER;
         }
     }
+}
+
+
+lexemaOutput nextLexicalComponent() {
+    character = ' ';            // Reiniciamos el caracter actual
+    restartLexemaBuffer();      // Reiniciamos el buffer en el que se construye el lexema
+
+    while (1) {
+        /* Se pide un nuevo caracter al sistema de entrada, hasta que se reconoce un nuevo
+         * lexema, momento en el cual se sale de este blucle
+         */
+        getNextCharacter();
+        if (character == EOF) {
+            //Si se lee el EOF, hemos llegado al final del código fuente.
+            return lexemaFinded(EOF, false);
+        }
+        else if (! isalpha(character) && ! isdigit(character) && character != '_') {
+            /* En este bloque identificamos cualquier cosa que no sea una letre ('_' incluido)
+             * o un digito. En caso de que el caracter sea reconocido por un automáta, el flag
+             * finded pasará a tener el valor del componente lexico correspondiente. En caso
+             * contrario mantendrá el estado NON_FINAL_STATE
+             */
+            int finded;
+            finded = automatonSeparators();
+            if (finded == NOT_FINAL_STATE) {
+                finded = automatonComments();
+            }
+            if (finded == NOT_FINAL_STATE) {
+                finded = automatonOperators();
+            }
+            if (finded == NOT_FINAL_STATE) {
+                finded = automatonBrackets();
+            }
+            if (finded == NOT_FINAL_STATE) {
+                finded = automatonStrings();
+            }
+            if (finded == COMMENT) {
+                // Ignoramos los comentarios, y no los devolvemos como un lexema, pues no sno de interés,
+                restartLexemaBuffer();
+                break;
+            }
+            if (finded == NOT_FINAL_STATE) {
+                // Si el caracter no fue reconocido por ninguno de los automátas, entonces
+                // verificamos si se trata de un espacio o una tabulacion, caracteres que ignoramos.
+                // Si no se trata de ninguno de estos caracteres especiales, entonces hemos leido
+                // un caracter ilegal para nuestro lenguaje.
+                if((character == ' ' || character =='\t'))
+                    restartLexemaBuffer();
+                else{
+                    showError(ILLEGAL_CHARACTER, numLinea);
+                    restartLexemaBuffer();
+                }
+                break;
+            }
+
+            return lexemaFinded(finded, false);
+        } else if (isdigit(character)) {
+            // Si el caracter es un dígito, entonces redirigimos al automáta encargado de identificar números
+            // En caso de reconocer un lexema, lo devolvemos asociandolo con el componente léxico identificado.
+            return lexemaFinded(automatonNumbers(), false);
+        } else if (isalpha(character) || character == '_') {
+            // Si el caracter es un dígito, entonces redirigimos al automáta encargado de reconocer identificadores
+            // En caso de reconocer un lexema, lo devolvemos asociandolo con el componente léxico identificado.
+            return lexemaFinded(automatonIds(), true);
+        }
+    }
+    return lexemaFinded(NOT_FINAL_STATE, false);
 }
 
 

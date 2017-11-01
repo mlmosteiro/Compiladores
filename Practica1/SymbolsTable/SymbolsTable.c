@@ -18,7 +18,7 @@ void importLenguageKeyWords() {
     char *line = (char *) malloc(sizeof(char) * MAX_KEYWORD_SIZE);
     int i = 0;
     if (file == NULL) {
-        showError(NOT_KEYWORDS_FILE_FOUNDED,0);
+        showError(NOT_KEYWORDS_FILE_FOUNDED, 0);
         return;
     }
     int beginKeyWords = 0; // Flag que nos indica si se trata del bloque de palabras reservadas
@@ -61,17 +61,17 @@ void initSymbolsTable() {
     importLenguageKeyWords();
 }
 
-int sizeLexema(char* lexema){
-    int i= 0;
-    while(lexema[i]!='\0'){
-        i++;
+int sizeLexema(char *lexema) {
+    int i = 0;
+    while (lexema[i] != '\0') {
+        i ++;
     }
     return i;
 }
 
 void insert(char *lexema, int componenteLexico, int numLinea) {
     symbolImput newSymbol;
-    newSymbol.lexema = (char *) malloc(sizeof(char)*sizeLexema(lexema));
+    newSymbol.lexema = (char *) malloc(sizeof(char) * sizeLexema(lexema));
     strcpy(newSymbol.lexema, lexema);
     newSymbol.componenteLexico = componenteLexico;
     newSymbol.numLinea = numLinea;
@@ -81,7 +81,7 @@ void insert(char *lexema, int componenteLexico, int numLinea) {
 
 symbolImput search(char *lexema) {
     symbolImput result;
-    result.lexema= NULL;
+    result.lexema = NULL;
     buscaNodo(symbolsTable, lexema, &result);
     return result;
 }
@@ -97,9 +97,9 @@ void destroySymbolsTable() {
 void printSymbolTableRec(abb symbolsTable) {
     symbolImput E;
     if (! esVacio(symbolsTable)) {
+        printSymbolTableRec(izq(symbolsTable));
         info(symbolsTable, &E);
         printf("%s - %d\n", E.lexema, E.componenteLexico);
-        printSymbolTableRec(izq(symbolsTable));
         printSymbolTableRec(der(symbolsTable));
     }
 }

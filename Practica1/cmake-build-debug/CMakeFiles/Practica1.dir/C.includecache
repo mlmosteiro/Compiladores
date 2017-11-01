@@ -57,8 +57,6 @@ SintacticAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
 LexicalAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
-SymbolsTable/SymbolsTable.h
-/home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 stdio.h
 -
 
@@ -101,12 +99,8 @@ BST.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/main.c
 stdio.h
 -
-LexicalAnalyzer.h
-/home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
 SymbolsTable/SymbolsTable.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
-InputSystem.h
-/home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
 SintacticAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
 ErrorManager.h

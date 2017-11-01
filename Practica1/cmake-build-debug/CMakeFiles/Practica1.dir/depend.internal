@@ -19,7 +19,6 @@ CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o
  /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.c
  /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
- /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o
  /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.c
  /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/BST.h
@@ -31,8 +30,6 @@ CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o
  /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 CMakeFiles/Practica1.dir/main.c.o
  /home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
- /home/maryluz/CLionProjects/Compiladores/Practica1/InputSystem.h
- /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/main.c

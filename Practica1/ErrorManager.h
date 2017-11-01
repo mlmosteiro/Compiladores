@@ -1,6 +1,7 @@
 #ifndef PRACTICA1_ERRORMANAGER_H
 #define PRACTICA1_ERRORMANAGER_H
-void printError(int errorCode,int line, char *lexema );
+
+void printError(int errorCode, int line, char *lexema);
 
 #define MISSING_ARGUMENTS (-107)
 #define NOT_FINAL_STATE (-1)
@@ -10,7 +11,7 @@ void printError(int errorCode,int line, char *lexema );
 #define NOT_CLOSED_STRING (-104)
 #define ILLEGAL_ESCAPED_CHARACTER (-105)
 #define ILLEGAL_CHARACTER (-106)
-
+#define ILLEGAL_LEXEMA_SIZE (-108)
 
 void showError(int errorCode, int numLinea);
 

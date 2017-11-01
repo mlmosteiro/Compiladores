@@ -11,8 +11,8 @@
 #define LASTBLOCK 1
 
 FILE *file;
-char firstBlock [SIZE_BLOCK+1];
-char lastBlock [SIZE_BLOCK+1];
+char firstBlock[SIZE_BLOCK + 1];
+char lastBlock[SIZE_BLOCK + 1];
 char *firstBlockEOF;
 char *lastBlockEOF;
 char *start;
@@ -24,13 +24,13 @@ int loadBlock(int idBlock) {
     switch (idBlock) {
         case FIRSTBLOCK:
             succes = (int) fread(firstBlock, 1, sizeof(char) * SIZE_BLOCK, file);
-            if (succes < SIZE_BLOCK){
+            if (succes < SIZE_BLOCK) {
                 firstBlock[succes] = EOF;
             }
             return 1;
         case LASTBLOCK:
             succes = (int) fread(lastBlock, 1, sizeof(char) * SIZE_BLOCK, file);
-            if (succes < SIZE_BLOCK){
+            if (succes < SIZE_BLOCK) {
                 lastBlock[succes] = EOF;
             }
             return 1;
@@ -42,18 +42,18 @@ int loadBlock(int idBlock) {
 /*
  * Al inicio tanto el puntero de inicio como el delantero apuntan al primer caracter de un lexema.
  */
-void initInputSystem(char *fileName){
+void initInputSystem(char *fileName) {
     file = fopen(fileName, "r");
-    if(file == NULL){
-        showError(NOT_FILE_FOUNDED,0);
-        return ;
+    if (file == NULL) {
+        showError(NOT_FILE_FOUNDED, 0);
+        return;
     }
 
     firstBlockEOF = &firstBlock[SIZE_BLOCK];
-    *firstBlockEOF =  EOF;
+    *firstBlockEOF = EOF;
 
     lastBlockEOF = &lastBlock[SIZE_BLOCK];
-    *lastBlockEOF =  EOF;
+    *lastBlockEOF = EOF;
 
     start = &firstBlock[0];
     current = &firstBlock[0];
@@ -63,7 +63,7 @@ void initInputSystem(char *fileName){
 
 
 // Cerramos el archivo de código fuente
-void destroyInputSystem(){
+void destroyInputSystem() {
     fclose(file);
 }
 
@@ -75,28 +75,33 @@ void destroyInputSystem(){
  * En caso de final de bloque, se carga un nuevo bloque.
 */
 
-char nextCharacter(){
+char nextCharacter() {
 
-    if(*current == EOF) {
-        if(current == firstBlockEOF) {
+    if (*current == EOF) {
+        if (current == firstBlockEOF) {
             loadBlock(LASTBLOCK);
             current = &lastBlock[0];
-        }
-        else if (current  == lastBlockEOF) {
+        } else if (current == lastBlockEOF) {
             loadBlock(FIRSTBLOCK);
             current = &firstBlock[0];
-        }
-        else{
+        } else {
             return EOF;
         }
     }
     char character = *current;
-    *current++;
+    current ++;
     return character;
 }
 
+void prepareForNextLex() {
+    start = current;
+}
 
 char previousCharacter() {
-    *current--;
-    return *current;//TODO: ENER EN CUENTA QUE SE PUEDE CAMBIAR DE BLOQUE AQUI
+    if (current == firstBlock || current == lastBlock) {
+        current --;
+    }
+    current --;
+
+    return *current;
 }

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Practica2"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Practica1">
+				<Option output="/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Practica1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 Practica1"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Practica1/fast">
+				<Option output="/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Practica1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 Practica1/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/Definitions.h">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/ErrorManager.c">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/ErrorManager.h">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.c">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.h">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/SintacticAnalyzer.c">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/SintacticAnalyzer.h">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/BST.c">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/BST.h">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/SymbolsTable.c">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/SymbolsTable.h">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/main.c">
+			<Option target="Practica1"/>
+		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

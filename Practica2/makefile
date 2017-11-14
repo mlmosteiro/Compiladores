@@ -1,11 +1,11 @@
-CC= gcc -Wall -Wextra -pedantic-errors
+CC= gcc -pedantic-errors
 LIBS = -lfl
 
 MAIN= practica2
 
-SRCS = main.c LexicalAnalyzer.c SintacticAnalyzer.c SymbolsTable/SymbolsTable.c ErrorManager.c SymbolsTable/BST.c lex.yy.c
+SRCS = main.c SintacticAnalyzer.c SymbolsTable/SymbolsTable.c ErrorManager.c SymbolsTable/BST.c lex.yy.c
 
-DEPS = Definitions.h LexicalAnalyzer.h SintacticAnalyzer.h SymbolsTable/SymbolsTable.h ErrorManager.h SymbolsTable/BST.h
+DEPS = Definitions.h SintacticAnalyzer.h SymbolsTable/SymbolsTable.h ErrorManager.h SymbolsTable/BST.h
 
 OBJS = $(SRCS:.c=.o)
 

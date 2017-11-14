@@ -24,9 +24,6 @@ void showError(int errorCode, int numLinea) {
         case ILLEGAL_CHARACTER:
             printf("[ERROR LEXICO - linea %d] \tCaracter ilegal.\n", numLinea);
             break;
-        case ILLEGAL_LEXEMA_SIZE:
-            printf("[ERROR - linea %d] \tLexema supera el tamaño permitido.\n", numLinea);
-            break;
         default:
             printf("[ERROR]");
     }

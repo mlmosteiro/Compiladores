@@ -4,15 +4,8 @@
 CMakeFiles/Practica1.dir/ErrorManager.c.o
  /home/maryluz/CLionProjects/Compiladores/Practica2/ErrorManager.c
  /home/maryluz/CLionProjects/Compiladores/Practica2/ErrorManager.h
-CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o
- /home/maryluz/CLionProjects/Compiladores/Practica2/Definitions.h
- /home/maryluz/CLionProjects/Compiladores/Practica2/ErrorManager.h
- /home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.c
- /home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.h
- /home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/SymbolsTable.h
 CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o
  /home/maryluz/CLionProjects/Compiladores/Practica2/ErrorManager.h
- /home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.h
  /home/maryluz/CLionProjects/Compiladores/Practica2/SintacticAnalyzer.c
  /home/maryluz/CLionProjects/Compiladores/Practica2/SintacticAnalyzer.h
 CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o
@@ -27,7 +20,6 @@ CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o
 CMakeFiles/Practica1.dir/lex.yy.c.o
  /home/maryluz/CLionProjects/Compiladores/Practica2/Definitions.h
  /home/maryluz/CLionProjects/Compiladores/Practica2/ErrorManager.h
- /home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.h
  /home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/SymbolsTable.h
  /home/maryluz/CLionProjects/Compiladores/Practica2/lex.yy.c
 CMakeFiles/Practica1.dir/main.c.o

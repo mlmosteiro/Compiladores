@@ -4,14 +4,7 @@
 CMakeFiles/Practica1.dir/ErrorManager.c.o: ../ErrorManager.c
 CMakeFiles/Practica1.dir/ErrorManager.c.o: ../ErrorManager.h
 
-CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../Definitions.h
-CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../ErrorManager.h
-CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../LexicalAnalyzer.c
-CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../LexicalAnalyzer.h
-CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../SymbolsTable/SymbolsTable.h
-
 CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o: ../ErrorManager.h
-CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o: ../LexicalAnalyzer.h
 CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o: ../SintacticAnalyzer.c
 CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o: ../SintacticAnalyzer.h
 
@@ -26,7 +19,6 @@ CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o: ../SymbolsTable/SymbolsT
 
 CMakeFiles/Practica1.dir/lex.yy.c.o: ../Definitions.h
 CMakeFiles/Practica1.dir/lex.yy.c.o: ../ErrorManager.h
-CMakeFiles/Practica1.dir/lex.yy.c.o: ../LexicalAnalyzer.h
 CMakeFiles/Practica1.dir/lex.yy.c.o: ../SymbolsTable/SymbolsTable.h
 CMakeFiles/Practica1.dir/lex.yy.c.o: ../lex.yy.c
 

@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Practica1.dir/main.c.o"
-  "CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o"
   "CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o"
   "CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o"
   "CMakeFiles/Practica1.dir/ErrorManager.c.o"

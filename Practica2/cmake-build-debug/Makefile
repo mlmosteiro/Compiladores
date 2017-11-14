@@ -150,33 +150,6 @@ ErrorManager.c.s:
 	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/ErrorManager.c.s
 .PHONY : ErrorManager.c.s
 
-LexicalAnalyzer.o: LexicalAnalyzer.c.o
-
-.PHONY : LexicalAnalyzer.o
-
-# target to build an object file
-LexicalAnalyzer.c.o:
-	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o
-.PHONY : LexicalAnalyzer.c.o
-
-LexicalAnalyzer.i: LexicalAnalyzer.c.i
-
-.PHONY : LexicalAnalyzer.i
-
-# target to preprocess a source file
-LexicalAnalyzer.c.i:
-	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/LexicalAnalyzer.c.i
-.PHONY : LexicalAnalyzer.c.i
-
-LexicalAnalyzer.s: LexicalAnalyzer.c.s
-
-.PHONY : LexicalAnalyzer.s
-
-# target to generate assembly for a file
-LexicalAnalyzer.c.s:
-	$(MAKE) -f CMakeFiles/Practica1.dir/build.make CMakeFiles/Practica1.dir/LexicalAnalyzer.c.s
-.PHONY : LexicalAnalyzer.c.s
-
 SintacticAnalyzer.o: SintacticAnalyzer.c.o
 
 .PHONY : SintacticAnalyzer.o
@@ -324,9 +297,6 @@ help:
 	@echo "... ErrorManager.o"
 	@echo "... ErrorManager.i"
 	@echo "... ErrorManager.s"
-	@echo "... LexicalAnalyzer.o"
-	@echo "... LexicalAnalyzer.i"
-	@echo "... LexicalAnalyzer.s"
 	@echo "... SintacticAnalyzer.o"
 	@echo "... SintacticAnalyzer.i"
 	@echo "... SintacticAnalyzer.s"

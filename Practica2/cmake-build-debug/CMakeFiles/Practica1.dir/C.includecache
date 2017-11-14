@@ -16,33 +16,9 @@ stdio.h
 
 /home/maryluz/CLionProjects/Compiladores/Practica2/ErrorManager.h
 
-/home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.c
-string.h
--
-stdio.h
--
-ctype.h
--
-stdbool.h
--
-stdlib.h
--
-LexicalAnalyzer.h
-/home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.h
-SymbolsTable/SymbolsTable.h
-/home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/SymbolsTable.h
-Definitions.h
-/home/maryluz/CLionProjects/Compiladores/Practica2/Definitions.h
-ErrorManager.h
-/home/maryluz/CLionProjects/Compiladores/Practica2/ErrorManager.h
-
-/home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.h
-
 /home/maryluz/CLionProjects/Compiladores/Practica2/SintacticAnalyzer.c
 SintacticAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica2/SintacticAnalyzer.h
-LexicalAnalyzer.h
-/home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.h
 ErrorManager.h
 /home/maryluz/CLionProjects/Compiladores/Practica2/ErrorManager.h
 stdio.h
@@ -105,8 +81,6 @@ stdbool.h
 -
 stdlib.h
 -
-LexicalAnalyzer.h
-/home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.h
 SymbolsTable/SymbolsTable.h
 /home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/SymbolsTable.h
 Definitions.h

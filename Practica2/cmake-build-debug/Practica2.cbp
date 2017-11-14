@@ -93,12 +93,6 @@
 		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/ErrorManager.h">
 			<Option target="Practica1"/>
 		</Unit>
-		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.c">
-			<Option target="Practica1"/>
-		</Unit>
-		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.h">
-			<Option target="Practica1"/>
-		</Unit>
 		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/SintacticAnalyzer.c">
 			<Option target="Practica1"/>
 		</Unit>

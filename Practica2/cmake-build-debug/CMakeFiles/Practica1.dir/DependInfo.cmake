@@ -5,7 +5,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/home/maryluz/CLionProjects/Compiladores/Practica2/ErrorManager.c" "/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/CMakeFiles/Practica1.dir/ErrorManager.c.o"
-  "/home/maryluz/CLionProjects/Compiladores/Practica2/LexicalAnalyzer.c" "/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o"
   "/home/maryluz/CLionProjects/Compiladores/Practica2/SintacticAnalyzer.c" "/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o"
   "/home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/BST.c" "/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o"
   "/home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/SymbolsTable.c" "/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o"

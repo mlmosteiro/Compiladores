@@ -6,7 +6,7 @@
 #include "BST.h"
 #include "../ErrorManager.h"
 
-// Tamaño máximo de una linea. En este caso coincide con el tamaño máximo del un bloque del sistema de entrada
+// Tamaño máximo de una linea.
 #define MAX_LINE_SIZE 512
 #define DELIMITER_KEYWORDS "//KEYWORDS\n"
 
@@ -100,6 +100,7 @@ void modify() {
 
 void destroySymbolsTable() {
     destruye(&symbolsTable);
+    symbolsTable = NULL;
 }
 
 /* Funcion auxiliar que nos permite recorrer el árbol de forma recursiva
@@ -110,7 +111,7 @@ void printSymbolTableRec(abb symbolsTable) {
     if (! esVacio(symbolsTable)) {
         printSymbolTableRec(izq(symbolsTable));
         info(symbolsTable, &E);
-        printf("%s - %d\n", E.lexema, E.componenteLexico);
+        printf("%s - %d \n", E.lexema, E.componenteLexico);
         printSymbolTableRec(der(symbolsTable));
     }
 }

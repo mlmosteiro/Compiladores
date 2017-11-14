@@ -4,7 +4,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "LexicalAnalyzer.h"
-#include "InputSystem.h"
 #include "SymbolsTable/SymbolsTable.h"
 #include "Definitions.h"
 #include "ErrorManager.h"

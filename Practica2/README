@@ -1,14 +1,19 @@
-=Practica 1=
+=Practica 2=
 
 Objetivo:
-Construir un analizador léxico que devuelva los componentes léxicos que aparecen en el programa concurrentSum.go, codificado en el lenguaje Go.
+Construir un analizador léxico con la herramienta FLEX que devuelva los componentes léxicos que aparecen en el programa concurrentSum.go, codificado en el lenguaje Go.
 
 Instrucciones:
 	- Para compilar, utilizar el MakeFile. En la consola ejecutar el comando make.
 	- Para ejecutar utilizar la siguiente sintaxis
-			./practica1 <archivoCodigoFuente> <achivoDefiniciones>
+			./practica2 <archivoCodigoFuente> <achivoDefiniciones>
 
   	Para ejecutar sobre concurrentSum.go:
-  			./practica1 concurrentSum.go Definitions.h
+  			./practica2 concurrentSum.go Definitions.h
 
 	Se podria ejecutar el analizador léxico con cualquier otro conjunto de palabras clave cambiando el archivo Definitions.h, o a otro código fuente.
+
+Para eliminar los archivos generados por la compilacion
+
+    make clean
+    make cleanall

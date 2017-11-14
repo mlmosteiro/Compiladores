@@ -13,7 +13,6 @@ int main(int argc, char *argv[]) {
 
     // Inicializamos la tabla de símbolos, a la que pueden acceder todos los otros modulos del programa
     initSymbolsTable(keywords);
-
     initSintacticAnalyzer(filepath);
 
     printf("\n---START : Análisis sintáctico---\n");

@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o"
   "CMakeFiles/Practica1.dir/ErrorManager.c.o"
   "CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o"
+  "CMakeFiles/Practica1.dir/lex.yy.c.o"
   "Practica1.pdb"
   "Practica1"
 )

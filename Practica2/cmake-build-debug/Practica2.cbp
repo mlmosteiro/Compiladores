@@ -117,6 +117,9 @@
 		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/SymbolsTable.h">
 			<Option target="Practica1"/>
 		</Unit>
+		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/lex.yy.c">
+			<Option target="Practica1"/>
+		</Unit>
 		<Unit filename="/home/maryluz/CLionProjects/Compiladores/Practica2/main.c">
 			<Option target="Practica1"/>
 		</Unit>

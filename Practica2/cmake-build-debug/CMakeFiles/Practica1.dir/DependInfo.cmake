@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/maryluz/CLionProjects/Compiladores/Practica2/SintacticAnalyzer.c" "/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o"
   "/home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/BST.c" "/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/CMakeFiles/Practica1.dir/SymbolsTable/BST.c.o"
   "/home/maryluz/CLionProjects/Compiladores/Practica2/SymbolsTable/SymbolsTable.c" "/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/CMakeFiles/Practica1.dir/SymbolsTable/SymbolsTable.c.o"
+  "/home/maryluz/CLionProjects/Compiladores/Practica2/lex.yy.c" "/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/CMakeFiles/Practica1.dir/lex.yy.c.o"
   "/home/maryluz/CLionProjects/Compiladores/Practica2/main.c" "/home/maryluz/CLionProjects/Compiladores/Practica2/cmake-build-debug/CMakeFiles/Practica1.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

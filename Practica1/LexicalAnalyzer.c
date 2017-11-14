@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "LexicalAnalyzer.h"
+#include "InputSystem.h"
 #include "SymbolsTable/SymbolsTable.h"
 #include "Definitions.h"
 #include "ErrorManager.h"
@@ -595,8 +596,8 @@ lexemaOutput nextLexicalComponent() {
                     showError(ILLEGAL_CHARACTER, numLinea);
                     restartLexemaBuffer();
                 }
-                break;
-            }
+                return nextLexicalComponent();
+           }
 
             return lexemaFinded(finded, false);
         } else if (isdigit(character)) {

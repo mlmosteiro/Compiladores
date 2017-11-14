@@ -1,5 +1,6 @@
 #include "SintacticAnalyzer.h"
 #include "LexicalAnalyzer.h"
+#include "ErrorManager.h"
 #include <stdio.h>
 
 void initSintacticAnalyzer(char *filepath) {
@@ -16,7 +17,7 @@ void startSintacticAnalisis() {
     do {
         printf("[%d - %s]\n", lexemaOut.compLex, lexemaOut.lexema);
         lexemaOut = nextLexicalComponent();
-    } while (lexemaOut.compLex != EOF);
+    } while (lexemaOut.compLex != EOF );
 }
 
 void destroySintacticAnalyzer() {

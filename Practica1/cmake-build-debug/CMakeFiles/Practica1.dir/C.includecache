@@ -57,6 +57,8 @@ SintacticAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h
 LexicalAnalyzer.h
 /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
+ErrorManager.h
+/home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
 stdio.h
 -
 

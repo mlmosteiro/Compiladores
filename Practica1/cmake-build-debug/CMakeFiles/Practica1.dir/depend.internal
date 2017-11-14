@@ -16,6 +16,7 @@ CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o
  /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/SymbolsTable/SymbolsTable.h
 CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o
+ /home/maryluz/CLionProjects/Compiladores/Practica1/ErrorManager.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/LexicalAnalyzer.h
  /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.c
  /home/maryluz/CLionProjects/Compiladores/Practica1/SintacticAnalyzer.h

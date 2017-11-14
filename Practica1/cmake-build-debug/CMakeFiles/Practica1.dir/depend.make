@@ -15,6 +15,7 @@ CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../LexicalAnalyzer.c
 CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../LexicalAnalyzer.h
 CMakeFiles/Practica1.dir/LexicalAnalyzer.c.o: ../SymbolsTable/SymbolsTable.h
 
+CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o: ../ErrorManager.h
 CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o: ../LexicalAnalyzer.h
 CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o: ../SintacticAnalyzer.c
 CMakeFiles/Practica1.dir/SintacticAnalyzer.c.o: ../SintacticAnalyzer.h

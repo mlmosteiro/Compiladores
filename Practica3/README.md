@@ -1,47 +1,43 @@
-=Practica 3=
-
-Objetivo:
-Construir un analizador léxico con la herramienta FLEX que devuelva los componentes léxicos que aparecen en el programa concurrentSum.go, codificado en el lenguaje Go.
-
-Instrucciones:
-	- Para compilar, utilizar el MakeFile. En la consola ejecutar el comando make. Es necesario tener instaladas las librerias de FLEX. Para ello en una maquina ubuntu o similar se puede ejecutar el comando  sudo apt-get install flex
-	- Para ejecutar utilizar la siguiente sintaxis
-			./practica3 <archivoCodigoFuente> <achivoDefiniciones>
-
-  	Para ejecutar sobre concurrentSum.go:
-  			./practica3 concurrentSum.go Definitions.h
-
-	Se podria ejecutar el analizador léxico con cualquier otro conjunto de palabras clave cambiando el archivo Definitions.h, o a otro código fuente.
-
-Para eliminar los archivos generados por la compilacion
-
-    make clean
-    make cleanall
+#Consola matemática V1.0
 
 
-# CLIMath
+## Practica 3 - Objetivo
+Construir un una herramienta que permita compilar y ejecutar ficheros con secuencias de expresiones de cálculo matemático.
+Asignatura **Compiladores e Interpretes**, Universidad de Santiago de Compostela.
 
-Command Line Interface to execute mathematics operations made as an asingment of the Compilers &amp; Interpreters subject.
+## Descripción
+Se trata de una consola capaz de interpretar y ejecutar comandos matemáticos basicos.
 
-Once you are inside the tool, you can type :? to get the system help.
+- Operaciones aritméticas +,-,*,/
+- Operaciones matemáticas sin,cos,tan,atan, ...
+- Declaración y manejo de variables
+- Ejecucion de scripts con comandos matemáticos
 
-The current version of the tool supports:
+Además, la lista de funciones disponibles se puede ampliar o modificar editando el archivo Definitions.c
 
-- basic arithmetic operations +,-,*,/
-- variable declaration
-- use of simple math functions like sin, cos, etc.
-- load a file with a list of commands
+## Instrucciones:
+	1. Para compilar, utilizar el script compile.sh:
+		
+		```
+		bash compile.sh
+		```
+		o
+		```
+		chmod +x compile.sh
+		./compile.sh
+		```
+		Es necesario tener instaladas las librerias de FLEX y BISON.
 
-You can add more functions and constants to the tool, if you edit the file **preload.c**.
-
-## Compilation
-
-```
-  bash compile.sh
-```
-
-## Run
-
-```
-  ./CLIMath.out
-```
+	2. Para ejecutar utilizar la siguiente sintaxis
+			```
+			./ConsolaMatematicaV1.0 
+			```
+			o
+			```
+			./ConsolaMatematicaV1.0 <scriptOpcional>
+			```
+	3. Para eliminar los archivos generados por la compilacion
+		```
+	    make clean
+	    make cleanall
+		```

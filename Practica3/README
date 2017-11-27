@@ -1,0 +1,19 @@
+=Practica 3=
+
+Objetivo:
+Construir un analizador léxico con la herramienta FLEX que devuelva los componentes léxicos que aparecen en el programa concurrentSum.go, codificado en el lenguaje Go.
+
+Instrucciones:
+	- Para compilar, utilizar el MakeFile. En la consola ejecutar el comando make. Es necesario tener instaladas las librerias de FLEX. Para ello en una maquina ubuntu o similar se puede ejecutar el comando  sudo apt-get install flex
+	- Para ejecutar utilizar la siguiente sintaxis
+			./practica3 <archivoCodigoFuente> <achivoDefiniciones>
+
+  	Para ejecutar sobre concurrentSum.go:
+  			./practica3 concurrentSum.go Definitions.h
+
+	Se podria ejecutar el analizador léxico con cualquier otro conjunto de palabras clave cambiando el archivo Definitions.h, o a otro código fuente.
+
+Para eliminar los archivos generados por la compilacion
+
+    make clean
+    make cleanall

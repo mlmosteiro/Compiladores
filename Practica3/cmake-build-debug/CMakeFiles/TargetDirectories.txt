@@ -1,0 +1,3 @@
+/home/maryluz/CLionProjects/Compiladores/untitled/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/maryluz/CLionProjects/Compiladores/untitled/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/maryluz/CLionProjects/Compiladores/untitled/cmake-build-debug/CMakeFiles/practica3.dir

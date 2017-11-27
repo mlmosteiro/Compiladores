@@ -1,7 +1,7 @@
 CC= gcc -pedantic-errors
 LIBS = -lfl -lm
 
-MAIN= practica3
+MAIN= ConsolaMatematicaV1.0
 
 SRCS = main.c  SymbolsTable/SymbolsTable.c ErrorManager.c SymbolsTable/BST.c  consolaMatematica.tab.c lex.yy.c Definitions.c
 

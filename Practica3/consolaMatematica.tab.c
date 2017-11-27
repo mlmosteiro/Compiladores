@@ -483,8 +483,8 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    43,    43,    44,    47,    48,    49,    50,    51,    52,
-      53,    54,    55,    60,    61,    62,    65,    66,    78,    87,
+       0,    44,    44,    45,    48,    49,    50,    51,    52,    53,
+      54,    55,    56,    60,    61,    62,    65,    66,    78,    87,
       96,    97,    98,    99,   104,   105,   106
 };
 #endif
@@ -1286,73 +1286,72 @@ yyreduce:
   switch (yyn)
     {
         case 6:
-#line 49 "consolaMatematica.y" /* yacc.c:1646  */
+#line 50 "consolaMatematica.y" /* yacc.c:1646  */
     { YYACCEPT;}
 #line 1292 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 50 "consolaMatematica.y" /* yacc.c:1646  */
+#line 51 "consolaMatematica.y" /* yacc.c:1646  */
     { man();}
 #line 1298 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 51 "consolaMatematica.y" /* yacc.c:1646  */
+#line 52 "consolaMatematica.y" /* yacc.c:1646  */
     { printByType(VAR);}
 #line 1304 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 52 "consolaMatematica.y" /* yacc.c:1646  */
+#line 53 "consolaMatematica.y" /* yacc.c:1646  */
     { printByType(FNCT);}
 #line 1310 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 53 "consolaMatematica.y" /* yacc.c:1646  */
+#line 54 "consolaMatematica.y" /* yacc.c:1646  */
     { printByType(-1);}
 #line 1316 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 54 "consolaMatematica.y" /* yacc.c:1646  */
+#line 55 "consolaMatematica.y" /* yacc.c:1646  */
     { printByType(0);}
 #line 1322 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 55 "consolaMatematica.y" /* yacc.c:1646  */
-    { 
-                                            // destroys the sumbol table and creates a new one
+#line 56 "consolaMatematica.y" /* yacc.c:1646  */
+    {   // Libera la tabla de simbolos actual, y crea una nueva
                                             destroySymbolsTable();
                                             initSymbolsTable();
                                         }
-#line 1332 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1331 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
 #line 60 "consolaMatematica.y" /* yacc.c:1646  */
     { ; }
-#line 1338 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1337 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
 #line 61 "consolaMatematica.y" /* yacc.c:1646  */
     { printf ("%.10g\n", (*(double*)(&yyvsp[-1]))); }
-#line 1344 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1343 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
 #line 62 "consolaMatematica.y" /* yacc.c:1646  */
     { yyerrok; }
-#line 1350 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1349 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
 #line 65 "consolaMatematica.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = (*(double*)(&yyvsp[0])); /* gets thje value of a number */ }
-#line 1356 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1355 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
@@ -1369,7 +1368,7 @@ yyreduce:
                          (*(double*)(&yyval)) = (*(symbolInput**)(&yyvsp[0]))->value.var;
                        }
                       }
-#line 1373 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1372 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
@@ -1383,7 +1382,7 @@ yyreduce:
                         (*(double*)(&yyval)) = 0;
                       }
                      }
-#line 1387 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1386 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
@@ -1396,25 +1395,25 @@ yyreduce:
                           showError(NOT_FUNCTION,-1);
                         }
                       }
-#line 1400 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1399 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
 #line 96 "consolaMatematica.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) + (*(double*)(&yyvsp[0]));}
-#line 1406 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1405 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
 #line 97 "consolaMatematica.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) - (*(double*)(&yyvsp[0]));}
-#line 1412 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1411 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
 #line 98 "consolaMatematica.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) * (*(double*)(&yyvsp[0]));}
-#line 1418 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1417 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
@@ -1424,29 +1423,29 @@ yyreduce:
                                   else
                                     (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) / (*(double*)(&yyvsp[0]));
                                 }
-#line 1428 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1427 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
 #line 104 "consolaMatematica.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = -(*(double*)(&yyvsp[0]));}
-#line 1434 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1433 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
 #line 105 "consolaMatematica.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = pow ((*(double*)(&yyvsp[-2])), (*(double*)(&yyvsp[0])));}
-#line 1440 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1439 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
 #line 106 "consolaMatematica.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-1]));}
-#line 1446 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1445 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1450 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1449 "consolaMatematica.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

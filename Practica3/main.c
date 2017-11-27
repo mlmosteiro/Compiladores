@@ -20,10 +20,13 @@ int main(int argc, char *argv[]) {
         //TODO: CARGAR AQUI EL SCRIPT
     }
 
-    printf("\nWelcome! type \":?\" an press \"Enter\" to get the system help\n");
-
-
+    printf("\n-----------------------------------------------------------\n");
+    printf("---------------  Consola matemática - V1.0  ---------------\n");
+    printf("-----------------------------------------------------------\n");
+    printf("----------------------  Ayuda --> :?  ---------------------\n");
+    printf("-----------------------------------------------------------\n");
     yyparse();
+
     fclose(yyin);
     destroySymbolsTable();
 

@@ -17,7 +17,6 @@ struct symrec{
         double var;             // valor de una VAR
         double (*fnctptr)();    // valor de una FNCT
     } value;
-    struct symrec *next;        // campo de enlace
 };
 
 
@@ -62,6 +61,6 @@ void destroySymbolsTable();
  */
 void printSymbolsTable();
 
-void searchLexicalCompAndPrintSymbolsTable(int componenteLexico);
+void printSymbolByType(int componenteLexico);
 
 #endif //PRACTICA3_SYMBOLSTABLE_H

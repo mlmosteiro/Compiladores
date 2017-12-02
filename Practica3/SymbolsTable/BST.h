@@ -16,7 +16,7 @@ void destruye(abb *A);
 
 bool esVacio(abb A);
 
-void inserta(abb *A, tipoelem E);
+tipoelem * inserta(abb *A, tipoelem E);
 
 tipoelem suprime_min(abb *A);
 
@@ -30,7 +30,7 @@ abb der(abb A);
 
 void info(abb A, tipoelem *E);
 
-void buscaNodo(abb A, tipoclave cl, tipoelem *nodo);
+tipoelem * buscaNodo(abb A, tipoclave cl);
 
 void modifica(abb *A, tipoclave cl, tipoelem nodo);
 

@@ -1,4 +1,5 @@
 #include "BST.h"
+#include "SymbolsTable.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -26,16 +27,17 @@ bool esVacio(abb A) {
     return A == NULL;
 }
 
-void inserta(abb *A, tipoelem E) {
+tipoelem * inserta(abb *A, tipoelem E) {
     if (esVacio(*A)) {
         *A = (abb) malloc(sizeof(struct celda));
         (*A)->info = E;
         (*A)->izq = NULL;
         (*A)->der = NULL;
+        return &(*A)->info;
     } else if (strcmp(E.name, (*A)->info.name) < 0)
-        inserta(&(*A)->izq, E);
+        return  inserta(&(*A)->izq, E);
     else
-        inserta(&(*A)->der, E);
+        return inserta(&(*A)->der, E);
 }
 
 tipoelem suprime_min(abb *A) {
@@ -99,16 +101,17 @@ abb der(abb A) {
     return A->der;
 }
 
-void buscaNodo(abb A, tipoclave cl, tipoelem *nodo) {
+tipoelem * buscaNodo(abb A, tipoclave cl) {
     if (esVacio(A))
-        nodo = NULL;
+        return NULL;
     else if (strcmp(cl, (A->info).name) == 0)
-        *nodo = A->info;
+        return &(A->info);
     else if (strcmp(cl, (A->info).name) < 0)
-        buscaNodo(izq(A), cl, nodo);
+        return buscaNodo(izq(A), cl);
     else
-        buscaNodo(der(A), cl, nodo);
+        return buscaNodo(der(A), cl);
 }
+
 
 void modifica(abb *A, tipoclave cl, tipoelem nodo) {
     if (esVacio(*A)) {

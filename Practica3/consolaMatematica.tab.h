@@ -43,9 +43,10 @@ extern int yydebug;
 #line 18 "consolaMatematica.y" /* yacc.c:1909  */
 
     #include "SymbolsTable/SymbolsTable.h"
+    #include "Definitions.h"
     #include "ErrorManager.h"
 
-#line 49 "consolaMatematica.tab.h" /* yacc.c:1909  */
+#line 50 "consolaMatematica.tab.h" /* yacc.c:1909  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -54,16 +55,19 @@ extern int yydebug;
   {
     END_OF_FILE = 258,
     RESTART_WORKSPACE = 259,
-    SHOW_CONSTANTS = 260,
-    SHOW_FUNCTIONS = 261,
-    SHOW_VARIABLES = 262,
-    SHOW_SYMBOL_TABLE = 263,
-    HELP = 264,
-    QUIT = 265,
-    NUM = 266,
-    VAR = 267,
-    FNCT = 268,
-    NEG = 269
+    LOAD_DEFAULT_CONSTANTS = 260,
+    LOAD_DEFAULT_FUNCTIONS = 261,
+    SHOW_CONSTANTS = 262,
+    SHOW_FUNCTIONS = 263,
+    SHOW_VARIABLES = 264,
+    SHOW_SYMBOL_TABLE = 265,
+    HELP = 266,
+    QUIT = 267,
+    NUM = 268,
+    VAR = 269,
+    FNCT = 270,
+    CONS = 271,
+    NEG = 272
   };
 #endif
 
@@ -81,6 +85,10 @@ union YYSTYPE
   int END_OF_FILE;
   /* RESTART_WORKSPACE  */
   int RESTART_WORKSPACE;
+  /* LOAD_DEFAULT_CONSTANTS  */
+  int LOAD_DEFAULT_CONSTANTS;
+  /* LOAD_DEFAULT_FUNCTIONS  */
+  int LOAD_DEFAULT_FUNCTIONS;
   /* SHOW_CONSTANTS  */
   int SHOW_CONSTANTS;
   /* SHOW_FUNCTIONS  */
@@ -97,7 +105,9 @@ union YYSTYPE
   symbolInput* VAR;
   /* FNCT  */
   symbolInput* FNCT;
-#line 101 "consolaMatematica.tab.h" /* yacc.c:1909  */
+  /* CONS  */
+  symbolInput* CONS;
+#line 111 "consolaMatematica.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

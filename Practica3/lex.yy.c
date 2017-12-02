@@ -378,8 +378,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 16
-#define YY_END_OF_BUFFER 17
+#define YY_NUM_RULES 18
+#define YY_END_OF_BUFFER 19
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -387,14 +387,14 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[52] =
+static yyconst flex_int16_t yy_accept[55] =
     {   0,
-        0,    0,   17,   15,   12,   13,   14,   14,   15,    9,
-       14,   11,   11,   10,   10,    0,    0,    9,    6,    0,
-        7,    0,    0,   11,   10,    0,   10,    0,    0,   10,
-        9,    0,    0,    3,    2,    5,    1,    0,   10,   10,
-        0,   10,   10,    0,    4,   10,   10,    0,    0,    8,
-        0
+        0,    0,   19,   17,   14,   15,   16,   16,   11,   11,
+       16,   13,   13,   12,   12,    0,    0,   11,    8,    0,
+        9,    0,    0,   13,   12,    0,   12,    0,    0,   12,
+       11,    0,    0,    0,    3,    2,    5,    1,    0,   12,
+       12,    0,   12,   12,    6,    7,    0,    4,   12,   12,
+        0,    0,   10,    0
     } ;
 
 static yyconst YY_CHAR yy_ec[256] =
@@ -436,62 +436,62 @@ static yyconst YY_CHAR yy_meta[28] =
         3,    3,    3,    3,    3,    3,    2
     } ;
 
-static yyconst flex_uint16_t yy_base[54] =
+static yyconst flex_uint16_t yy_base[57] =
     {   0,
-        0,    0,   65,  109,  109,  109,  109,   20,   23,   25,
-       31,    0,    0,   30,   48,    0,   38,   41,  109,   39,
-      109,   40,   43,    0,   62,   68,   70,   76,   55,   64,
-        0,   37,   21,  109,  109,  109,  109,   78,   81,   83,
-       85,   89,   91,   23,  109,   94,   96,   33,    0,    0,
-      109,   32,  105
+        0,    0,  106,  108,  108,  108,  108,   20,   23,   25,
+       31,    0,    0,   30,   48,    0,   38,   41,  108,   41,
+      108,   76,   44,    0,   59,   65,   67,   73,   56,   75,
+        0,   21,   63,   35,  108,  108,  108,  108,   78,   80,
+       82,   84,   88,   90,  108,  108,   35,  108,   93,   95,
+       41,    0,    0,  108,   32,  104
     } ;
 
-static yyconst flex_int16_t yy_def[54] =
+static yyconst flex_int16_t yy_def[57] =
     {   0,
-       51,    1,   51,   51,   51,   51,   51,   51,   51,    9,
-       51,   52,   52,   51,   51,    9,   51,    9,   51,   51,
-       51,   51,   51,   52,   51,   51,   51,   51,   51,   51,
-       18,   51,   51,   51,   51,   51,   51,   51,   51,   51,
-       51,   51,   51,   51,   51,   51,   51,   51,   53,   53,
-        0,   51,   51
+       54,    1,   54,   54,   54,   54,   54,   54,   54,    9,
+       54,   55,   55,   54,   54,    9,   54,    9,   54,   54,
+       54,   54,   54,   55,   54,   54,   54,   54,   54,   54,
+       18,   54,   54,   54,   54,   54,   54,   54,   54,   54,
+       54,   54,   54,   54,   54,   54,   54,   54,   54,   54,
+       54,   56,   56,    0,   54,   54
     } ;
 
-static yyconst flex_uint16_t yy_nxt[137] =
+static yyconst flex_uint16_t yy_nxt[136] =
     {   0,
         4,    5,    6,    5,    7,    7,    8,    9,   10,   11,
         7,   12,   12,   13,   12,   12,   12,   12,   12,   12,
        12,   12,   12,   12,   12,   12,    4,   14,   14,   15,
-       16,   16,   18,   18,   24,   17,   49,   25,   25,   48,
-       17,   19,   26,   29,   45,   30,   30,   26,   31,   31,
-       20,   44,   21,   22,   23,   27,   27,   33,   34,   32,
-       28,   35,   30,   30,   51,   28,   51,   36,   37,   25,
-       25,   43,   43,   38,   26,   39,   39,   40,   40,   26,
-       51,   41,   28,   42,   42,   39,   39,   28,   46,   46,
-       40,   40,   42,   42,   51,   28,   47,   47,   43,   43,
+       16,   16,   18,   18,   24,   17,   45,   25,   25,   46,
+       17,   19,   26,   29,   52,   30,   30,   26,   31,   31,
+       20,   51,   21,   22,   23,   27,   27,   32,   48,   35,
+       28,   33,   36,   30,   30,   28,   25,   25,   37,   38,
+       39,   26,   40,   40,   41,   41,   26,   47,   42,   28,
+       43,   43,   44,   44,   28,   40,   40,   49,   49,   41,
+       41,   43,   43,   34,   28,   50,   50,   44,   44,   28,
 
-       28,   46,   46,   47,   47,   50,   51,   50,    3,   51,
-       51,   51,   51,   51,   51,   51,   51,   51,   51,   51,
-       51,   51,   51,   51,   51,   51,   51,   51,   51,   51,
-       51,   51,   51,   51,   51,   51
+       49,   49,   50,   50,   53,   54,   53,    3,   54,   54,
+       54,   54,   54,   54,   54,   54,   54,   54,   54,   54,
+       54,   54,   54,   54,   54,   54,   54,   54,   54,   54,
+       54,   54,   54,   54,   54
     } ;
 
-static yyconst flex_int16_t yy_chk[137] =
+static yyconst flex_int16_t yy_chk[136] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    8,    8,    9,
-        9,    9,   10,   10,   52,    9,   48,   14,   14,   44,
-        9,   11,   14,   17,   33,   17,   17,   14,   18,   18,
-       11,   32,   11,   11,   11,   15,   15,   22,   23,   20,
-       15,   23,   29,   29,    3,   15,    0,   23,   23,   25,
-       25,   30,   30,   26,   25,   26,   26,   27,   27,   25,
-        0,   28,   27,   28,   28,   38,   38,   27,   39,   39,
-       40,   40,   41,   41,    0,   40,   42,   42,   43,   43,
+        9,    9,   10,   10,   55,    9,   32,   14,   14,   32,
+        9,   11,   14,   17,   51,   17,   17,   14,   18,   18,
+       11,   47,   11,   11,   11,   15,   15,   20,   34,   23,
+       15,   20,   23,   29,   29,   15,   25,   25,   23,   23,
+       26,   25,   26,   26,   27,   27,   25,   33,   28,   27,
+       28,   28,   30,   30,   27,   39,   39,   40,   40,   41,
+       41,   42,   42,   22,   41,   43,   43,   44,   44,   41,
 
-       40,   46,   46,   47,   47,   53,    0,   53,   51,   51,
-       51,   51,   51,   51,   51,   51,   51,   51,   51,   51,
-       51,   51,   51,   51,   51,   51,   51,   51,   51,   51,
-       51,   51,   51,   51,   51,   51
+       49,   49,   50,   50,   56,    3,   56,   54,   54,   54,
+       54,   54,   54,   54,   54,   54,   54,   54,   54,   54,
+       54,   54,   54,   54,   54,   54,   54,   54,   54,   54,
+       54,   54,   54,   54,   54
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -521,8 +521,9 @@ char *yytext;
 
     int checkSymbols();
     int lexemaFinded();
-    int loadFile();
-#line 526 "lex.yy.c"
+    int loadFile(char* filepath);
+    int eofAction();
+#line 527 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -740,10 +741,10 @@ YY_DECL
 		}
 
 	{
-#line 33 "consolaMatematica.l"
+#line 36 "consolaMatematica.l"
 
 
-#line 747 "lex.yy.c"
+#line 748 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -770,13 +771,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 52 )
+				if ( yy_current_state >= 55 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 109 );
+		while ( yy_base[yy_current_state] != 108 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -801,95 +802,101 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case YY_STATE_EOF(INITIAL):
-#line 35 "consolaMatematica.l"
-{ /*if lexical analyzer founds and EOF sets the yyin to the previous yyin buffer (stdin)*/
-                                yy_delete_buffer(YY_CURRENT_BUFFER );
-                                yy_switch_to_buffer(buffer);
-                                return END_OF_FILE;
-                            }
+#line 38 "consolaMatematica.l"
+{return eofAction();}
 	YY_BREAK
 case 1:
 YY_RULE_SETUP
-#line 41 "consolaMatematica.l"
+#line 40 "consolaMatematica.l"
 return SHOW_VARIABLES;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 43 "consolaMatematica.l"
+#line 42 "consolaMatematica.l"
 return SHOW_FUNCTIONS;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 45 "consolaMatematica.l"
+#line 44 "consolaMatematica.l"
 return SHOW_CONSTANTS;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 47 "consolaMatematica.l"
+#line 46 "consolaMatematica.l"
 return RESTART_WORKSPACE;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 49 "consolaMatematica.l"
+#line 48 "consolaMatematica.l"
 return SHOW_SYMBOL_TABLE;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 51 "consolaMatematica.l"
-return HELP;
+#line 50 "consolaMatematica.l"
+return LOAD_DEFAULT_CONSTANTS;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 53 "consolaMatematica.l"
-return QUIT;
+#line 51 "consolaMatematica.l"
+return LOAD_DEFAULT_FUNCTIONS;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 55 "consolaMatematica.l"
-{loadFile();}
+#line 52 "consolaMatematica.l"
+return HELP;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 57 "consolaMatematica.l"
-{yylval.NUM = atof(yytext); return NUM;}
+#line 54 "consolaMatematica.l"
+{fclose(yyin); return QUIT;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 59 "consolaMatematica.l"
-{yylval.NUM = atof(yytext); return NUM;}
+#line 56 "consolaMatematica.l"
+{return loadFile(&yytext[6]);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 61 "consolaMatematica.l"
-{return lexemaFinded();}
+#line 58 "consolaMatematica.l"
+{yylval.NUM = atof(yytext); return NUM;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 63 "consolaMatematica.l"
-;
+#line 60 "consolaMatematica.l"
+{yylval.NUM = atof(yytext); return NUM;}
 	YY_BREAK
 case 13:
-/* rule 13 can match eol */
 YY_RULE_SETUP
-#line 64 "consolaMatematica.l"
-{numLinea++; return yytext[0];}
+#line 62 "consolaMatematica.l"
+{return lexemaFinded();}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 65 "consolaMatematica.l"
-{return checkSymbols();}
+#line 64 "consolaMatematica.l"
+;
 	YY_BREAK
 case 15:
+/* rule 15 can match eol */
 YY_RULE_SETUP
-#line 66 "consolaMatematica.l"
-
+#line 65 "consolaMatematica.l"
+{numLinea++; return '\n';}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 68 "consolaMatematica.l"
+#line 66 "consolaMatematica.l"
+{return checkSymbols();}
+	YY_BREAK
+case 17:
+YY_RULE_SETUP
+#line 67 "consolaMatematica.l"
+
+	YY_BREAK
+case 18:
+YY_RULE_SETUP
+#line 69 "consolaMatematica.l"
 ECHO;
 	YY_BREAK
-#line 893 "lex.yy.c"
+#line 900 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1180,7 +1187,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 52 )
+			if ( yy_current_state >= 55 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1208,11 +1215,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 52 )
+		if ( yy_current_state >= 55 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 51);
+	yy_is_jam = (yy_current_state == 54);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1888,7 +1895,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 68 "consolaMatematica.l"
+#line 69 "consolaMatematica.l"
 
 
 
@@ -1913,16 +1920,18 @@ int lexemaFinded() {
     return VAR;
 }
 
-int loadFile(){
-    buffer = YY_CURRENT_BUFFER; ///*Pointer to the current flex buffer*/
-    FILE* file= fopen(&yytext[3],"r"); /*Tries to open a file*/
+int loadFile(char* filepath){
 
-    if(file != NULL){ ///*If file is open*/
-        yyin = file; /*creates a new buffer and switchs it with the current buffer*/
-        yy_switch_to_buffer(yy_create_buffer(yyin,YY_BUF_SIZE ) );
+    buffer = YY_CURRENT_BUFFER;             // Puntero al buffer actual de flex
+    FILE* file= fopen(filepath,"r");      // Abrimos el archivo
+
+    if(file != NULL){
+        // Creamos un nuevo buffer a partir del archivo y cambiamos el actual por el nuevo
+        yyin = file;
+        yy_switch_to_buffer(yy_create_buffer(yyin,YY_BUF_SIZE));
         BEGIN(INITIAL);
     }else{
-      showError(NOT_FILE_FOUNDED,numLinea);
+        showError(NOT_FILE_FOUNDED,-1);
     }
 
     return '\n';
@@ -1949,3 +1958,15 @@ int checkSymbols(){
     return '\n';
 }
 
+int eofAction(){
+    /* En caso de encontar el final de fichero, cambiamos el buffer por el
+     * que habia antes de empezar a leer el fichero, y que tenemos guardado
+     * en la variable buffer
+    */
+
+    yy_delete_buffer(YY_CURRENT_BUFFER );
+    yy_switch_to_buffer(buffer);
+    yyin = stdin;
+    yyrestart(yyin);
+    return END_OF_FILE;
+}

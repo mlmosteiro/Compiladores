@@ -3,6 +3,8 @@
 #include "Definitions.h"
 #include "lex.yy.h"
 
+int loadFile(char* filepath);
+
 int main(int argc, char *argv[]) {
     // Inicializamos la tabla de símbolos, a la que pueden acceder todos los otros modulos del programa
     initSymbolsTable();
@@ -10,14 +12,13 @@ int main(int argc, char *argv[]) {
     loadConstants(constants);
 
     
-    //asigns default input and output for flex
+    // Asignamos la entrada y salida por defecto de flex
     yyin = stdin;
     yyout = stdout;
    
 
     if (argc == 2) {
-        char *filepath = argv[1];
-        //TODO: CARGAR AQUI EL SCRIPT
+        loadFile(argv[1]);
     }
 
     printf("\n-----------------------------------------------------------\n");
@@ -25,9 +26,8 @@ int main(int argc, char *argv[]) {
     printf("-----------------------------------------------------------\n");
     printf("----------------------  Ayuda --> :?  ---------------------\n");
     printf("-----------------------------------------------------------\n");
-    yyparse();
 
-    fclose(yyin);
+    yyparse();
     destroySymbolsTable();
 
     return 0;

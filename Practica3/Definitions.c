@@ -35,7 +35,7 @@ void loadFunctions(struct initFunctionStruct *functions) {
 void loadConstants(struct initConstantStruct *constants) {
     int i;
     for (i = 0; constants[i].name != 0; i ++) {
-        symbolInput *input = insert(functions[i].name, - 1);
+        symbolInput *input = insert(constants[i].name, CONS);
         input->value.var = constants[i].constantValue;
         input->initialized=true;
     }

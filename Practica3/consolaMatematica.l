@@ -11,12 +11,13 @@
 
     int checkSymbols();
     int lexemaFinded();
-    int loadFile();
+    int loadFile(char* filepath);
+    int eofAction();
 %}
 
 IDENTIFIER                  [[:alpha:]_][[:alnum:]_]*
 DECIMAL                     [[:digit:]][[:digit:]]*
-INTEGER                     [1-9]({DECIMAL})?
+INTEGER                     [1-9]({DECIMAL})?|0
 EXPONENT                    [Ee][+-]?{DECIMAL}
 FLOAT                       ({DECIMAL}\.({DECIMAL})?({EXPONENT})?)|({DECIMAL}{EXPONENT})|(\.{DECIMAL}({EXPONENT})?)
 
@@ -25,6 +26,8 @@ SHOW_VARIABLES              \:sv
 SHOW_FUNCTIONS              \:sf
 SHOW_CONSTANTS              \:sc
 RESTART_WORKSPACE           \:res
+LOAD_DEFAULT_CONSTANTS      \:ldc
+LOAD_DEFAULT_FUNCTIONS      \:ldf
 SHOW_SYMBOL_TABLE           \:st
 LOAD                        \:load[ ][^\0\n]+
 HELP                        \:\?
@@ -32,11 +35,7 @@ QUIT                        \:q
 
 %%
 
-<<EOF>>                     { /*if lexical analyzer founds and EOF sets the yyin to the previous yyin buffer (stdin)*/
-                                yy_delete_buffer( YY_CURRENT_BUFFER );
-                                yy_switch_to_buffer(buffer);
-                                return END_OF_FILE;
-                            }
+<<EOF>>                     {return eofAction();}
 
 {SHOW_VARIABLES}            return SHOW_VARIABLES;
 
@@ -48,11 +47,13 @@ QUIT                        \:q
 
 {SHOW_SYMBOL_TABLE}         return SHOW_SYMBOL_TABLE;
 
+{LOAD_DEFAULT_CONSTANTS}    return LOAD_DEFAULT_CONSTANTS;
+{LOAD_DEFAULT_FUNCTIONS}    return LOAD_DEFAULT_FUNCTIONS;
 {HELP}                      return HELP;
 
-{QUIT}                      return QUIT;
+{QUIT}                      {fclose(yyin); return QUIT;}
 
-{LOAD}                      {loadFile();}
+{LOAD}                      {return loadFile(&yytext[6]);}
 
 {INTEGER}                   {yylval.NUM = atof(yytext); return NUM;}
 
@@ -61,7 +62,7 @@ QUIT                        \:q
 {IDENTIFIER}			    {return lexemaFinded();}
 
 [ \t\r]						;
-[\n]						{numLinea++; return yytext[0];}
+[\n]						{numLinea++; return '\n';}
 [[:punct:]]                 {return checkSymbols();}
 .                           
 
@@ -88,16 +89,18 @@ int lexemaFinded() {
     return VAR;
 }
 
-int loadFile(){
-    buffer = YY_CURRENT_BUFFER; ///*Pointer to the current flex buffer*/
-    FILE* file= fopen(&yytext[3],"r"); /*Tries to open a file*/
+int loadFile(char* filepath){
 
-    if(file != NULL){ ///*If file is open*/
-        yyin = file; /*creates a new buffer and switchs it with the current buffer*/
-        yy_switch_to_buffer(yy_create_buffer( yyin, YY_BUF_SIZE ) );
+    buffer = YY_CURRENT_BUFFER;             // Puntero al buffer actual de flex
+    FILE* file= fopen(filepath,"r");      // Abrimos el archivo
+
+    if(file != NULL){
+        // Creamos un nuevo buffer a partir del archivo y cambiamos el actual por el nuevo
+        yyin = file;
+        yy_switch_to_buffer(yy_create_buffer(yyin, YY_BUF_SIZE));
         BEGIN(INITIAL);
     }else{
-      showError(NOT_FILE_FOUNDED,numLinea);
+        showError(NOT_FILE_FOUNDED,-1);
     }
 
     return '\n';
@@ -122,4 +125,17 @@ int checkSymbols(){
     if (strcmp("?",yytext) == 0 ) return('?');
     if (strcmp(".",yytext) == 0 ) return('.');
     return '\n';
+}
+
+int eofAction(){
+    /* En caso de encontar el final de fichero, cambiamos el buffer por el
+     * que habia antes de empezar a leer el fichero, y que tenemos guardado
+     * en la variable buffer
+    */
+
+    yy_delete_buffer( YY_CURRENT_BUFFER );
+    yy_switch_to_buffer(buffer);
+    yyin = stdin;
+    yyrestart(yyin);
+    return END_OF_FILE;
 }

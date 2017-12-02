@@ -17,12 +17,15 @@
 
 %code requires {
     #include "SymbolsTable/SymbolsTable.h"
+    #include "Definitions.h"
     #include "ErrorManager.h"
 }
 
 %define api.value.type union /* Generate YYSTYPE from these types:  */
 %token <int>                END_OF_FILE
 %token <int>                RESTART_WORKSPACE
+%token <int>                LOAD_DEFAULT_CONSTANTS
+%token <int>                LOAD_DEFAULT_FUNCTIONS
 %token <int>                SHOW_CONSTANTS
 %token <int>                SHOW_FUNCTIONS
 %token <int>                SHOW_VARIABLES
@@ -30,7 +33,7 @@
 %token <int>                HELP
 %token <int>                QUIT
 %token <double>             NUM         
-%token <symbolInput*>       VAR FNCT    
+%token <symbolInput*>       VAR FNCT CONS
 %type  <double>             exp
 
 %precedence                 '='
@@ -51,48 +54,50 @@ line:       '\n'
             | HELP '\n'                 { man();}
             | SHOW_VARIABLES '\n'       { printByType(VAR);}
             | SHOW_FUNCTIONS '\n'       { printByType(FNCT);}
-            | SHOW_CONSTANTS '\n'       { printByType(-1);}
+            | SHOW_CONSTANTS '\n'       { printByType(CONS);}
             | SHOW_SYMBOL_TABLE '\n'    { printByType(0);}
-            | RESTART_WORKSPACE '\n'    {   // Libera la tabla de simbolos actual, y crea una nueva
-                                            destroySymbolsTable();
-                                            initSymbolsTable();
+            | RESTART_WORKSPACE '\n'    { // Libera la tabla de simbolos actual, y crea una nueva
+                                          destroySymbolsTable();
+                                          initSymbolsTable();
                                         }
+            | LOAD_DEFAULT_FUNCTIONS '\n'   {loadFunctions(functions);}
+            | LOAD_DEFAULT_CONSTANTS '\n'   {loadConstants(constants);};
             | exp ';' '\n'              { ; }
             | exp '\n'                  { printf ("%.10g\n", $1); }
             | error '\n'                { yyerrok; }
 ;
 
-exp:        NUM       { $$ = $1; /* gets thje value of a number */ }
-            | VAR                {  //access to a var value
-                        //checks if users tries to check the value of a function
+exp:        NUM         { $$ = $1;}
+            | VAR   {
                         if($1->type == FNCT){
-                          $$ = 0;
-                          showError(VALUE_OF_FUNCTION,-1);
-                       }else{
-                         //gets the value of the variable if it's initialized
-                         if(!$1->initialized)
-                          showError(NOT_INITIALIZED_VARIABLE,-1);
-                         $$ = $1->value.var;
-                       }
-                      }
-            | VAR '=' exp        { //if user is accesing a variable, initialices the value
-                      if($1->type == VAR){
-                        $$ = $3; $1->value.var = $3;
-                        $1->initialized = true;
-                      }else{
-                        showError(OVERWITE_VARIABLE,-1);
-                        $$ = 0;
-                      }
-                     }
-            | VAR '(' exp ')'    {  //invokes a function using a expr as an argument
+                            $$ = 0;
+                            showError(VALUE_OF_FUNCTION,-1);
+                        }else{
+                            if(!$1->initialized)
+                            showError(NOT_INITIALIZED_VARIABLE,-1);
+                            $$ = $1->value.var;
+                        }
+                    }
+            
+            | VAR '=' exp {
+                        if($1->type == VAR){
+                            $$ = $3; $1->value.var = $3;
+                            $1->initialized = true;
+                        }else{
+                            showError(OVERWITE_VARIABLE,-1);
+                            $$ = 0;
+                        }
+                    }
+            
+            | VAR '(' exp ')'{
                         if($1->type == FNCT)
-                          $$ = (*($1->value.fnctptr))($3);
+                            $$ = (*($1->value.fnctptr))($3);
                         else{
-                          $$ = 0;
-                          showError(NOT_FUNCTION,-1);
+                            $$ = 0;
+                            showError(NOT_FUNCTION,-1);
                         }
                       }
-                      //basic arithmetic operations
+            
             | exp '+' exp       { $$ = $1 + $3;}
             | exp '-' exp       { $$ = $1 - $3;}
             | exp '*' exp       { $$ = $1 * $3;}
@@ -115,21 +120,18 @@ void yyerror (char const *s){
 }
 
 void man() {
-    printf("\n CLIMath v0.1 System Help");
-    printf("\n===============================");
-    printf("\nWelcome to the first version of this command line interface");
-    printf("\n");
-    printf("\nYou can use \";\" at the end of a command to supress the command output");
-    printf("\n");
-    printf("\nAvailable options:");
-    printf("\n:? --> Shows help menu.");
-    printf("\n:f --> Shows availble functions.");
-    printf("\n:v --> Shows variables.");
-    printf("\n:t --> Shows full symbol table.");
-    printf("\n:l --> Load scritp.");
-    printf("\n\t :l pathToFile");
-    printf("\n:r --> Resets the current workspace.");
-    printf("\n:q --> Quit.");
+    printf("\n ConsolaMatematicaV1.0 - Ayuda\n");            
+    printf("*********************************\n");
+    printf("Todos los comandos deben ser precedidos por \":\"");
+    printf("\n\t:? --> Muestra esta ayuda");
+    printf("\n\t:sf --> Muestra las funciones disponibles (show functions)");
+    printf("\n\t:sv --> Muestra las variables actuales (show variables)");
+    printf("\n\t:st --> Muestra la tabla de simbolos actual, completa.(Show symbol table)");
+    printf("\n\t:load <nombreArchivo> --> Carga un script de comandos para ejecutar");
+    printf("\n\t:res --> Reinicia el espacio de trabajo actual (Reset workspace");
+    printf("\n\t:ldf --> Carga las funciones por defecto (sin, cos, exp, ...)");
+    printf("\n\t:ldf --> Carga las constantes por defecto (e,pi)");
+    printf("\n\t:q --> Finaliza el programa (Quit)");
     printf("\n");
 }
 
@@ -138,23 +140,23 @@ void printByType(int type){
         case VAR:
             printf("*********************************\n");
             printf("VARIABLES\n");
-            searchLexicalCompAndPrintSymbolsTable(VAR);
+            printSymbolByType(VAR);
             break;
 
         case FNCT:
             printf("*********************************\n");
-            printf("FUNCTIONS\n");
-            searchLexicalCompAndPrintSymbolsTable(FNCT);
+            printf("FUNCIONES\n");
+            printSymbolByType(FNCT);
             break;
 
-        case -1:
+        case CONS:
             printf("*********************************\n");
-            printf("CONSTANTS\n");
-            searchLexicalCompAndPrintSymbolsTable(FNCT);
+            printf("CONSTANTES\n");
+            printSymbolByType(CONS);
             break;
 
         case 0:
-            printf("Symbol Table\n");
+            printf("TABLA DE SIMBOLOS\n");
             printf("*********************************\n");
             printSymbolsTable();
             break;

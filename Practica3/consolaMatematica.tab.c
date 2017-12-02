@@ -114,9 +114,10 @@ extern int yydebug;
 #line 18 "consolaMatematica.y" /* yacc.c:355  */
 
     #include "SymbolsTable/SymbolsTable.h"
+    #include "Definitions.h"
     #include "ErrorManager.h"
 
-#line 120 "consolaMatematica.tab.c" /* yacc.c:355  */
+#line 121 "consolaMatematica.tab.c" /* yacc.c:355  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -125,16 +126,19 @@ extern int yydebug;
   {
     END_OF_FILE = 258,
     RESTART_WORKSPACE = 259,
-    SHOW_CONSTANTS = 260,
-    SHOW_FUNCTIONS = 261,
-    SHOW_VARIABLES = 262,
-    SHOW_SYMBOL_TABLE = 263,
-    HELP = 264,
-    QUIT = 265,
-    NUM = 266,
-    VAR = 267,
-    FNCT = 268,
-    NEG = 269
+    LOAD_DEFAULT_CONSTANTS = 260,
+    LOAD_DEFAULT_FUNCTIONS = 261,
+    SHOW_CONSTANTS = 262,
+    SHOW_FUNCTIONS = 263,
+    SHOW_VARIABLES = 264,
+    SHOW_SYMBOL_TABLE = 265,
+    HELP = 266,
+    QUIT = 267,
+    NUM = 268,
+    VAR = 269,
+    FNCT = 270,
+    CONS = 271,
+    NEG = 272
   };
 #endif
 
@@ -152,6 +156,10 @@ union YYSTYPE
   int END_OF_FILE;
   /* RESTART_WORKSPACE  */
   int RESTART_WORKSPACE;
+  /* LOAD_DEFAULT_CONSTANTS  */
+  int LOAD_DEFAULT_CONSTANTS;
+  /* LOAD_DEFAULT_FUNCTIONS  */
+  int LOAD_DEFAULT_FUNCTIONS;
   /* SHOW_CONSTANTS  */
   int SHOW_CONSTANTS;
   /* SHOW_FUNCTIONS  */
@@ -168,7 +176,9 @@ union YYSTYPE
   symbolInput* VAR;
   /* FNCT  */
   symbolInput* FNCT;
-#line 172 "consolaMatematica.tab.c" /* yacc.c:355  */
+  /* CONS  */
+  symbolInput* CONS;
+#line 182 "consolaMatematica.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -185,7 +195,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 189 "consolaMatematica.tab.c" /* yacc.c:358  */
+#line 199 "consolaMatematica.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -427,21 +437,21 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   77
+#define YYLAST   76
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  25
+#define YYNTOKENS  28
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  4
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  26
+#define YYNRULES  28
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  48
+#define YYNSTATES  52
 
 /* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
    by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   269
+#define YYMAXUTOK   272
 
 #define YYTRANSLATE(YYX)                                                \
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -451,15 +461,15 @@ union yyalloc
 static const yytype_uint8 yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-      21,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+      24,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-      23,    24,    17,    16,     2,    15,     2,    18,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,    22,
-       2,    14,     2,     2,     2,     2,     2,     2,     2,     2,
+      26,    27,    20,    19,     2,    18,     2,    21,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,    25,
+       2,    17,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,    20,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,    23,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -476,16 +486,17 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6,     7,     8,     9,    10,    11,    12,    13,    19
+       5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
+      15,    16,    22
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    44,    44,    45,    48,    49,    50,    51,    52,    53,
-      54,    55,    56,    60,    61,    62,    65,    66,    78,    87,
-      96,    97,    98,    99,   104,   105,   106
+       0,    47,    47,    48,    51,    52,    53,    54,    55,    56,
+      57,    58,    59,    63,    64,    65,    66,    67,    70,    71,
+      82,    92,   101,   102,   103,   104,   109,   110,   111
 };
 #endif
 
@@ -495,10 +506,10 @@ static const yytype_uint8 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "END_OF_FILE", "RESTART_WORKSPACE",
-  "SHOW_CONSTANTS", "SHOW_FUNCTIONS", "SHOW_VARIABLES",
-  "SHOW_SYMBOL_TABLE", "HELP", "QUIT", "NUM", "VAR", "FNCT", "'='", "'-'",
-  "'+'", "'*'", "'/'", "NEG", "'^'", "'\\n'", "';'", "'('", "')'",
-  "$accept", "input", "line", "exp", YY_NULLPTR
+  "LOAD_DEFAULT_CONSTANTS", "LOAD_DEFAULT_FUNCTIONS", "SHOW_CONSTANTS",
+  "SHOW_FUNCTIONS", "SHOW_VARIABLES", "SHOW_SYMBOL_TABLE", "HELP", "QUIT",
+  "NUM", "VAR", "FNCT", "CONS", "'='", "'-'", "'+'", "'*'", "'/'", "NEG",
+  "'^'", "'\\n'", "';'", "'('", "')'", "$accept", "input", "line", "exp", YY_NULLPTR
 };
 #endif
 
@@ -508,15 +519,15 @@ static const char *const yytname[] =
 static const yytype_uint16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265,   266,   267,   268,    61,    45,    43,    42,    47,   269,
-      94,    10,    59,    40,    41
+     265,   266,   267,   268,   269,   270,   271,    61,    45,    43,
+      42,    47,   272,    94,    10,    59,    40,    41
 };
 # endif
 
-#define YYPACT_NINF -20
+#define YYPACT_NINF -23
 
 #define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-20)))
+  (!!((Yystate) == (-23)))
 
 #define YYTABLE_NINF -1
 
@@ -527,11 +538,12 @@ static const yytype_uint16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-     -20,     0,   -20,   -19,   -20,    -7,    -4,    -2,     3,     4,
-       5,    11,   -20,    -1,    16,   -20,    16,   -20,    45,   -20,
-     -20,   -20,   -20,   -20,   -20,   -20,   -20,    16,    16,    18,
-      25,    16,    16,    16,    16,    16,   -20,    23,    53,    35,
-     -20,    57,    57,    18,    18,    18,   -20,   -20
+     -23,     0,   -23,   -22,   -23,    -8,    -2,     3,     5,     8,
+      19,    22,    23,    29,   -23,     2,     7,   -23,     7,   -23,
+      41,   -23,   -23,   -23,   -23,   -23,   -23,   -23,   -23,   -23,
+     -23,     7,     7,    32,    21,     7,     7,     7,     7,     7,
+     -23,    33,    49,    31,   -23,    53,    53,    32,    32,    32,
+     -23,   -23
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -540,22 +552,23 @@ static const yytype_int8 yypact[] =
 static const yytype_uint8 yydefact[] =
 {
        2,     0,     1,     0,     5,     0,     0,     0,     0,     0,
-       0,     0,    16,    17,     0,     4,     0,     3,     0,    15,
-      12,    10,     9,     8,    11,     7,     6,     0,     0,    24,
-       0,     0,     0,     0,     0,     0,    14,     0,    18,     0,
-      26,    21,    20,    22,    23,    25,    13,    19
+       0,     0,     0,     0,    18,    19,     0,     4,     0,     3,
+       0,    17,    12,    14,    13,    10,     9,     8,    11,     7,
+       6,     0,     0,    26,     0,     0,     0,     0,     0,     0,
+      16,     0,    20,     0,    28,    23,    22,    24,    25,    27,
+      15,    21
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -20,   -20,   -20,     2
+     -23,   -23,   -23,    -1
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     1,    17,    18
+      -1,     1,    19,    20
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -563,53 +576,54 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_uint8 yytable[] =
 {
-       2,     3,    19,     4,     5,     6,     7,     8,     9,    10,
-      11,    12,    13,    27,    20,    14,    29,    21,    30,    22,
-       0,    15,    28,    16,    23,    24,    25,    12,    13,    38,
-      39,    14,    26,    41,    42,    43,    44,    45,    35,    16,
-      31,    32,    33,    34,    46,    35,     0,     0,     0,    40,
-      31,    32,    33,    34,     0,    35,     0,     0,     0,    47,
-      31,    32,    33,    34,     0,    35,    36,    37,    31,    32,
-      33,    34,     0,    35,    33,    34,     0,    35
+       2,     3,    21,     4,     5,     6,     7,     8,     9,    10,
+      11,    12,    13,    14,    15,    33,    22,    34,    16,    31,
+      14,    15,    23,     0,    17,    16,    18,    24,    32,    25,
+      42,    43,    26,    18,    45,    46,    47,    48,    49,    35,
+      36,    37,    38,    27,    39,     0,    28,    29,    44,    35,
+      36,    37,    38,    30,    39,    39,     0,    50,    51,    35,
+      36,    37,    38,     0,    39,    40,    41,    35,    36,    37,
+      38,     0,    39,    37,    38,     0,    39
 };
 
 static const yytype_int8 yycheck[] =
 {
-       0,     1,    21,     3,     4,     5,     6,     7,     8,     9,
-      10,    11,    12,    14,    21,    15,    14,    21,    16,    21,
-      -1,    21,    23,    23,    21,    21,    21,    11,    12,    27,
-      28,    15,    21,    31,    32,    33,    34,    35,    20,    23,
-      15,    16,    17,    18,    21,    20,    -1,    -1,    -1,    24,
-      15,    16,    17,    18,    -1,    20,    -1,    -1,    -1,    24,
-      15,    16,    17,    18,    -1,    20,    21,    22,    15,    16,
-      17,    18,    -1,    20,    17,    18,    -1,    20
+       0,     1,    24,     3,     4,     5,     6,     7,     8,     9,
+      10,    11,    12,    13,    14,    16,    24,    18,    18,    17,
+      13,    14,    24,    -1,    24,    18,    26,    24,    26,    24,
+      31,    32,    24,    26,    35,    36,    37,    38,    39,    18,
+      19,    20,    21,    24,    23,    -1,    24,    24,    27,    18,
+      19,    20,    21,    24,    23,    23,    -1,    24,    27,    18,
+      19,    20,    21,    -1,    23,    24,    25,    18,    19,    20,
+      21,    -1,    23,    20,    21,    -1,    23
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,    26,     0,     1,     3,     4,     5,     6,     7,     8,
-       9,    10,    11,    12,    15,    21,    23,    27,    28,    21,
-      21,    21,    21,    21,    21,    21,    21,    14,    23,    28,
-      28,    15,    16,    17,    18,    20,    21,    22,    28,    28,
-      24,    28,    28,    28,    28,    28,    21,    24
+       0,    29,     0,     1,     3,     4,     5,     6,     7,     8,
+       9,    10,    11,    12,    13,    14,    18,    24,    26,    30,
+      31,    24,    24,    24,    24,    24,    24,    24,    24,    24,
+      24,    17,    26,    31,    31,    18,    19,    20,    21,    23,
+      24,    25,    31,    31,    27,    31,    31,    31,    31,    31,
+      24,    27
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    25,    26,    26,    27,    27,    27,    27,    27,    27,
-      27,    27,    27,    27,    27,    27,    28,    28,    28,    28,
-      28,    28,    28,    28,    28,    28,    28
+       0,    28,    29,    29,    30,    30,    30,    30,    30,    30,
+      30,    30,    30,    30,    30,    30,    30,    30,    31,    31,
+      31,    31,    31,    31,    31,    31,    31,    31,    31
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
        0,     2,     0,     2,     1,     1,     2,     2,     2,     2,
-       2,     2,     2,     3,     2,     2,     1,     1,     3,     4,
-       3,     3,     3,     3,     2,     3,     3
+       2,     2,     2,     2,     2,     3,     2,     2,     1,     1,
+       3,     4,     3,     3,     3,     3,     2,     3,     3
 };
 
 
@@ -1286,166 +1300,176 @@ yyreduce:
   switch (yyn)
     {
         case 6:
-#line 50 "consolaMatematica.y" /* yacc.c:1646  */
+#line 53 "consolaMatematica.y" /* yacc.c:1646  */
     { YYACCEPT;}
-#line 1292 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1306 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 51 "consolaMatematica.y" /* yacc.c:1646  */
+#line 54 "consolaMatematica.y" /* yacc.c:1646  */
     { man();}
-#line 1298 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1312 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 52 "consolaMatematica.y" /* yacc.c:1646  */
+#line 55 "consolaMatematica.y" /* yacc.c:1646  */
     { printByType(VAR);}
-#line 1304 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1318 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 53 "consolaMatematica.y" /* yacc.c:1646  */
+#line 56 "consolaMatematica.y" /* yacc.c:1646  */
     { printByType(FNCT);}
-#line 1310 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1324 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 54 "consolaMatematica.y" /* yacc.c:1646  */
-    { printByType(-1);}
-#line 1316 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 57 "consolaMatematica.y" /* yacc.c:1646  */
+    { printByType(CONS);}
+#line 1330 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 55 "consolaMatematica.y" /* yacc.c:1646  */
+#line 58 "consolaMatematica.y" /* yacc.c:1646  */
     { printByType(0);}
-#line 1322 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1336 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 56 "consolaMatematica.y" /* yacc.c:1646  */
-    {   // Libera la tabla de simbolos actual, y crea una nueva
-                                            destroySymbolsTable();
-                                            initSymbolsTable();
+#line 59 "consolaMatematica.y" /* yacc.c:1646  */
+    { // Libera la tabla de simbolos actual, y crea una nueva
+                                          destroySymbolsTable();
+                                          initSymbolsTable();
                                         }
-#line 1331 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1345 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 60 "consolaMatematica.y" /* yacc.c:1646  */
-    { ; }
-#line 1337 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 63 "consolaMatematica.y" /* yacc.c:1646  */
+    {loadFunctions(functions);}
+#line 1351 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 61 "consolaMatematica.y" /* yacc.c:1646  */
-    { printf ("%.10g\n", (*(double*)(&yyvsp[-1]))); }
-#line 1343 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 64 "consolaMatematica.y" /* yacc.c:1646  */
+    {loadConstants(constants);}
+#line 1357 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 62 "consolaMatematica.y" /* yacc.c:1646  */
-    { yyerrok; }
-#line 1349 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 65 "consolaMatematica.y" /* yacc.c:1646  */
+    { ; }
+#line 1363 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 65 "consolaMatematica.y" /* yacc.c:1646  */
-    { (*(double*)(&yyval)) = (*(double*)(&yyvsp[0])); /* gets thje value of a number */ }
-#line 1355 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 66 "consolaMatematica.y" /* yacc.c:1646  */
+    { printf ("%.10g\n", (*(double*)(&yyvsp[-1]))); }
+#line 1369 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 66 "consolaMatematica.y" /* yacc.c:1646  */
-    {  //access to a var value
-                        //checks if users tries to check the value of a function
-                        if((*(symbolInput**)(&yyvsp[0]))->type == FNCT){
-                          (*(double*)(&yyval)) = 0;
-                          showError(VALUE_OF_FUNCTION,-1);
-                       }else{
-                         //gets the value of the variable if it's initialized
-                         if(!(*(symbolInput**)(&yyvsp[0]))->initialized)
-                          showError(NOT_INITIALIZED_VARIABLE,-1);
-                         (*(double*)(&yyval)) = (*(symbolInput**)(&yyvsp[0]))->value.var;
-                       }
-                      }
-#line 1372 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 67 "consolaMatematica.y" /* yacc.c:1646  */
+    { yyerrok; }
+#line 1375 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 78 "consolaMatematica.y" /* yacc.c:1646  */
-    { //if user is accesing a variable, initialices the value
-                      if((*(symbolInput**)(&yyvsp[-2]))->type == VAR){
-                        (*(double*)(&yyval)) = (*(double*)(&yyvsp[0])); (*(symbolInput**)(&yyvsp[-2]))->value.var = (*(double*)(&yyvsp[0]));
-                        (*(symbolInput**)(&yyvsp[-2]))->initialized = true;
-                      }else{
-                        showError(OVERWITE_VARIABLE,-1);
-                        (*(double*)(&yyval)) = 0;
-                      }
-                     }
-#line 1386 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 70 "consolaMatematica.y" /* yacc.c:1646  */
+    { (*(double*)(&yyval)) = (*(double*)(&yyvsp[0]));}
+#line 1381 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 87 "consolaMatematica.y" /* yacc.c:1646  */
-    {  //invokes a function using a expr as an argument
-                        if((*(symbolInput**)(&yyvsp[-3]))->type == FNCT)
-                          (*(double*)(&yyval)) = (*((*(symbolInput**)(&yyvsp[-3]))->value.fnctptr))((*(double*)(&yyvsp[-1])));
-                        else{
-                          (*(double*)(&yyval)) = 0;
-                          showError(NOT_FUNCTION,-1);
+#line 71 "consolaMatematica.y" /* yacc.c:1646  */
+    {
+                        if((*(symbolInput**)(&yyvsp[0]))->type == FNCT){
+                            (*(double*)(&yyval)) = 0;
+                            showError(VALUE_OF_FUNCTION,-1);
+                        }else{
+                            if(!(*(symbolInput**)(&yyvsp[0]))->initialized)
+                            showError(NOT_INITIALIZED_VARIABLE,-1);
+                            (*(double*)(&yyval)) = (*(symbolInput**)(&yyvsp[0]))->value.var;
                         }
-                      }
-#line 1399 "consolaMatematica.tab.c" /* yacc.c:1646  */
+                    }
+#line 1396 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 96 "consolaMatematica.y" /* yacc.c:1646  */
-    { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) + (*(double*)(&yyvsp[0]));}
-#line 1405 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 82 "consolaMatematica.y" /* yacc.c:1646  */
+    {
+                        if((*(symbolInput**)(&yyvsp[-2]))->type == VAR){
+                            (*(double*)(&yyval)) = (*(double*)(&yyvsp[0])); (*(symbolInput**)(&yyvsp[-2]))->value.var = (*(double*)(&yyvsp[0]));
+                            (*(symbolInput**)(&yyvsp[-2]))->initialized = true;
+                        }else{
+                            showError(OVERWITE_VARIABLE,-1);
+                            (*(double*)(&yyval)) = 0;
+                        }
+                    }
+#line 1410 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 97 "consolaMatematica.y" /* yacc.c:1646  */
-    { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) - (*(double*)(&yyvsp[0]));}
-#line 1411 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 92 "consolaMatematica.y" /* yacc.c:1646  */
+    {
+                        if((*(symbolInput**)(&yyvsp[-3]))->type == FNCT)
+                            (*(double*)(&yyval)) = (*((*(symbolInput**)(&yyvsp[-3]))->value.fnctptr))((*(double*)(&yyvsp[-1])));
+                        else{
+                            (*(double*)(&yyval)) = 0;
+                            showError(NOT_FUNCTION,-1);
+                        }
+                      }
+#line 1423 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 98 "consolaMatematica.y" /* yacc.c:1646  */
-    { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) * (*(double*)(&yyvsp[0]));}
-#line 1417 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 101 "consolaMatematica.y" /* yacc.c:1646  */
+    { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) + (*(double*)(&yyvsp[0]));}
+#line 1429 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 99 "consolaMatematica.y" /* yacc.c:1646  */
+#line 102 "consolaMatematica.y" /* yacc.c:1646  */
+    { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) - (*(double*)(&yyvsp[0]));}
+#line 1435 "consolaMatematica.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 24:
+#line 103 "consolaMatematica.y" /* yacc.c:1646  */
+    { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) * (*(double*)(&yyvsp[0]));}
+#line 1441 "consolaMatematica.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 25:
+#line 104 "consolaMatematica.y" /* yacc.c:1646  */
     { if((*(double*)(&yyvsp[0])) == 0) //error if user divides by zero
                                     showError(DIVISION_BY_ZERO,-1);
                                   else
                                     (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) / (*(double*)(&yyvsp[0]));
                                 }
-#line 1427 "consolaMatematica.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 24:
-#line 104 "consolaMatematica.y" /* yacc.c:1646  */
-    { (*(double*)(&yyval)) = -(*(double*)(&yyvsp[0]));}
-#line 1433 "consolaMatematica.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 25:
-#line 105 "consolaMatematica.y" /* yacc.c:1646  */
-    { (*(double*)(&yyval)) = pow ((*(double*)(&yyvsp[-2])), (*(double*)(&yyvsp[0])));}
-#line 1439 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1451 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 106 "consolaMatematica.y" /* yacc.c:1646  */
+#line 109 "consolaMatematica.y" /* yacc.c:1646  */
+    { (*(double*)(&yyval)) = -(*(double*)(&yyvsp[0]));}
+#line 1457 "consolaMatematica.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 27:
+#line 110 "consolaMatematica.y" /* yacc.c:1646  */
+    { (*(double*)(&yyval)) = pow ((*(double*)(&yyvsp[-2])), (*(double*)(&yyvsp[0])));}
+#line 1463 "consolaMatematica.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 28:
+#line 111 "consolaMatematica.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-1]));}
-#line 1445 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1469 "consolaMatematica.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1449 "consolaMatematica.tab.c" /* yacc.c:1646  */
+#line 1473 "consolaMatematica.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1673,7 +1697,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 109 "consolaMatematica.y" /* yacc.c:1906  */
+#line 114 "consolaMatematica.y" /* yacc.c:1906  */
 
 
 void yyerror (char const *s){
@@ -1683,21 +1707,18 @@ void yyerror (char const *s){
 }
 
 void man() {
-    printf("\n CLIMath v0.1 System Help");
-    printf("\n===============================");
-    printf("\nWelcome to the first version of this command line interface");
-    printf("\n");
-    printf("\nYou can use \";\" at the end of a command to supress the command output");
-    printf("\n");
-    printf("\nAvailable options:");
-    printf("\n:? --> Shows help menu.");
-    printf("\n:f --> Shows availble functions.");
-    printf("\n:v --> Shows variables.");
-    printf("\n:t --> Shows full symbol table.");
-    printf("\n:l --> Load scritp.");
-    printf("\n\t :l pathToFile");
-    printf("\n:r --> Resets the current workspace.");
-    printf("\n:q --> Quit.");
+    printf("\n ConsolaMatematicaV1.0 - Ayuda\n");            
+    printf("*********************************\n");
+    printf("Todos los comandos deben ser precedidos por \":\"");
+    printf("\n\t:? --> Muestra esta ayuda");
+    printf("\n\t:sf --> Muestra las funciones disponibles (show functions)");
+    printf("\n\t:sv --> Muestra las variables actuales (show variables)");
+    printf("\n\t:st --> Muestra la tabla de simbolos actual, completa.(Show symbol table)");
+    printf("\n\t:load <nombreArchivo> --> Carga un script de comandos para ejecutar");
+    printf("\n\t:res --> Reinicia el espacio de trabajo actual (Reset workspace");
+    printf("\n\t:ldf --> Carga las funciones por defecto (sin, cos, exp, ...)");
+    printf("\n\t:ldf --> Carga las constantes por defecto (e,pi)");
+    printf("\n\t:q --> Finaliza el programa (Quit)");
     printf("\n");
 }
 
@@ -1706,23 +1727,23 @@ void printByType(int type){
         case VAR:
             printf("*********************************\n");
             printf("VARIABLES\n");
-            searchLexicalCompAndPrintSymbolsTable(VAR);
+            printSymbolByType(VAR);
             break;
 
         case FNCT:
             printf("*********************************\n");
-            printf("FUNCTIONS\n");
-            searchLexicalCompAndPrintSymbolsTable(FNCT);
+            printf("FUNCIONES\n");
+            printSymbolByType(FNCT);
             break;
 
-        case -1:
+        case CONS:
             printf("*********************************\n");
-            printf("CONSTANTS\n");
-            searchLexicalCompAndPrintSymbolsTable(FNCT);
+            printf("CONSTANTES\n");
+            printSymbolByType(CONS);
             break;
 
         case 0:
-            printf("Symbol Table\n");
+            printf("TABLA DE SIMBOLOS\n");
             printf("*********************************\n");
             printSymbolsTable();
             break;

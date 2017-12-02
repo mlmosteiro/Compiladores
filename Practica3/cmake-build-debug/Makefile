@@ -48,10 +48,10 @@ RM = /opt/clion-2017.2.3/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/maryluz/CLionProjects/Compiladores/untitled
+CMAKE_SOURCE_DIR = /home/maryluz/CLionProjects/Compiladores/Practica3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/maryluz/CLionProjects/Compiladores/untitled/cmake-build-debug
+CMAKE_BINARY_DIR = /home/maryluz/CLionProjects/Compiladores/Practica3/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maryluz/CLionProjects/Compiladores/untitled/cmake-build-debug/CMakeFiles /home/maryluz/CLionProjects/Compiladores/untitled/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maryluz/CLionProjects/Compiladores/Practica3/cmake-build-debug/CMakeFiles /home/maryluz/CLionProjects/Compiladores/Practica3/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maryluz/CLionProjects/Compiladores/untitled/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maryluz/CLionProjects/Compiladores/Practica3/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named practica3
+# Target rules for targets named Practica3
 
 # Build rule for target.
-practica3: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 practica3
-.PHONY : practica3
+Practica3: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Practica3
+.PHONY : Practica3
 
 # fast build rule for target.
-practica3/fast:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/build
-.PHONY : practica3/fast
+Practica3/fast:
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/build
+.PHONY : Practica3/fast
 
 Definitions.o: Definitions.c.o
 
@@ -129,7 +129,7 @@ Definitions.o: Definitions.c.o
 
 # target to build an object file
 Definitions.c.o:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/Definitions.c.o
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/Definitions.c.o
 .PHONY : Definitions.c.o
 
 Definitions.i: Definitions.c.i
@@ -138,7 +138,7 @@ Definitions.i: Definitions.c.i
 
 # target to preprocess a source file
 Definitions.c.i:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/Definitions.c.i
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/Definitions.c.i
 .PHONY : Definitions.c.i
 
 Definitions.s: Definitions.c.s
@@ -147,7 +147,7 @@ Definitions.s: Definitions.c.s
 
 # target to generate assembly for a file
 Definitions.c.s:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/Definitions.c.s
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/Definitions.c.s
 .PHONY : Definitions.c.s
 
 ErrorManager.o: ErrorManager.c.o
@@ -156,7 +156,7 @@ ErrorManager.o: ErrorManager.c.o
 
 # target to build an object file
 ErrorManager.c.o:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/ErrorManager.c.o
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/ErrorManager.c.o
 .PHONY : ErrorManager.c.o
 
 ErrorManager.i: ErrorManager.c.i
@@ -165,7 +165,7 @@ ErrorManager.i: ErrorManager.c.i
 
 # target to preprocess a source file
 ErrorManager.c.i:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/ErrorManager.c.i
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/ErrorManager.c.i
 .PHONY : ErrorManager.c.i
 
 ErrorManager.s: ErrorManager.c.s
@@ -174,7 +174,7 @@ ErrorManager.s: ErrorManager.c.s
 
 # target to generate assembly for a file
 ErrorManager.c.s:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/ErrorManager.c.s
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/ErrorManager.c.s
 .PHONY : ErrorManager.c.s
 
 SymbolsTable/BST.o: SymbolsTable/BST.c.o
@@ -183,7 +183,7 @@ SymbolsTable/BST.o: SymbolsTable/BST.c.o
 
 # target to build an object file
 SymbolsTable/BST.c.o:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/SymbolsTable/BST.c.o
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/SymbolsTable/BST.c.o
 .PHONY : SymbolsTable/BST.c.o
 
 SymbolsTable/BST.i: SymbolsTable/BST.c.i
@@ -192,7 +192,7 @@ SymbolsTable/BST.i: SymbolsTable/BST.c.i
 
 # target to preprocess a source file
 SymbolsTable/BST.c.i:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/SymbolsTable/BST.c.i
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/SymbolsTable/BST.c.i
 .PHONY : SymbolsTable/BST.c.i
 
 SymbolsTable/BST.s: SymbolsTable/BST.c.s
@@ -201,7 +201,7 @@ SymbolsTable/BST.s: SymbolsTable/BST.c.s
 
 # target to generate assembly for a file
 SymbolsTable/BST.c.s:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/SymbolsTable/BST.c.s
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/SymbolsTable/BST.c.s
 .PHONY : SymbolsTable/BST.c.s
 
 SymbolsTable/SymbolsTable.o: SymbolsTable/SymbolsTable.c.o
@@ -210,7 +210,7 @@ SymbolsTable/SymbolsTable.o: SymbolsTable/SymbolsTable.c.o
 
 # target to build an object file
 SymbolsTable/SymbolsTable.c.o:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/SymbolsTable/SymbolsTable.c.o
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/SymbolsTable/SymbolsTable.c.o
 .PHONY : SymbolsTable/SymbolsTable.c.o
 
 SymbolsTable/SymbolsTable.i: SymbolsTable/SymbolsTable.c.i
@@ -219,7 +219,7 @@ SymbolsTable/SymbolsTable.i: SymbolsTable/SymbolsTable.c.i
 
 # target to preprocess a source file
 SymbolsTable/SymbolsTable.c.i:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/SymbolsTable/SymbolsTable.c.i
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/SymbolsTable/SymbolsTable.c.i
 .PHONY : SymbolsTable/SymbolsTable.c.i
 
 SymbolsTable/SymbolsTable.s: SymbolsTable/SymbolsTable.c.s
@@ -228,7 +228,7 @@ SymbolsTable/SymbolsTable.s: SymbolsTable/SymbolsTable.c.s
 
 # target to generate assembly for a file
 SymbolsTable/SymbolsTable.c.s:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/SymbolsTable/SymbolsTable.c.s
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/SymbolsTable/SymbolsTable.c.s
 .PHONY : SymbolsTable/SymbolsTable.c.s
 
 consolaMatematica.tab.o: consolaMatematica.tab.c.o
@@ -237,7 +237,7 @@ consolaMatematica.tab.o: consolaMatematica.tab.c.o
 
 # target to build an object file
 consolaMatematica.tab.c.o:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/consolaMatematica.tab.c.o
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/consolaMatematica.tab.c.o
 .PHONY : consolaMatematica.tab.c.o
 
 consolaMatematica.tab.i: consolaMatematica.tab.c.i
@@ -246,7 +246,7 @@ consolaMatematica.tab.i: consolaMatematica.tab.c.i
 
 # target to preprocess a source file
 consolaMatematica.tab.c.i:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/consolaMatematica.tab.c.i
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/consolaMatematica.tab.c.i
 .PHONY : consolaMatematica.tab.c.i
 
 consolaMatematica.tab.s: consolaMatematica.tab.c.s
@@ -255,7 +255,7 @@ consolaMatematica.tab.s: consolaMatematica.tab.c.s
 
 # target to generate assembly for a file
 consolaMatematica.tab.c.s:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/consolaMatematica.tab.c.s
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/consolaMatematica.tab.c.s
 .PHONY : consolaMatematica.tab.c.s
 
 lex.yy.o: lex.yy.c.o
@@ -264,7 +264,7 @@ lex.yy.o: lex.yy.c.o
 
 # target to build an object file
 lex.yy.c.o:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/lex.yy.c.o
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/lex.yy.c.o
 .PHONY : lex.yy.c.o
 
 lex.yy.i: lex.yy.c.i
@@ -273,7 +273,7 @@ lex.yy.i: lex.yy.c.i
 
 # target to preprocess a source file
 lex.yy.c.i:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/lex.yy.c.i
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/lex.yy.c.i
 .PHONY : lex.yy.c.i
 
 lex.yy.s: lex.yy.c.s
@@ -282,7 +282,7 @@ lex.yy.s: lex.yy.c.s
 
 # target to generate assembly for a file
 lex.yy.c.s:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/lex.yy.c.s
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/lex.yy.c.s
 .PHONY : lex.yy.c.s
 
 main.o: main.c.o
@@ -291,7 +291,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/main.c.o
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -300,7 +300,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/main.c.i
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -309,7 +309,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) -f CMakeFiles/practica3.dir/build.make CMakeFiles/practica3.dir/main.c.s
+	$(MAKE) -f CMakeFiles/Practica3.dir/build.make CMakeFiles/Practica3.dir/main.c.s
 .PHONY : main.c.s
 
 # Help Target
@@ -320,7 +320,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... practica3"
+	@echo "... Practica3"
 	@echo "... Definitions.o"
 	@echo "... Definitions.i"
 	@echo "... Definitions.s"

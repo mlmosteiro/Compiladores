@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "BST.h" 
+#include "BST.h"
 
 abb symbolsTable;
 
@@ -11,21 +11,19 @@ void initSymbolsTable() {
 
 symbolInput * insert(char *name, int type) {
     // Reservamos los recursos necesarios para una nueva entrada y la insertamos en la tabla.
-    symbolInput* newSymbol =  (symbolInput*) malloc(sizeof(symbolInput));
-    newSymbol->name = (char*) malloc(strlen(name)+1);
-    strcpy(newSymbol->name,name);
-    newSymbol->type = type;
-    newSymbol->value.var = 0; //  pone valor a 0 incluso si es fctn.
-    inserta(&symbolsTable, *newSymbol);
-
-    return newSymbol;
+    symbolInput newSymbol;
+    newSymbol.name = (char*) malloc(strlen(name)+1);
+    strcpy(newSymbol.name,name);
+    newSymbol.type = type;
+    newSymbol.value.var = 0.0; //  pone valor a 0 incluso si es fctn.
+    return inserta(&symbolsTable, newSymbol);
 }
 
 
 symbolInput* search(char *name) {
     symbolInput* result;
     result = NULL;
-    buscaNodo(symbolsTable, name, result);
+    result = buscaNodo(symbolsTable, name);
     return result;
 }
 
@@ -53,13 +51,22 @@ void printSymbolTableRec(abb symbolsTable) {
 }
 
 void printSymbolsTable() {
-    printf("\n\n--- Tabla de símbolos ---\n");
     printSymbolTableRec(symbolsTable);
 }
 
-void searchLexicalCompAndPrintSymbolsTable(int componenteLexico){
-    printf("\n\n--- Tabla de símbolos: %d ---\n", componenteLexico);
-    printf("---------aqui se imprimiran las cosas----------\n");
+void printSymbolByTypeRec(abb symbolsTable, int type){
+    symbolInput E;
+    if (! esVacio(symbolsTable)) {
+        printSymbolByTypeRec(izq(symbolsTable),type);
+        info(symbolsTable, &E);
+        if(E.type == type) {
+            printf("%s - %d \n", E.name, E.type);
+        }
+        printSymbolByTypeRec(der(symbolsTable), type);
+    }
+}
+void printSymbolByType(int type){
+    printSymbolByTypeRec(symbolsTable,type);
 }
 
 

@@ -11,20 +11,20 @@ int main(int argc, char *argv[]) {
     loadFunctions(functions);
     loadConstants(constants);
 
-    
+    // En caso de que se pase el nombre de un archivo como argumento, lo analizamos primero
+    if (argc == 2) {
+        loadFile(argv[1]);
+    }
+
     // Asignamos la entrada y salida por defecto de flex
     yyin = stdin;
     yyout = stdout;
    
 
-    if (argc == 2) {
-        loadFile(argv[1]);
-    }
-
     printf("\n-----------------------------------------------------------\n");
     printf("---------------  Consola matemática - V1.0  ---------------\n");
     printf("-----------------------------------------------------------\n");
-    printf("----------------------  Ayuda --> :?  ---------------------\n");
+    printf("----------------------  AYUDA --> :?  ---------------------\n");
     printf("-----------------------------------------------------------\n");
 
     yyparse();

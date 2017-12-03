@@ -328,7 +328,7 @@ extern int yylex (void);
 #undef YY_DECL
 #endif
 
-#line 69 "consolaMatematica.l"
+#line 71 "consolaMatematica.l"
 
 
 #line 335 "lex.yy.h"

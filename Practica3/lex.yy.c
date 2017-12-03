@@ -837,63 +837,63 @@ return LOAD_DEFAULT_CONSTANTS;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 51 "consolaMatematica.l"
+#line 52 "consolaMatematica.l"
 return LOAD_DEFAULT_FUNCTIONS;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 52 "consolaMatematica.l"
+#line 54 "consolaMatematica.l"
 return HELP;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 54 "consolaMatematica.l"
+#line 56 "consolaMatematica.l"
 {fclose(yyin); return QUIT;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 56 "consolaMatematica.l"
+#line 58 "consolaMatematica.l"
 {return loadFile(&yytext[6]);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 58 "consolaMatematica.l"
+#line 60 "consolaMatematica.l"
 {yylval.NUM = atof(yytext); return NUM;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 60 "consolaMatematica.l"
+#line 62 "consolaMatematica.l"
 {yylval.NUM = atof(yytext); return NUM;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 62 "consolaMatematica.l"
+#line 64 "consolaMatematica.l"
 {return lexemaFinded();}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 64 "consolaMatematica.l"
+#line 66 "consolaMatematica.l"
 ;
 	YY_BREAK
 case 15:
 /* rule 15 can match eol */
 YY_RULE_SETUP
-#line 65 "consolaMatematica.l"
+#line 67 "consolaMatematica.l"
 {numLinea++; return '\n';}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 66 "consolaMatematica.l"
+#line 68 "consolaMatematica.l"
 {return checkSymbols();}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 67 "consolaMatematica.l"
-
+#line 69 "consolaMatematica.l"
+return '\n';
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 69 "consolaMatematica.l"
+#line 71 "consolaMatematica.l"
 ECHO;
 	YY_BREAK
 #line 900 "lex.yy.c"
@@ -1895,7 +1895,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 69 "consolaMatematica.l"
+#line 71 "consolaMatematica.l"
 
 
 
@@ -1922,7 +1922,7 @@ int lexemaFinded() {
 
 int loadFile(char* filepath){
 
-    buffer = YY_CURRENT_BUFFER;             // Puntero al buffer actual de flex
+    buffer = YY_CURRENT_BUFFER;           // Puntero al buffer actual de flex
     FILE* file= fopen(filepath,"r");      // Abrimos el archivo
 
     if(file != NULL){

@@ -4,7 +4,7 @@
 #include <math.h>
 
 
-//default values for symbol table
+// Funciones por defecto
 struct initFunctionStruct functions[] = {
     {"atan", atan},
     {"cos",  cos},
@@ -15,13 +15,13 @@ struct initFunctionStruct functions[] = {
     {0,      0},
 };
 
+// Constantes por defecto
 struct initConstantStruct constants[] = {
     {"pi", 3.14159265359},
     {"e",  2.71828182846},
     {0,    0},
 };
 
-//puts the functions in the symbol table
 void loadFunctions(struct initFunctionStruct *functions) {
     int i;
     for (i = 0; functions[i].name != 0; i ++) {
@@ -31,7 +31,6 @@ void loadFunctions(struct initFunctionStruct *functions) {
     }
 }
 
-//puts the constants in the symbol table
 void loadConstants(struct initConstantStruct *constants) {
     int i;
     for (i = 0; constants[i].name != 0; i ++) {

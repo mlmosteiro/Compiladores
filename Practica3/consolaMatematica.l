@@ -48,7 +48,9 @@ QUIT                        \:q
 {SHOW_SYMBOL_TABLE}         return SHOW_SYMBOL_TABLE;
 
 {LOAD_DEFAULT_CONSTANTS}    return LOAD_DEFAULT_CONSTANTS;
+
 {LOAD_DEFAULT_FUNCTIONS}    return LOAD_DEFAULT_FUNCTIONS;
+
 {HELP}                      return HELP;
 
 {QUIT}                      {fclose(yyin); return QUIT;}
@@ -64,7 +66,7 @@ QUIT                        \:q
 [ \t\r]						;
 [\n]						{numLinea++; return '\n';}
 [[:punct:]]                 {return checkSymbols();}
-.                           
+.                           return '\n';
 
 %%
 
@@ -91,7 +93,7 @@ int lexemaFinded() {
 
 int loadFile(char* filepath){
 
-    buffer = YY_CURRENT_BUFFER;             // Puntero al buffer actual de flex
+    buffer = YY_CURRENT_BUFFER;           // Puntero al buffer actual de flex
     FILE* file= fopen(filepath,"r");      // Abrimos el archivo
 
     if(file != NULL){

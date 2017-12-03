@@ -54,6 +54,9 @@ void printSymbolsTable() {
     printSymbolTableRec(symbolsTable);
 }
 
+/* Funcion auxiliar que nos permite recorrer el árbol de forma recursiva
+ * para imprimir la tabla de simbolos segun el tipo del elemento que buscamos
+ * */
 void printSymbolByTypeRec(abb symbolsTable, int type){
     symbolInput E;
     if (! esVacio(symbolsTable)) {

@@ -1709,6 +1709,7 @@ void yyerror (char const *s){
 void man() {
     printf("\n ConsolaMatematicaV1.0 - Ayuda\n");            
     printf("*********************************\n");
+    printf("La salida de un comando se puede evitar añadiendo al final \";\"");
     printf("Todos los comandos deben ser precedidos por \":\"");
     printf("\n\t:? --> Muestra esta ayuda");
     printf("\n\t:sf --> Muestra las funciones disponibles (show functions)");
@@ -1723,6 +1724,7 @@ void man() {
 }
 
 void printByType(int type){
+    //Funcion que imprime solo los simbolos que nos interesan de la tabla de simbolos
     switch(type){
         case VAR:
             printf("*********************************\n");

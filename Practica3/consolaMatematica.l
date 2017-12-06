@@ -66,7 +66,7 @@ QUIT                        \:q
 [ \t\r]						;
 [\n]						{numLinea++; return '\n';}
 [[:punct:]]                 {return checkSymbols();}
-.                           return '\n';
+.                           ;
 
 %%
 
@@ -113,19 +113,14 @@ int checkSymbols(){
     if (strcmp("(",yytext) == 0 ) return('(');
     if (strcmp(")",yytext) == 0 ) return(')');
     if (strcmp("-",yytext) == 0 ) return('-');
-    if (strcmp("[",yytext) == 0 ) return('[');
-    if (strcmp("]",yytext) == 0 ) return(']');
     if (strcmp("*",yytext) == 0 ) return('*');
     if (strcmp("^",yytext) == 0 ) return('^');
-    if (strcmp("{",yytext) == 0 ) return('{');
-    if (strcmp("}",yytext) == 0 ) return('}');
     if (strcmp("/",yytext) == 0 ) return('/');
     if (strcmp("=",yytext) == 0 ) return('=');
     if (strcmp(",",yytext) == 0 ) return(',');
     if (strcmp(";",yytext) == 0 ) return(';');
-    if (strcmp("!",yytext) == 0 ) return('!');
-    if (strcmp("?",yytext) == 0 ) return('?');
     if (strcmp(".",yytext) == 0 ) return('.');
+    showError(ILLEGAL_CHARACTER,-1);
     return '\n';
 }
 

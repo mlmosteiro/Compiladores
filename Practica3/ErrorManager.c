@@ -16,27 +16,27 @@ void showError(int errorCode, int numLinea) {
     printf("\033[0;31m");
     switch (errorCode) {
         case NOT_FILE_FOUNDED:
-            printf("No se ha encontrado el archivo de código fuente especificado\n");
+            printf("No se ha encontrado el archivo de código fuente especificado");
             break;
 
         case VALUE_OF_FUNCTION:
-            printf("[ERROR] No se puede mostrar el valor de una funcion\n");
+            printf("[ERROR] No se puede mostrar el valor de una función");
             break;
 
         case NOT_INITIALIZED_VARIABLE:
-            printf("[ERROR] Esa variable no está inicializada\n");
+            printf("[ERROR] Esa variable no está inicializada");
             break;
         case OVERWITE_VARIABLE:
-            printf("[ERROR] Se está intentando sobreescribir una constante.\n");
+            printf("[ERROR] Se está intentando asignar un valor a una función sobreescribir una constante.");
             break;
         case NOT_FUNCTION:
-            printf("[ERROR] Función no existente\n");
+            printf("[ERROR] Función no existente");
             break;
         case ILLEGAL_CHARACTER:
-            printf("[ERROR LEXICO - linea %d] Carácter ilegal.\n", numLinea);
+            printf("[ERROR] Carácter ilegal.");
             break;
         case DIVISION_BY_ZERO:
-            printf("[ERROR] División por cero\n");
+            printf("[ERROR] División por cero");
             break;
         default:
             printf("[ERROR]");

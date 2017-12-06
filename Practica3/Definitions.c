@@ -6,11 +6,20 @@
 
 // Funciones por defecto
 struct initFunctionStruct functions[] = {
+    {"sin", sin},
+    {"cos", cos},
+    {"tan", tan},
+    {"asin", asin},
+    {"acos", acos},
     {"atan", atan},
-    {"cos",  cos},
-    {"exp",  exp},
-    {"ln",   log},
-    {"sin",  sin},
+    {"sinh", sinh},
+    {"cosh", cosh},
+    {"tanh", tanh},
+    {"log", log},
+    {"log10", log10},
+    {"ceil", ceil},
+    {"floor", floor},
+    {"exp", exp},
     {"sqrt", sqrt},
     {0,      0},
 };

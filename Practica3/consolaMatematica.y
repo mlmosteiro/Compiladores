@@ -101,9 +101,9 @@ exp:        NUM         { $$ = $1;}
             | exp '+' exp       { $$ = $1 + $3;}
             | exp '-' exp       { $$ = $1 - $3;}
             | exp '*' exp       { $$ = $1 * $3;}
-            | exp '/' exp       { if($3 == 0) //error if user divides by zero
+            | exp '/' exp       { if($3 == 0){
                                     showError(DIVISION_BY_ZERO,-1);
-                                  else
+                                  }else
                                     $$ = $1 / $3;
                                 }
             | '-' exp  %prec NEG { $$ = -$2;}
@@ -121,20 +121,23 @@ void yyerror (char const *s){
 
 void man() {
     printf("\n ConsolaMatematicaV1.0 - Ayuda\n");            
-    printf("*********************************\n");
-    printf("La salida de un comando se puede evitar añadiendo al final \";\"");
-    printf("Todos los comandos deben ser precedidos por \":\"");
+    printf("*********************************");
+    printf("\nLa salida de un comando se puede evitar añadiendo al final \";\"");
+    printf("\nTodos los comandos deben ser precedidos por \":\"");
     printf("\n\t:? --> Muestra esta ayuda");
     printf("\n\t:sf --> Muestra las funciones disponibles (show functions)");
     printf("\n\t:sv --> Muestra las variables actuales (show variables)");
     printf("\n\t:st --> Muestra la tabla de simbolos actual, completa.(Show symbol table)");
     printf("\n\t:load <nombreArchivo> --> Carga un script de comandos para ejecutar");
-    printf("\n\t:res --> Reinicia el espacio de trabajo actual (Reset workspace");
+    printf("\n\t\tEjemplo \":load demo.txt\"");
+    printf("\n\t:res --> Reinicia el espacio de trabajo actual (Reset workspace)");
     printf("\n\t:ldf --> Carga las funciones por defecto (sin, cos, exp, ...)");
     printf("\n\t:ldf --> Carga las constantes por defecto (e,pi)");
     printf("\n\t:q --> Finaliza el programa (Quit)");
-    printf("\n");
-}
+    printf("\n\n");
+   	printf("Funciones disponibles:\n");
+   	printf("sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, log, log10, ceil, floor, exp, sqrt\n");
+  }
 
 void printByType(int type){
     //Funcion que imprime solo los simbolos que nos interesan de la tabla de simbolos

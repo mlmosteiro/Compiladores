@@ -1,0 +1,73 @@
+	.file	"ejercicio3.c"
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.LC3:
+	.string	"resultado= %e\n"
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB23:
+	.cfi_startproc
+	movl	$0, %eax
+	movsd	.LC0(%rip), %xmm1
+.L2:
+	pxor	%xmm0, %xmm0
+	cvtsi2sd	%eax, %xmm0
+	mulsd	%xmm1, %xmm0
+	movsd	%xmm0, res(,%rax,8)
+	addq	$1, %rax
+	cmpq	$10000, %rax
+	jne	.L2
+	movl	$res, %eax
+	movl	$res+80000, %ecx
+	movsd	.LC1(%rip), %xmm2
+	movsd	.LC2(%rip), %xmm4
+	movsd	.LC0(%rip), %xmm3
+.L6:
+	movq	%rax, %rdx
+	movsd	(%rax), %xmm0
+	ucomisd	%xmm0, %xmm2
+	jbe	.L10
+	movapd	%xmm0, %xmm1
+	mulsd	%xmm0, %xmm1
+	addsd	%xmm3, %xmm1
+	jmp	.L5
+.L10:
+	movapd	%xmm0, %xmm1
+	subsd	%xmm4, %xmm1
+.L5:
+	addsd	%xmm1, %xmm0
+	movsd	%xmm0, (%rdx)
+	addq	$8, %rax
+	cmpq	%rcx, %rax
+	jne	.L6
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 16
+	movsd	res+79992(%rip), %xmm0
+	movl	$.LC3, %esi
+	movl	$1, %edi
+	movl	$1, %eax
+	call	__printf_chk
+	movl	$0, %eax
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 8
+	ret
+	.cfi_endproc
+.LFE23:
+	.size	main, .-main
+	.comm	res,80000,32
+	.section	.rodata.cst8,"aM",@progbits,8
+	.align 8
+.LC0:
+	.long	3539053052
+	.long	1061184077
+	.align 8
+.LC1:
+	.long	0
+	.long	1097011920
+	.align 8
+.LC2:
+	.long	0
+	.long	1083129856
+	.ident	"GCC: (Ubuntu 5.4.0-6ubuntu1~16.04.5) 5.4.0 20160609"
+	.section	.note.GNU-stack,"",@progbits

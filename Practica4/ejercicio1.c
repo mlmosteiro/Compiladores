@@ -1,7 +1,6 @@
 /*Generación y optimizacion de código*/
 #include <stdio.h>
 #include <math.h>
-#include <sys/time.h>
 
 struct timeval inicio, final;
 double tiempoAritmetico;

@@ -9,11 +9,8 @@
     extern FILE* yyin;
     void man();
     void printByType(int type);
+    void yyerror (char const *s);
 %}
-
-%code top{
-  void yyerror (char const *s);
-}
 
 %code requires {
     #include "SymbolsTable/SymbolsTable.h"
@@ -74,14 +71,15 @@ exp:        NUM         { $$ = $1;}
                             showError(VALUE_OF_FUNCTION,-1);
                         }else{
                             if(!$1->initialized)
-                            showError(NOT_INITIALIZED_VARIABLE,-1);
+                                showError(NOT_INITIALIZED_VARIABLE,-1);
                             $$ = $1->value.var;
                         }
                     }
             
             | VAR '=' exp {
                         if($1->type == VAR){
-                            $$ = $3; $1->value.var = $3;
+                            $$ = $3; 
+                            $1->value.var = $3;
                             $1->initialized = true;
                         }else{
                             showError(OVERWITE_VARIABLE,-1);

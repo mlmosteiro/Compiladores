@@ -1,1 +1,0 @@
-/usr/bin/cc  -std=c99  -Wall -Wextra -pedantic-errors -g   CMakeFiles/Practica3.dir/main.c.o CMakeFiles/Practica3.dir/Definitions.c.o CMakeFiles/Practica3.dir/SymbolsTable/SymbolsTable.c.o CMakeFiles/Practica3.dir/ErrorManager.c.o CMakeFiles/Practica3.dir/SymbolsTable/BST.c.o CMakeFiles/Practica3.dir/lex.yy.c.o CMakeFiles/Practica3.dir/consolaMatematica.tab.c.o  -o Practica3 -lm 

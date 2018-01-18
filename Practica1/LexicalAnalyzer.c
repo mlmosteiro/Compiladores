@@ -590,14 +590,15 @@ lexemaOutput nextLexicalComponent() {
                 // verificamos si se trata de un espacio o una tabulacion, caracteres que ignoramos.
                 // Si no se trata de ninguno de estos caracteres especiales, entonces hemos leido
                 // un caracter ilegal para nuestro lenguaje.
-                if((character == ' ' || character =='\t'))
+                if ((character == ' ' || character == '\t')){
                     restartLexemaBuffer();
-                else{
+                    return nextLexicalComponent();
+                }else{
                     showError(ILLEGAL_CHARACTER, numLinea);
                     restartLexemaBuffer();
                 }
-                return nextLexicalComponent();
-           }
+                break;
+            }
 
             return lexemaFinded(finded, false);
         } else if (isdigit(character)) {
